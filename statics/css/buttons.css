@@ -1,0 +1,11 @@
+:root{
+    --button-padding-top:7px;
+    --button-padding-left: 25px;
+}
+
+.black-white{
+    color: #2A2A2A !important;
+    background-color: white;
+    border-radius: 100px;
+    padding: var(--button-padding-top) var(--button-padding-left) !important;
+}

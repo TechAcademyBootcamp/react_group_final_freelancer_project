@@ -1,0 +1,8 @@
+from django.urls import path
+from home.views import *
+
+urlpatterns = [
+    path('', HomeView.as_view(), name='home'),
+    path('post-project/', PostProjectView.as_view(), name='post-project'),
+    path('get-started/', GetStartedView.as_view(), name='get-started'),
+]

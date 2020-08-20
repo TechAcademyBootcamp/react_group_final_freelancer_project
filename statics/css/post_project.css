@@ -1,0 +1,140 @@
+:root{
+    --form-width:1120px;
+    --form-sec: 87%;
+}
+@media only screen and (max-width: 400px) { 
+    .form_sec{
+        padding: 20px !important;
+    }
+}
+div.post_project{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    z-index: -20;
+}
+div.post_project div:first-child{
+    width: 100%;
+    height: 700px;
+    background-color: var(--background-color-1);
+}
+div.post_project div:last-child{
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color-2);
+}
+
+.pp_center_con{
+    /* background-color: gray; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.form{
+    /* display: flex; */
+    flex-direction: column;
+    
+    height: fit-content;
+    margin-top: 150px;
+    max-width: var(--form-width);
+    width: 100%;
+}
+.form .form_inc{
+    width: 100%;
+    height: 10px;
+    background-color: #F68205;
+}
+.form .form_sec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background-color: white;
+    padding: 60px;
+    padding-top: 50px;
+
+}
+.form_sec .sec_1{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.undo_icon{
+    width: 25px;
+    height: 25px; 
+}
+.close_icon{
+    width: 19px ;
+    height: 19px ;
+}
+
+.form_sec .sec_2{
+    width: var(--form-sec);
+}
+
+.card{
+    display: flex;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    padding: 25px 0;
+    box-sizing: border-box;
+}
+.card .con{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    padding: 0 30px;
+    overflow: hidden;
+}
+.card .prize_con{
+    overflow: hidden;
+   flex-basis: 40%; 
+   border-right: 1px dashed var(--border-color);
+}
+.card .prize_con h5{
+    overflow: hidden;
+    width: 100%;
+}
+.card .details{
+    overflow: hidden;
+    flex-basis: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.card .details p{
+    max-height: 150px;
+    overflow: hidden;
+    width: 100%;
+}
+.card .details h5{
+    max-height: 75px;
+    overflow: hidden;
+    width: 100%;
+}
+.card .details .tag_con{
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin: 5px 0;
+}
+
+.input_details span{
+    text-align: right;
+}
+.span_2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

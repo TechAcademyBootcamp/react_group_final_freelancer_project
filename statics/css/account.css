@@ -1,0 +1,40 @@
+:root{
+    --form-width:420px;
+}
+
+/* or arrow */
+
+.ac_con{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.ac_con .or_line{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:  27px 0;
+}
+.ac_con .or_line span{
+    padding: 0px 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding-bottom: 4px;
+}
+.ac_con .or_line svg{
+    height: 10px;
+}
+
+/* or arrow */
+
+.ac_con .field_con{
+    margin: 5px 0;
+}
+.ac_con done{
+    margin: 17px 0;
+}
+
+.long_line{
+    margin: 12px 0;
+}
