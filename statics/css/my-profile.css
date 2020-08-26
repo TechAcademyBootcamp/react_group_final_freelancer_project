@@ -1,0 +1,111 @@
+:root{
+    --gap:20px;
+    --bar-height:96px;
+}
+/* ICONS */
+
+i.edit_i{
+    margin: 0 10px;
+    color: var(--main-orange);
+    transition: color var(--transition-time);
+    cursor: pointer;
+}
+
+i.edit_i:hover{
+    color: var(--black-orange);
+}
+
+/*  */
+
+.my_profile_con{
+    
+}
+
+.grades{
+    border: 1px solid var(--border-color);
+    background-color: white;
+}
+.grad{
+    display: flex;
+    justify-content: space-between;
+}
+
+.my_profile_con .grade_1{
+    width: 100%;
+    /* height: 130px; */
+    border: 1px solid red;
+    margin-bottom: var(--gap);
+    display: flex;
+    padding: var(--gap);
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.grade_1_left{
+    width: var(--bar-height);
+    height: var(--bar-height);
+    border-radius: 100px;
+    background-color: var(--border-color);
+    border: 1px solid red;
+    margin-right: var(--gap);
+    display: table;
+}
+
+.grade_1_right{
+    display: flex;
+    flex-direction: column;
+    /* flex-basis: auto; */
+    border: 1px solid red;
+    height: var(--bar-height);
+    width: 100%;
+}
+.grade_1_right_up{
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 50%;
+    border: 1px solid red;
+    align-items: center;
+
+}
+.grade_1_right_down{
+    flex-basis: 50%;
+    border: 1px solid red;
+}
+
+.my_profile_con .grade_2{
+    display: flex;
+    width: 100%;
+    
+}
+.grade_2_left{
+    flex-basis: 75%;
+    height: auto;
+    width: 100%;
+    border: 1px solid red;
+    margin-right: var(--gap);
+}
+
+.grade_part .con{
+    width: 100%;
+    margin-bottom: var(--gap);
+    padding: var(--gap);
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+/*  */
+
+.grade_2_right{
+    width: 100%;
+    flex-basis: 25%;
+    height: auto;
+    border: 1px solid red;
+}
+
+
+/*  */
