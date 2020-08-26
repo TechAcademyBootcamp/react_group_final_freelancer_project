@@ -2,6 +2,7 @@ body{
     padding: 0;
     margin: 0;
     position: relative;
+    background-color: var(--background-color-2) !important;
 }
 
 *{
@@ -27,7 +28,7 @@ body{
     --navbar-height-2:50px;
     --navbar-color-initial:rgba(42,42,42,0);
     --navbar-color-end:rgba(0,0,0,0.7);
-    --container-width:1736px;
+    --container-width:1080px;
 
     --navbar-item-padding-top:5px;
     --navbar-item-padding-left:15px;
@@ -59,7 +60,7 @@ h3{
 h4{
     font-size: 20px;
     color: var(--main-color);
-    margin: 14px 0;
+    margin: 9px 0;
 }
 h5{
     font-size: 14px;
@@ -72,7 +73,7 @@ option:checked{
 p{
     font-size: 14px;
     color: var(--main-color);
-    margin-bottom: 7px;
+    margin: 7px 0;
 }
 small{
     font-size: 12px;
@@ -366,7 +367,15 @@ input::-webkit-file-upload-button:hover {
     margin: 30px 0 ;
 }
 
-button{
+
+
+.form-next{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+button, btna,btnb{
     font-size: 14px;
     color: var(--main-color);
     font-weight: bold;
@@ -377,15 +386,43 @@ button{
     white-space: nowrap;
     -webkit-user-select: none;
     cursor: pointer;
-    transition: border ;
+    transition: border , color;
     transition-duration: var(--transition-time);
     background-color: transparent;    
 }
 button:hover{
     border-color: var(--main-orange);
+    color: var(--main-orange);
 }
-.form-next{
+
+/* btna{
+    color: var(--main-orange);
+}
+btna:hover{
+    border-color: var(--main-orange);
+} */
+btnb{
+    background-color: var(--main-orange);
+    color: var(--main-white);
+    border:0;   
+    transition: background-color var(--transition-time);
+}
+btnb:hover{
+    background-color: var(--black-orange);
+}
+
+
+
+
+/* BLOCKS */
+
+.space_between{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.align_center{
+    display: flex;
     align-items: center;
 }
