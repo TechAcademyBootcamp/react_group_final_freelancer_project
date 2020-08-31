@@ -109,3 +109,8 @@ i.edit_i:hover{
 
 
 /*  */
+
+.icon-panel{
+    margin-right: 10px;
+    color: var(--border-color);
+}
