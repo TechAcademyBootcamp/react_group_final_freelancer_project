@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,DetailView
 
 # Create your views here.
 
@@ -21,3 +21,8 @@ class MyProfileView(TemplateView):
 
 class MyProfileEditView(TemplateView):
     template_name='my-profile-edit.html'
+
+class SearchView(DetailView):
+    teplate_name='search.html'
+    model=''
+    

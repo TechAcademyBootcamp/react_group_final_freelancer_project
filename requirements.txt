@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
 asgiref==3.2.10
-requests=2.24.0
 Django==3.1
 pytz==2020.1
 sqlparse==0.3.1
->>>>>>> 4c59ad7cee17b8bcf437d17da6565d7d3ee177f5
