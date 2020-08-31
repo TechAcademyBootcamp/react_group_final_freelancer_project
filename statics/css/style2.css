@@ -40,7 +40,7 @@ sections{
     display: flex;
     justify-content: center;
 }
-sections .custom-container{
+sections .container5{
     width: var(--container-width);
     /* max-width: 100%; */
     min-height: 550px;
