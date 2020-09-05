@@ -1,0 +1,76 @@
+:root{
+    --card-padding:15px;
+}
+
+
+body{
+    overflow: hidden;
+}
+.inbox-con{
+    border: 1px solid red;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.inbox-con .inbox{
+    /* border: 1px solid blue; */
+    width: 350px;
+    border-right: 1px solid var(--border-color);
+
+}
+
+.inbox-con .messages{
+    /* border: 1px solid blue; */
+    width: 100%;
+}
+.inbox_1{
+    /* border: 1px solid black; */
+    padding: var(--card-padding);
+}
+.inbox_1{
+    border-bottom: 1px solid var(--border-color);
+}
+.inbox_2{
+    height: 100%;
+}
+.search{
+    margin-bottom: 10px;
+}
+
+
+
+.p_off{
+    transition: color var(--transition-time);
+    cursor: pointer;
+    color: var(--border-color);
+}
+.p_on{
+    color: var(--main-orange);
+    transition: color  var(--transition-time);
+    cursor: pointer;
+    /* font-weight: bold; */
+}
+
+.p_off:hover{
+    color: var(--main-orange);
+}
+
+/*  */
+
+.inbox_2 .card{
+    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    padding:var(--card-padding);
+}
+
+.card .card_image{
+    width: 45px;
+    height: 45px;
+    border-radius: 100px;
+    background-color: var(--border-color);
+    
+}

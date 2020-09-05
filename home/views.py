@@ -25,3 +25,8 @@ class MyProfileEditView(TemplateView):
 class SearchView(TemplateView):
     template_name='search.html'
     
+class MyProjectsView(TemplateView):
+    template_name='my-projects.html'
+
+class InboxView(TemplateView):
+    template_name='inbox.html'

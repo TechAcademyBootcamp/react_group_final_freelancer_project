@@ -1,0 +1,114 @@
+
+
+.employer_btn,.freelancer_btn{
+    font-size: 14px;
+    color: var(--main-color);
+    font-weight: bold;
+    border: 1px solid var(--border-color) ;
+    padding: var(--medium-btn-padding);
+
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    transition: border , color, background-color;
+    transition-duration: var(--transition-time);
+    background-color: transparent;  
+}
+
+
+.employer_btn{
+    padding: var(--medium-btn-padding);
+    border-radius: 50px 0px 0 50px;
+    border: 1px solid var(--border-color);
+    border-right: none;
+    border: 1px solid var(--border-color);
+    border-right: none;
+}
+
+.btn_off{
+    background-color: white;
+}
+.btn_off:hover{
+    background-color: var(--background-color-2);
+}
+.freelancer_btn{
+    padding: var(--medium-btn-padding);
+    border-radius: 0 50px 50px 0;
+    border: 1px solid var(--border-color);
+    border-left: none
+}
+
+
+.selected_btn{
+    background-color: var(--main-orange);
+    border-color: var(--main-orange);
+    color: white;
+}
+
+.selected_btn:hover{
+    background-color: var(--black-orange);
+    border-color: var(--black-orange);
+}
+
+
+/*  */
+.search{
+    width: 100%;
+    max-width: 100%;
+    margin-right: 100px;
+}
+.search input{
+    border-right: none;
+} 
+
+.search button{
+    background-color: white;
+    border: 1px solid var(--border-color);
+    transition: background-color,border-color,color;
+    transition-duration: var(--transition-time);
+}
+
+.search button:hover{
+    /* background-color: var(--black-orange); */
+    border-color:var(--main-orange);
+    color: var(--main-orange);
+}
+
+input:focus +  button{
+    border-color: var(--main-orange);
+
+
+}
+
+#pages{
+    margin-left: 10px;
+}
+
+
+/*  */
+.table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 50px 0;
+}
+.table, th, td{
+    border: 1px solid var(--border-color);
+    text-align: left;
+    background-color: white;
+}
+
+.table th, .table td {
+    padding: 12px;
+    padding-left: 20px;
+}
+
+.table thead tr, .table thead th{
+    background-color: var(--main-orange);
+    border-color: var(--main-orange);
+    color: white;
+}
+
+.stage_1{
+    margin: 30px 0;
+}

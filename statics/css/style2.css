@@ -34,6 +34,8 @@ body{
     --navbar-item-padding-left:15px;
     --navbar-item-margin-side:10px;
     --navbar-margin-side:30px;
+
+    --medium-btn-padding: 5px 15px;
     
 }
 sections{
@@ -42,7 +44,7 @@ sections{
 }
 sections .container5{
     width: var(--container-width);
-    /* max-width: 100%; */
+    max-width: 100%;
     min-height: 550px;
     height:auto;
     /* border: 1px solid red; */
@@ -167,7 +169,7 @@ a:not(.checkbox_con span a){
 /* INPUT */
 input:not([type='checkbox']){
     border: 1px solid var(--border-color);
-    padding: 9px 17px;
+    padding: 5px 10px;
     transition: border 0.2s;
     width: 100%;
     font-size: 14px;
@@ -276,17 +278,16 @@ input:not([type='checkbox']){
 
 select{
     border: 1px solid var(--border-color);
-    padding: 9px 17px;
     transition: border 0.2s;
     font-size: 14px;
     box-sizing: border-box;
-    padding: 5px 15px;
+    padding: 5px 10px;
 }
 select:hover{
     border-color: var(--main-orange);
 }
 option{
-    background-color: red;
+    
     /* transition: 0.3s; */
 }
 
@@ -370,7 +371,7 @@ button, btna,btnb{
     color: var(--main-color);
     font-weight: bold;
     border: 1px solid var(--border-color) ;
-    padding: 5px 15px;
+    padding: var(--medium-btn-padding);
 
     outline: none;
     white-space: nowrap;
@@ -402,17 +403,3 @@ btnb:hover{
 }
 
 
-
-
-/* BLOCKS */
-
-.space_between{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.align_center{
-    display: flex;
-    align-items: center;
-}
