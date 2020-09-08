@@ -3,6 +3,8 @@ body{
     margin: 0;
     position: relative;
     background-color: var(--background-color-2) !important;
+    user-select: none;
+    -moz-user-select: none;
 }
 
 *{
@@ -42,8 +44,8 @@ sections{
 }
 sections .custom-container{
     width: var(--container-width);
-    /* max-width: 100%; */
-    min-height: 550px;
+    max-width: 100%;
+    /* min-height: 550px; */
     height:auto;
     /* border: 1px solid red; */
     margin-left: var(--navbar-margin-side);
@@ -61,12 +63,11 @@ h3{
 h4{
     font-size: 20px;
     color: var(--main-color);
-    margin: 9px 0;
 }
 h5{
     font-size: 14px;
     color: var(--main-color);
-    margin: 7px 0;
+    margin: 7px 0 !important;
 }
 option:checked{
 

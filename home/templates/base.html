@@ -7,11 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" >
     <link rel="stylesheet" href="{% static 'css/my-profile.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <script src="https://kit.fontawesome.com/13768c085c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
@@ -21,8 +21,9 @@
 </head>
 
 <body>
-    <!-- NAV -->
-    <!-- NAV -->
+    
+    {% include 'includes/navbar.html' %}
+
     
 
     <!-- BACKGROUND -->
@@ -30,15 +31,9 @@
     <!-- BACKGROUND -->
 
 
-    <sections>
-        <div class="container">
-            <!-- CONTENT -->
-            {% block content %}
+    {% block content %}
 
-            {% endblock %}
-            
-        </div>
-    </sections>
+    {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 

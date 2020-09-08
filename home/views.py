@@ -26,3 +26,6 @@ class SearchView(DetailView):
     teplate_name='search.html'
     model=''
     
+
+class DashboardView(TemplateView):
+    template_name='dashboard.html'
