@@ -47,13 +47,8 @@ sections{
 sections .container5{
     width: var(--container-width);
     max-width: 100%;
-<<<<<<< HEAD:statics/css/style2.css
     min-height: 550px;
-=======
-    /* min-height: 550px; */
->>>>>>> origin/atilla:statics/css/style.css
     height:auto;
-    /* border: 1px solid red; */
     margin-left: var(--navbar-margin-side);
     margin-right: var(--navbar-margin-side);
 }
@@ -75,9 +70,7 @@ h5{
     color: var(--main-color);
     margin: 7px 0 !important;
 }
-option:checked{
 
-}
 p{
     font-size: 14px;
     color: var(--main-color);
@@ -290,10 +283,6 @@ select{
 }
 select:hover{
     border-color: var(--main-orange);
-}
-option{
-    
-    /* transition: 0.3s; */
 }
 
 
