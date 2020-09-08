@@ -22,7 +22,6 @@ class MyProfileView(TemplateView):
 class MyProfileEditView(TemplateView):
     template_name='my-profile-edit.html'
 
-<<<<<<< HEAD
 class SearchView(TemplateView):
     template_name='search.html'
     
@@ -31,12 +30,7 @@ class MyProjectsView(TemplateView):
 
 class InboxView(TemplateView):
     template_name='inbox.html'
-=======
-class SearchView(DetailView):
-    teplate_name='search.html'
-    model=''
-    
+   
 
 class DashboardView(TemplateView):
     template_name='dashboard.html'
->>>>>>> origin/atilla

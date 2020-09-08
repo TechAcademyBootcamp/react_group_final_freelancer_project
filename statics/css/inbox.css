@@ -17,7 +17,6 @@ body{
     /* border: 1px solid blue; */
     width: 350px;
     border-right: 1px solid var(--border-color);
-
 }
 
 .inbox-con .messages{
@@ -65,12 +64,46 @@ body{
     padding: 10px;
     box-sizing: border-box;
     padding:var(--card-padding);
+    transition: background-color var(--transition-time);
 }
 
-.card .card_image{
+.card:hover{
+    background-color: rgb(248, 248, 248);
+}
+.card_image{
     width: 45px;
     height: 45px;
     border-radius: 100px;
     background-color: var(--border-color);
+    margin-right: 10px;
     
+}
+
+.card h5, .card span{
+    margin: 2px 0;
+    font-weight: normal;
+    padding: 0;
+}
+/* MESSAGES */
+
+.messages{
+    padding: 100px;
+    background-color: white;
+    
+}
+
+.person2{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.person1{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message{
+    border-radius: 0px 10px 10px 10px ;
+    padding: 5px 20px;
+    background-color:var(--background-color-2);
 }

@@ -47,11 +47,8 @@ sections{
 sections .container5{
     width: var(--container-width);
     max-width: 100%;
-<<<<<<< HEAD:statics/css/style2.css
     min-height: 550px;
-=======
-    /* min-height: 550px; */
->>>>>>> origin/atilla:statics/css/style.css
+
     height:auto;
     /* border: 1px solid red; */
     margin-left: var(--navbar-margin-side);
