@@ -1,0 +1,92 @@
+
+nav {
+    display: flex;
+    justify-content: center;
+    font-family: 'Poppins';
+    font-size: 20px;
+    display: flex;
+    background-color: var(--main-color);
+    opacity: 90%;
+    backdrop-filter: blur(5px);
+    width: 100%;
+    position: sticky;
+    transition: top 0.3s;
+    top: 0;
+    height: 60px;
+    z-index: 2;    
+}
+
+.containers{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 1266px;
+
+}
+.headers{
+    color: white;
+    font-size: 25px;
+    margin: 0px;
+}
+
+
+.left_side_nav{
+    display: flex;
+    justify-content: flex-end;
+    color: white;
+    
+    
+}
+
+
+.sign_up{
+    /* border: 0px; */
+    border: none;
+    background: #404040;
+    color: #ffffff !important;
+    font-weight: 100;
+    padding: 20px;
+    /* text-transform: uppercase; */
+    text-shadow: chocolate;
+    box-shadow: chocolate;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+}
+.sign_up:hover{
+    color: chocolate !important;
+    font-weight: 700 !important;
+    letter-spacing: 3px;
+    background: none;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.3s ease 0s;
+}
+.sign_up:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+
+.login{
+    border: 0px;
+}
+
+.login:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+
+.left_side_nav:last-child button{
+    color: white;
+    display: flex;
+    padding: 0 30px;
+}
+
+#btn_transparent{
+    background-color:transparent ;
+    font-family: 'Poppins';
+    font-size: 20px;
+}

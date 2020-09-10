@@ -36,13 +36,16 @@ body{
     --navbar-item-padding-left:15px;
     --navbar-item-margin-side:10px;
     --navbar-margin-side:30px;
-
+    --card-middle-padding:20px 30px;
     --medium-btn-padding: 5px 15px;
     
 }
 sections{
     display: flex;
     justify-content: center;
+}
+nav{
+    margin-bottom: 60px;
 }
 sections .custom-container{
     width: var(--container-width);
@@ -397,3 +400,10 @@ btnb:hover{
 }
 
 
+.border-bottom{
+    border-bottom: 1px var(--border-color) solid;
+}
+
+select{
+    height: fit-content;
+}
