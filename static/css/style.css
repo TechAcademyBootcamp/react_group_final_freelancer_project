@@ -15,7 +15,7 @@ body{
 :root {
     --background-color-1: #F5EEDE;
     --background-color-2: #F8F8F8;
-
+    --third-color:#446471;
     --main-white:white;
     --main-color: #2A2A2A;
     --black-orange:#E37600;
@@ -54,6 +54,17 @@ sections .custom-container{
     height:auto;
     margin-left: var(--navbar-margin-side);
     margin-right: var(--navbar-margin-side);
+}
+
+a{
+    text-decoration: none;
+    color: white; 
+    transition: 0.3s;
+}
+
+a:hover{
+    text-decoration: none;
+    color: var(--main-orange);     
 }
 
 
