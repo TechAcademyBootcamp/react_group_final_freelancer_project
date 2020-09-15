@@ -21,10 +21,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-    
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+
     
     <script
+    
         src="https://code.jquery.com/jquery-1.12.4.min.js">
+        video.removeAttribute('controls');
     </script>
 </head>
 
@@ -70,6 +73,7 @@
 
 
 <script>
+    
     var prevScrollpos = window.pageYOffset;
         window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;
