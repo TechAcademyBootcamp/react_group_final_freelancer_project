@@ -2,13 +2,21 @@
 {% load static %}
 {% block content %}
 
-    
+
     <sections class="background">
        
-            <img src="{%static 'images/main1.jpg'%}" class="back_img" srcset="">
+            <!-- <img src="{%static 'images/main1.jpg'%}" class="back_img" srcset=""> -->
+            
             <div class="custom-container">
+                
+                
                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                    
+                    <video onclick="event.preventDefault(); return false;" autoplay muted loop class="back_vid" controls>
+                        <source src="{%static 'images/production ID_3969421.mp4'%}" type="video/mp4">
+                        <!-- <source src="{%static 'images/video.mp4'%}" type="video/mp4"> -->
+        
+                        
+                    </video>
                     <div class="head_text">
                         <h1 class="middle_text" >
                             Find & Hire <br> Expert Freelancers
@@ -22,10 +30,6 @@
                </div>
                
             </div>
-        
-        
-    
-    
     </sections>
 
 <!-- /////////////////////////INFO_BOX//////////////////////////////// -->
@@ -35,21 +39,27 @@
                 <h4 class="box_main_title"> Need something done?</h4>
                 <div class="row question_box_container">
                     <div class="col question_box">
-                        <i class="fa fa-taxi" aria-hidden="false"></i>
+                        <div class="img_container">
+                            <i class="fas fa-rocket"></i>
+                        </div>
                         <h4 class="title_box">Post a job</h4>
                         <p class="box_paragraph">
                             It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes.
                         </p>
                     </div>
                     <div class="col question_box">
-                        <i class="fa fa-taxi" aria-hidden="false"></i>
+                        <div class="img_container">
+                            <i class="fas fa-rocket"></i>
+                        </div>
                         <h4 class="title_box">Post a job</h4>
                         <p class="box_paragraph">
                             It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes.
                         </p>
                     </div>
                     <div class="col question_box">
-                        <i class="fa fa-taxi" aria-hidden="false"></i>
+                        <div class="img_container">
+                            <i class="fas fa-rocket"></i>
+                        </div>
                         <h4 class="title_box">Post a job</h4>
                         <p class="box_paragraph">
                             It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes.
@@ -76,7 +86,7 @@
                     <div class="img_container">
                         <i class="fas fa-laptop-code"></i>
                     </div>  
-                    <h4 class="talent_box_h4">dasda</h4> 
+                    <h4 class="talent_box_h4">Web developing</h4> 
                                   
                 </div>
                 <div class="col talent_box">  

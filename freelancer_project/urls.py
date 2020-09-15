@@ -26,5 +26,5 @@ urlpatterns = [
     
     path('search/',SearchView.as_view(),name='search'),
     path('dashboard/',DashboardView.as_view(),name='dasboard'),
-
+    
 ]
