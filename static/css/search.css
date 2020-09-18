@@ -37,10 +37,11 @@
     justify-content: flex-start;
     padding: 0 var(--card-padding-side);
     border: 1px var(--border-color) solid;
+    box-shadow: 0 0 20px 1px rgb(235, 235, 235);
     height: auto ;
     width: 100%;
     flex-direction: column;
-     box-shadow: 0 0 20px 1px rgb(235, 235, 235);
+    
     
 
 
@@ -50,8 +51,12 @@
      
     display: flex;
     flex-basis: 25%;
+    width: 100%;
     justify-content: space-around;
     margin-right: 20px;
+    padding: 0 var(--card-padding-side);
+    border: 1px var(--border-color) solid;
+    box-shadow: 0 0 20px 1px rgb(235, 235, 235);
 }
 .middle{
     display: flex;
@@ -205,5 +210,80 @@ option:checked:hover, select:focus option:checked:hover {
     color: #FFFFFF;
 }
 
+.up_left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+.skill_box{
+    display:flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    border: 1px var(--border-color) solid;
+    max-width: 300px;
+    padding: 15px;
+}
+
+.skill_item{
+    border:  var(--border-color) solid  1px;
+    padding: 5px 8px;
+    width:fit-content;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 7px 5px;
+}
+
+.skill_btn_cont{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+
+.skill_href{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--third-color);
+    justify-content: flex-start;   
+    color: white;
+    font-weight: 600;
+    padding: var(--medium-btn-padding);
+    transition: 0.5s;
+    outline: none;
+}
+
+.skill_href:hover{
+    box-shadow: 0 0 10px var(--third-color) ;
+    color: white;
+    white-space: nowrap;
+}
+.skill_btn{
+    
+    width: 120px;
+    height: 40px;
+    transition: 0.5s;
+    background-color: var(--main-orange);
+    color: white;
+    outline: none;
+}
+.skill_btn:hover{
+    box-shadow: 0 0 10px var(--main-orange);
+    color: white;
+    white-space: nowrap;
+    
+}
+
+.skill_btn:active {
+    outline-style: none;
+}
 
 

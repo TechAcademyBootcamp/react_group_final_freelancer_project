@@ -37,7 +37,7 @@ body{
     --navbar-item-margin-side:10px;
     --navbar-margin-side:30px;
     --card-middle-padding:20px 30px;
-    --medium-btn-padding: 5px 15px;
+    --medium-btn-padding: 7px 15px;
     
 }
 sections{
@@ -83,7 +83,7 @@ h4{
 h5{
     font-size: 14px;
     color: var(--main-color);
-    margin: 7px 0 !important;
+    
 }
 
 p{
@@ -144,19 +144,20 @@ wbutton:hover>svg{
 }
 
 done{
-    background-color: var(--second-orange);
+    background-color: var(--main-orange);
     border-radius: 100px;
     color: var(--main-white);
-    padding: 15px 20px;
+    padding: 12px 20px;
     margin: 6px 0;
+    font-size:22px;
     /* margin-right: 17px; */
-    /* font-weight: 600; */
-    font-size: 14px;
+    font-weight: 700;
+    
     transition: background-color,box-shadow;
     transition-duration: var(--transition-time);
     cursor: pointer;  
-    box-shadow: 1px 1px 10px #ffe0ab;
-    font-weight: bold;
+    /* box-shadow: 1px 1px 10px #ffe0ab; */
+    /* font-weight: bold; */
     text-align: center;
 }
 done:hover{

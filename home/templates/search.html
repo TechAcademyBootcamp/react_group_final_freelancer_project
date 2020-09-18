@@ -6,7 +6,47 @@
     <div class="custom-container">
         <div class="base"> 
             <div class="card_container_left_search">
-            
+                <div class="up_left">
+                    <h4 style="align-items: flex-start; width: 100%;">Skills</h4>
+                    <div class="skill_box">
+                        <h5 class="skill_item">Javascript</h5>
+                        <h5 class="skill_item">Html</h5>
+                        <h5 class="skill_item">Python</h5>
+                        <h5 class="skill_item">Turkish</h5>
+                        <h5 class="skill_item">Python</h5>
+                        <h5 class="skill_item">Turkish</h5>
+                    </div>
+                    <div class="skill_btn_cont">
+                        <button class="skill_btn" >
+                            Clear skills
+                        </button>
+                        <a href="#" class="skill_href">Edit Profile Skills</a>
+
+                    </div>
+                    <div id="range">
+                        <span id="currentVal">50</span>
+                    </div>  
+                    <h4 style="align-items: flex-start; width: 100%;">Languages</h4>
+                    <div class="skill_box">
+                        <h5 class="skill_item">English</h5>
+                        <h5 class="skill_item">France</h5>
+                        <h5 class="skill_item">Turkish</h5>
+                        <h5 class="skill_item">Russia</h5>
+                    </div>  
+                    <div skill_btn_cont>
+                        <button class="skill_href" >
+                            Clear skills
+                        </button>
+                    </div> 
+                    <input type="range" value="" min="50" max="800" aria-required="true" aria-invalid="false" data-rangeslider name='input_5' id='input_1_5' oninput="document.getElementById('electric_bill').value = this.value">
+
+                    <input type="text" id="electric_bill" name="electric_bill" value="" />
+                    
+                    
+                </div>
+                <div>
+
+                </div>
             </div>
             <div class="card_container_right">
                 <div class="header border-bottom ">
@@ -119,5 +159,43 @@
 
     </div>
 </sections>
+ 
 
+<script>
+    $('#input_1_5').change(function(){
+        var electricbill = $(this).val();
+        $("#testingin").text(electricbill);
+    
+        if (electricbill <= 100) {
+            var electricrange = '$51-100';
+            $("#electric_bill").val(electricrange);
+        } else if (electricbill <= 150 && electricbill > 100) {
+            var electricrange = '$101-150';
+            $("#electric_bill").val(electricrange);
+        } else if (electricbill <= 200 && electricbill > 150) {
+            var electricrange = '$151-200';
+            $("#electric_bill").val(electricrange);
+        } else if (electricbill <= 300 && electricbill > 200) {
+            var electricrange = '$201-300';
+            $("#electric_bill").val(electricrange);
+        } else if (electricbill <= 400 && electricbill > 300) {
+            var electricrange = '$301-400';
+            $("#electric_bill").val(electricrange);
+        } else if (electricbill <= 500 && electricbill > 400) {
+            var electricrange = '$401-500';
+            $("#electric_bill").val(electricrange);
+        } else if (electricbill <= 600 && electricbill > 500) {
+            var electricrange = '$501-600';
+            $("#electric_bill").val(electricrange);
+        } else if (electricbill <= 700 && electricbill > 600) {
+            var electricrange = '$601-700';
+            $("#electric_bill").val(electricrange);
+        } else if (electricbill <= 800 && electricbill > 700) {
+            var electricrange = '$701-800';
+            $("#electric_bill").val(electricrange);
+        } else {
+            var electricrange = '$0-50';
+        }
+    });
+</script>
 {% endblock %}
