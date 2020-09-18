@@ -22,7 +22,6 @@ class MyProfileView(TemplateView):
 class MyProfileEditView(TemplateView):
     template_name='my-profile-edit.html'
 
-
 class SearchView(TemplateView):
     template_name='search.html'
     

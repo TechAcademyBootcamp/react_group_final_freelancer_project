@@ -1,0 +1,400 @@
+body{
+    padding: 0;
+    margin: 0;
+    position: relative;
+    background-color: var(--background-color-2) !important;
+    user-select: none;
+    -moz-user-select: none;
+}
+
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    outline: none;
+}
+
+:root {
+    --background-color-1: #F5EEDE;
+    --background-color-2: #F8F8F8;
+
+    --main-white:white;
+    --main-color: #2A2A2A;
+    --black-orange:#E37600;
+    --main-orange:#FF8800;
+    --second-orange:#FFA200;
+    --border-color:  #D3D3D3;
+    --second-color: #707070;
+    --small-padding:5px;
+    --transition-time: 0.3s;
+    
+    --navbar-height:70px;
+    --navbar-height-2:50px;
+    --navbar-color-initial:rgba(42,42,42,0);
+    --navbar-color-end:rgba(0,0,0,0.7);
+    --container-width:1236px;
+
+    --navbar-item-padding-top:5px;
+    --navbar-item-padding-left:15px;
+    --navbar-item-margin-side:10px;
+    --navbar-margin-side:30px;
+
+    --medium-btn-padding: 5px 15px;
+    
+}
+sections{
+    display: flex;
+    justify-content: center;
+}
+sections .custom-container{
+    width: var(--container-width);
+    max-width: 100%;
+    min-height: 550px;
+
+    height:auto;
+    margin-left: var(--navbar-margin-side);
+    margin-right: var(--navbar-margin-side);
+}
+
+
+h2{
+    font-size: 31px;
+}
+h3{
+    font-size: 26px;
+    color: var(--main-color);
+}
+h4{
+    font-size: 20px;
+    color: var(--main-color);
+}
+h5{
+    font-size: 14px;
+    color: var(--main-color);
+    margin: 7px 0 !important;
+}
+
+p{
+    font-size: 14px;
+    color: var(--main-color);
+    margin: 7px 0;
+}
+small{
+    font-size: 12px;
+    color: var(--main-orange);
+    padding: var(--small-padding) 0;
+    
+}
+tag{
+    border: 1px solid var(--border-color);
+    color: var(--main-color);
+    padding: 3px 10px;
+    margin: 6px 0;
+    margin-right: 17px;
+    /* font-weight: 600; */
+    font-size: 14px;
+    background-color: var(--background-color-2);
+}
+wbutton{
+    background-color: var(--main-white);
+    border-radius: 100px;
+    color: var(--main-white);
+    padding: 15px 20px;
+    margin: 6px 0;
+    /* margin-right: 17px; */
+    /* font-weight: 600; */
+    font-size: 14px;
+    transition: background-color,box-shadow,color;
+    transition-duration: var(--transition-time);
+    cursor: pointer;  
+    box-shadow: 2px 2px 10px rgb(224, 224, 224);
+    color: var(--main-color);
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+wbutton svg{
+    width: 25px;
+    margin-right: 15px;
+    fill: var(--main-color);
+    transition: fill var(--transition-time);
+}
+wbutton:hover{
+    background-color: var(--main-color);
+    color: var(--main-white);
+    /* box-shadow: 1px 1px 12px var(--second-orange); */
+}
+wbutton:hover>svg{
+    fill: var(--main-white);
+    /* box-shadow: 1px 1px 12px var(--second-orange); */
+}
+
+done{
+    background-color: var(--second-orange);
+    border-radius: 100px;
+    color: var(--main-white);
+    padding: 15px 20px;
+    margin: 6px 0;
+    /* margin-right: 17px; */
+    /* font-weight: 600; */
+    font-size: 14px;
+    transition: background-color,box-shadow;
+    transition-duration: var(--transition-time);
+    cursor: pointer;  
+    box-shadow: 1px 1px 10px #ffe0ab;
+    font-weight: bold;
+    text-align: center;
+}
+done:hover{
+    background-color: var(--main-orange);
+    box-shadow: 1px 1px 12px var(--second-orange);
+}
+
+
+span{
+    font-size: 12px;
+    color: #707070;
+    padding: var(--small-padding) 0;
+}
+div{
+    color: var(--main-color);
+}
+a:not(.checkbox_con span a){
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* INPUT */
+input:not([type='checkbox']){
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    transition: border 0.2s;
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* CHECKBOX */
+/* Customize the label (the container) */
+.checkbox_con {
+    display: flex;
+    position: relative;
+    /* padding-left: 35px; */
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 19px;
+    margin: 15px 0;
+    margin-top: 9px;
+    
+}
+  
+  /* Hide the browser's default checkbox */
+.checkbox_con input {
+    opacity: 0;
+    cursor: pointer;
+    margin: 0;
+    z-index: 1;
+
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    height: 12px;
+    width: 14px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    margin-right: 7px;
+}
+.checkbox, .checkbox_con input{
+    margin-top: 3px;
+}
+  
+  /* Create a custom checkbox */
+.checkbox{
+    transition: color,background-color, border-color;
+    transition-duration: var(--transition-time);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+}
+  
+  /* On mouse-over, add a grey background color */
+.checkbox_con input:hover ~ .checkbox{
+    border-color: var(--main-orange);
+}
+  
+  /* When the checkbox is checked, add a blue background */
+.checkbox_con input:checked ~ .checkbox {
+    background-color: var(--main-orange);
+    border-color: var(--main-orange);
+}
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+.checkbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+  /* Show the checkmark when checked */
+.checkbox_con input:checked ~ .checkbox:after {
+    display: block;
+}
+  
+  /* Style the checkmark/indicator */
+.checkbox_con .checkbox:after {
+    left: 3px;
+    top: 1px;
+    width: 2px;
+    height: 5px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.checkbox_con span{
+    padding: 0;
+    display: block;
+}
+.checkbox_con span a{
+    color: var(--main-orange);
+    cursor: pointer;
+    transition: color var(--transition-time);
+}
+.checkbox_con span a:hover{
+    color: var(--second-orange);
+}
+  
+/*  */
+
+select{
+    border: 1px solid var(--border-color);
+    transition: border 0.2s;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+select:hover{
+    border-color: var(--main-orange);
+}
+
+
+input:focus, textarea:focus{
+    border: 1px solid var(--main-orange);
+    color: var(--main-color);  
+}
+input::placeholder{
+    color: var(--border-color);  
+}
+
+input[type='password']{
+    max-width: 200px;
+    
+}
+input[type='file']{
+    border: 1px dashed var(--border-color);
+}
+
+
+
+textarea{
+    border: 1px solid var(--border-color);
+    padding: 9px 17px;
+    transition: border 0.2s;
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+    resize: none;
+    transition: border-color var(--transition-time);
+}
+
+
+input::-webkit-file-upload-button {
+    display: inline-block;
+   
+    font-size: 14px;
+    color: var(--main-color);
+    font-weight: bold;
+    border: 1px solid var(--border-color) ;
+    padding: 5px 5px;
+
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    transition: border ;
+    transition-duration: var(--transition-time);
+    background-color: transparent;    
+    margin-left: -5px;
+}
+input::-webkit-file-upload-button:hover {
+    border-color: var(--main-orange);
+}
+
+
+/* SPECIAL */
+.input_details{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    height: 25px;
+    margin:0px 0px;
+}
+
+.form-control{
+    margin: 30px 0 ;
+}
+
+
+
+.form-next{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+button, btna,btnb{
+    font-size: 14px;
+    color: var(--main-color);
+    font-weight: bold;
+    border: 1px solid var(--border-color) ;
+    padding: var(--medium-btn-padding);
+
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    transition: border , color;
+    transition-duration: var(--transition-time);
+    background-color: transparent;    
+}
+button:hover{
+    border-color: var(--main-orange);
+    color: var(--main-orange);
+}
+
+/* btna{
+    color: var(--main-orange);
+}
+btna:hover{
+    border-color: var(--main-orange);
+} */
+btnb{
+    background-color: var(--main-orange);
+    color: var(--main-white);
+    border:0;   
+    transition: background-color var(--transition-time);
+}
+btnb:hover{
+    background-color: var(--black-orange);
+}
+
+
