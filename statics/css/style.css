@@ -48,10 +48,6 @@ sections .custom-container{
     width: var(--container-width);
     max-width: 100%;
     min-height: 550px;
-<<<<<<< HEAD:statics/css/style2.css
-
-=======
->>>>>>> d8c4c7fc2517ac01c117a41a5399dbd4629d479d:statics/css/style.css
     height:auto;
     margin-left: var(--navbar-margin-side);
     margin-right: var(--navbar-margin-side);

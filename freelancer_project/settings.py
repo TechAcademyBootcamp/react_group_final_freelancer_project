@@ -26,7 +26,7 @@ SECRET_KEY = 'f8f4d!7dz^l!)2)%*imzy6ow1ndo84bhl=6pm0uz2y3iwe4)1d'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+ASGI_APPLICATION = "freelancer_project.routing.application"
 
 # Application definition
 
@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'channels',
     'accounts',
+    'inbox',
 ]
 
 MIDDLEWARE = [
