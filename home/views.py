@@ -30,7 +30,10 @@ class MyProjectsView(TemplateView):
 
 class InboxView(TemplateView):
     template_name='inbox.html'
-   
+
+
+    
 
 class DashboardView(TemplateView):
     template_name='dashboard.html'
+

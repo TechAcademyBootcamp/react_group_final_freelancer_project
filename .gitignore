@@ -1,6 +1,7 @@
 .venv
 env
 venv
+venv/
 .env
 db.sqlite3
 media/
@@ -8,3 +9,4 @@ __pycache__/
 */__pycache__/
 *.pyc
 .idea/
+postgresdb/
