@@ -3,6 +3,6 @@ from inbox.views import *
 
 urlpatterns = [
     path('', InboxView.as_view(), name='inbox'),
-    path('room/', room, name='room')
+    path('<str:room_name>/', room, name='room')
 
 ]

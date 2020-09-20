@@ -7,5 +7,7 @@ class InboxView(TemplateView):
     template_name='inbox.html'
 
 
-def room(request):
-    return render(request, reverse_lazy('room'))
+def room(request, room_name):
+    return render(request, 'room.html', {
+        'room_name': room_name
+    })

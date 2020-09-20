@@ -26,8 +26,18 @@ SECRET_KEY = 'f8f4d!7dz^l!)2)%*imzy6ow1ndo84bhl=6pm0uz2y3iwe4)1d'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-ASGI_APPLICATION = "freelancer_project.routing.application"
 
+
+
+
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [('127.0.0.1', 6379)],
+#         },
+#     },
+# }
 # Application definition
 
 INSTALLED_APPS = [
@@ -71,7 +81,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'freelancer_project.wsgi.application'
 
 
 # Database
@@ -144,3 +153,16 @@ STATICFILES_DIRS=[
 ]
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
+ASGI_APPLICATION = 'freelancer_project.routing.application'
+WSGI_APPLICATION = 'freelancer_project.wsgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
