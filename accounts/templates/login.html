@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
     <link rel="stylesheet" href="{% static 'css/post_project.css' %}">
@@ -131,33 +131,44 @@
                                         </path>
                                     </svg>
                                 </div>
-                                <div class="field_con">
-                                    <input type="text" placeholder="Email">
-                                    <div class="input_details">
-                                        <small>Please enter a valid email address!</small>
-                                        <!-- <span for="">5 skills remaining</span> -->
-                                    </div>
-                                </div>
-                                <div class="field_con">
-                                    <input type="text" placeholder="Password">
-                                    <!-- <div class="input_details">
-                                        <small>Please enter a valid email address!</small>
-                                        <span for="">5 skills remaining</span>
-                                    </div> -->
-                                </div>
 
-                                <!-- <div class="checkbox_con">
-                                    <input type="checkbox" >
-                                    <div class="checkbox"></div>
-                                    <span>I agree to the <a href="">User Agreement</a> and <a href="">Policy</a>.</span>
-                                </div> -->
-                                <done>Sign In</done>
+                                <form class="ac_con" action="" method="POST">
+                                    <div class="flex-column">
+                                        {% for error in form.non_field_errors %}
+                                            <small>{{error}}</small>
+                                        {% endfor %}
+                                        
+
+                                    </div>
+                                    
+                                    {% csrf_token %}
+                                    {% for field in form %}
+                                    <div class="field_con">
+                                        {{field}}
+                                        <div class="input_details">
+                                            
+                                            
+                                            <div class="flex-column">
+                                                {% for error in field.errors %}
+                                                    <small>{{error}}</small>
+                                                {% endfor %}
+
+                                            </div>
+                                            <!-- <span for="">5 skills remaining</span> -->
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    
+    
+                                    
+                                    <button type="submit" class="done">Sign In</button>
+                                </form>
                                 <svg class="long_line" viewBox="0 0 134 1">
                                     <path fill="transparent" stroke="rgba(211,211,211,1)" stroke-width="1px" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" shape-rendering="auto" id="Line_9" d="M 0 0 L 134 0">
                                     </path>
                                 </svg>
                                 <div class="checkbox_con span_2">
-                                    <span>Don't have an account? <a href="{% url 'login' %}">Sign Up</a>.</span>
+                                    <span>Don't have an account? <a href="{% url 'register' %}">Sign Up</a>.</span>
                                 </div>
                                 
 

@@ -143,7 +143,7 @@ wbutton:hover>svg{
     /* box-shadow: 1px 1px 12px var(--second-orange); */
 }
 
-done{
+done, .done{
     background-color: var(--main-orange);
     border-radius: 100px;
     color: var(--main-white);
@@ -159,10 +159,13 @@ done{
     /* box-shadow: 1px 1px 10px #ffe0ab; */
     /* font-weight: bold; */
     text-align: center;
+    border: 0;
+    color: white;
 }
-done:hover{
+done:hover,.done:hover{
     background-color: var(--main-orange);
     box-shadow: 1px 1px 12px var(--second-orange);
+    color: white;
 }
 
 
@@ -310,10 +313,10 @@ input::placeholder{
     color: var(--border-color);  
 }
 
-input[type='password']{
+/* input[type='password']{
     max-width: 200px;
     
-}
+} */
 input[type='file']{
     border: 1px dashed var(--border-color);
 }
@@ -360,7 +363,7 @@ input::-webkit-file-upload-button:hover {
     display: flex;
     justify-content: space-between;
     /* align-items: center; */
-    height: 25px;
+    /* height: 25px; */
     margin:0px 0px;
 }
 

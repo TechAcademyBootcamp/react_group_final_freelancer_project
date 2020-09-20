@@ -28,6 +28,16 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+
+
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [('127.0.0.1', 6379)],
+#         },
+#     },
+# }
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'channels',
     'accounts',
+    'inbox',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +81,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'freelancer_project.wsgi.application'
 
 
 # Database
@@ -140,3 +151,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static'),
 ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
+ASGI_APPLICATION = 'freelancer_project.routing.application'
+WSGI_APPLICATION = 'freelancer_project.wsgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}

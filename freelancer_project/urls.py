@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('home.urls')),
     path('accounts/',include('accounts.urls')),
+    path('inbox/',include('inbox.urls')),
     
     path('search/',SearchView.as_view(),name='search'),
     path('dashboard/',DashboardView.as_view(),name='dasboard'),
