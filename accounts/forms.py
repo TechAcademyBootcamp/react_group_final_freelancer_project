@@ -4,13 +4,15 @@ from accounts.models import *
 
 
 class RegisterForm(UserCreationForm):
+    first_name=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'First name'}))
+    last_name=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Last name'}))
     email=forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     username=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Username'}))
     password1=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
     password2=forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password'}))
     class Meta():
         model=CustomUser
-        fields=['email','username','password1','password2']
+        fields=['first_name','last_name','email','username','password1','password2']
 
 class LoginForm(AuthenticationForm):
     username=forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
