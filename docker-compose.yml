@@ -36,7 +36,7 @@ services:
     depends_on:
       - "postgres"
     environment:
-      - VIRTUAL_HOST=35.237.196.194,localhost
+      - VIRTUAL_HOST=13.58.21.90,localhost
       - VIRTUAL_PORT=8000
       - DEBUG=False
 

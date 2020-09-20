@@ -1,0 +1,162 @@
+{% block container %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my-profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my-projects.css' %}">
+    <link rel="stylesheet" href="{% static 'css/inbox.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/13768c085c.js" crossorigin="anonymous"></script>
+    
+    <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
+    <script
+        src="https://code.jquery.com/jquery-1.12.4.min.js">
+    </script>
+</head>
+
+<body>
+    <!-- NAV -->
+    <!-- NAV -->
+    
+
+    <!-- BACKGROUND -->
+        
+    <!-- BACKGROUND -->
+
+
+    <div class="inbox-con flex-row">
+        <div class="inbox flex-column">
+            <div class="inbox_1 flex-column">
+                <div class="search flex-row">
+                    <input type="text">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="p_all space-between" class="space-between">
+                    <p class="p_on">ACTIVE</p>
+                    <p class="p_off">UNREAD</p>
+                    <p class="p_off">SUPPORT</p>
+                    <p class="p_off">ARCHIVED</p>
+                </div>
+            </div>
+            <div class="inbox_2 flex-column">
+                <div class="card flex-row align-center">
+                    <div class="card_image">
+
+                    </div>
+                    <div class="flex-column align">
+                        <h5>
+                            asdasd
+                        </h5>
+                        <span>
+                            asdsd
+                        </span>
+                    </div>
+                </div>
+                <div class="card flex-row align-center">
+                    <div class="card_image">
+
+                    </div>
+                    <div class="flex-column align">
+                        <h5>
+                            asdasd
+                        </h5>
+                        <span>
+                            asdsd
+                        </span>
+                    </div>
+                </div>
+                <div class="card flex-row align-center">
+                    <div class="card_image">
+
+                    </div>
+                    <div class="flex-column align">
+                        <h5>
+                            asdasd
+                        </h5>
+                        <span>
+                            asdsd
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="messages flex-column">
+            <div class="person2">
+                <div class="flex-row">
+                    <div class="card_image">
+                        
+                    </div>
+                    <div class="flex-column">
+                        <p class="message">
+                            adasdadasdasd
+                        </p>
+                        <p class="message">
+                            adasdadasdasdasd
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="person1">
+                <div class="flex-row">
+                    <div class="card_image">
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+    
+</body>
+</html>
+<script src="./js/jquery.counterup.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script>
+    // $('.counter').counterUp({
+    //     delay: 10,
+    //     time: 1000
+    // });
+
+    elements=$('.p_all p');
+    
+
+    for(let i = 0; i < elements.length; i++){ 
+        var element=elements[i];
+        element.addEventListener("click", function(){
+
+
+            for(let u = 0; u < elements.length; u++){ 
+                var element2=elements[u];
+                element2.classList.remove("p_on");
+                element2.classList.add("p_off");
+            }
+
+            this.classList.add('p_on')
+        
+        });
+
+    }
+
+    
+
+</script>
+
+
+<script src="https://use.fontawesome.com/dec111573d.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+{% endblock %}

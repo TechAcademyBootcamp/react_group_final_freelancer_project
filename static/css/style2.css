@@ -15,7 +15,7 @@ body{
 :root {
     --background-color-1: #F5EEDE;
     --background-color-2: #F8F8F8;
-    --third-color:#446471;
+
     --main-white:white;
     --main-color: #2A2A2A;
     --black-orange:#E37600;
@@ -36,36 +36,20 @@ body{
     --navbar-item-padding-left:15px;
     --navbar-item-margin-side:10px;
     --navbar-margin-side:30px;
-    --card-middle-padding:20px 30px;
-    --medium-btn-padding: 7px 15px;
+
+    --medium-btn-padding: 5px 15px;
     
 }
 sections{
     display: flex;
     justify-content: center;
 }
-nav{
-    margin-bottom: 60px;
-}
 sections .custom-container{
     width: var(--container-width);
     max-width: 100%;
     min-height: 550px;
-    height:auto;
-    z-index: 22;
-    margin-left: var(--navbar-margin-side);
-    margin-right: var(--navbar-margin-side);
-}
 
-a{
-    text-decoration: none;
-    color: white; 
-    transition: 0.3s;
-}
-
-a:hover{
-    text-decoration: none;
-    color: var(--main-orange);     
+    
 }
 
 
@@ -83,7 +67,7 @@ h4{
 h5{
     font-size: 14px;
     color: var(--main-color);
-    
+    margin: 7px 0 !important;
 }
 
 p{
@@ -144,20 +128,19 @@ wbutton:hover>svg{
 }
 
 done, .done{
-    background-color: var(--main-orange);
+    background-color: var(--second-orange);
     border-radius: 100px;
     color: var(--main-white);
-    padding: 12px 20px;
+    padding: 15px 20px;
     margin: 6px 0;
-    font-size:22px;
     /* margin-right: 17px; */
-    font-weight: 700;
-    
+    /* font-weight: 600; */
+    font-size: 14px;
     transition: background-color,box-shadow;
     transition-duration: var(--transition-time);
     cursor: pointer;  
-    /* box-shadow: 1px 1px 10px #ffe0ab; */
-    /* font-weight: bold; */
+    box-shadow: 1px 1px 10px #ffe0ab;
+    font-weight: bold;
     text-align: center;
     border: 0;
     color: white;
@@ -416,10 +399,3 @@ btnb:hover{
 }
 
 
-.border-bottom{
-    border-bottom: 1px var(--border-color) solid;
-}
-
-select{
-    height: fit-content;
-}

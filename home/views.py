@@ -22,7 +22,6 @@ class MyProfileView(TemplateView):
 class MyProfileEditView(TemplateView):
     template_name='my-profile-edit.html'
 
-
 class SearchView(TemplateView):
     template_name='search.html'
     
@@ -33,7 +32,6 @@ class InboxView(TemplateView):
     template_name='inbox.html'
 
 
-    
 
 class DashboardView(TemplateView):
     template_name='dashboard.html'
