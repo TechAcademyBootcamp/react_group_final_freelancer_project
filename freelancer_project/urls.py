@@ -24,6 +24,7 @@ urlpatterns = [
     path('',include('home.urls')),
     path('accounts/',include('accounts.urls')),
     path('inbox/',include('inbox.urls')),
+    path('api/v1.0/',include('api.urls')),
     
     path('search/',SearchView.as_view(),name='search'),
     path('dashboard/',DashboardView.as_view(),name='dasboard'),

@@ -8,8 +8,13 @@ class ProfileSerializer(serializers.ModelSerializer):
         model=CustomUser
         fields=(
             'id',
-            'title',
+            'first_name',
+            'last_name',
             'image',
+            'title',
+            'overview',
+            'hourly_prize',
+            
         )
 
 # class ReadRecipeSerializer(serializers.ModelSerializer):

@@ -4,22 +4,19 @@
 
 
 
-<!--  -->
-
-
     <div id="edit-bar-1" class="edit-bar close-edit-bar">
         
         <div class="top space-between padding">
-            <h4>Edit your title</h4>
+            <h4>Edit your Fullname</h4>
             <i class="fas fa-times" onclick="close_bar(1)"></i>
         </div>
         <div class="padding">
-            <h5>Your title</h5>
-            <p>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</p>
-            <input type="text" placeholder="Title" value="{{user.}}">
+            <h5>Your Name and Surname</h5>
+            <input name='first_name' type="text" id="input-1" placeholder="Title" value="{{user.first_name}}">
+            <input name="last_name" type="text" id="input-1" placeholder="Title" value="{{user.last_name}}">
             <div class="space-between">
                 <div></div>
-                <btnb>Save</btnb>
+                <btnb onclick="save(1)">Save</btnb>
             </div>
         </div>
     </div>
@@ -32,10 +29,11 @@
         <div class="padding">
             <h5>Your title</h5>
             <p>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</p>
-            <input type="text" placeholder="Title" value="{{user.title}}">
+            <input name="title" id="input-2" type="text" placeholder="Title" value="{{user.title}}">
             <div class="space-between">
                 <div></div>
-                <btnb>Save</btnb>
+                {% csrf_token %}
+                <btnb onclick="save(2)" id="btnb-2">Save</btnb>
             </div>
         </div>
     </div>
@@ -54,10 +52,32 @@
                     <li><p>Keep it short and make sure it's error-free</p></li>
                 </ul>
                 
-            <textarea placeholder="Overview" value="{{user.overview}}"></textarea>
+            <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea>
             <div class="space-between">
                 <div></div>
-                <btnb>Save</btnb>
+                <btnb onclick="save(3)">Save</btnb>
+            </div>
+        </div>
+    </div>
+    <div id="edit-bar-4" class="edit-bar ">
+        
+        <div class="top space-between padding">
+            <h4>Hourly Prize</h4>
+            <i class="fas fa-times" onclick="close_bar(4)"></i>
+        </div>
+        <div class="padding">
+            <h5>Your Overview</h5>
+            <p>Use this space to show clients you have the skills and experience they're looking for.
+                <ul>
+                    <li><p>Describe your strengths and skills</p></li>
+                    <li><p>Highlight projects, accomplishments and education</p></li>
+                    <li><p>Keep it short and make sure it's error-free</p></li>
+                </ul>
+                
+            <input name="hourly_prize" id='input-4' placeholder="Hourly Prize" value="{{user.hourly_prize}}">
+            <div class="space-between">
+                <div></div>
+                <btnb onclick="save(4)">Save</btnb>
             </div>
         </div>
     </div>
@@ -79,7 +99,7 @@
             <div class="grade_1_right">
                 <div class="grade_1_right_up">
                     <div>
-                        <h4 class="align-center">{{user.first_name}} {{user.last_name}} <i onclick="close_bar(3)" class="fas fa-pen edit-icon"></i></h4>
+                        <h4 class="align-center">{{user.first_name}} {{user.last_name}} <i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i></h4>
                     </div>
                     <div>
                         <button>See Public View</button>
@@ -96,17 +116,40 @@
             <div class="grade_2_left grade_part">
                 <div class="grades con">
                     <div class="space-between">
-                        {% if user.title %}
-                        <h4 class="align-center">Front-End Developer<i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i></h4>
-                        {% else %}
-                        <h4 class="align-center" style='color:var(--main-orange)'>Please enter your title<i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i></h4>
-                        {% endif %}
                         <div class="flex-row">
-                            <h5>$</h5><h5>12.00</h5><h5>/hr</h5><i onclick="close_bar(2)" class="fas fa-pen edit-icon"></i>
+                            {% if user.title %}
+                            <h4 name='C-title' class="align-center">{{user.title}}</h4>
+                            {% else %}
+                            <h4 name='C-title' class="align-center" style='color:var(--main-orange)'>Please enter your title</h4>
+                            {% endif %}
+                            <i onclick="close_bar(2)" class="fas fa-pen edit-icon"></i>
+                        </div>
+                        
+                        <div class="flex-row">
+                            
+                            {% if user.title %}
+                            <h5>$</h5>
+                            <h5 name='C-hourly_price' class="align-center">{{user.hourly_price}}</h4>
+                            <h5>/hr</h5>
+                            {% else %}
+                            <h5 name='C-hourly_price' class="align-center" style='color:var(--main-orange)'>Please enter your hourly prize</h4>
+                            {% endif %}
+                            
+        
+                            <i onclick="close_bar(4)" class="fas fa-pen edit-icon"></i>
                         </div>
                         
                     </div>
-                    <p><i onclick="close_bar(3)" class="fas fa-pen edit-icon"></i></p>
+                    <div class="flex-row">
+                        {% if user.title %}
+                            <p  name='C-overview' class="flex-row">{{user.overview}}</p>
+                        {% else %}
+                            <p name='C-overview'  class="flex-row" style="color: var(--main-orange);">Please enter your Overview</p>
+                        {% endif %}
+                        <i onclick="close_bar(3)" class="fas fa-pen edit-icon"></i>
+                    </div>
+                    
+                    
                 </div>
 
                 <div class="grades con">
@@ -138,26 +181,79 @@
             </div>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
 
     <script>
         function close_bar(id){
             var y=document.getElementById(`edit-bar-${id}`).classList.contains('open-edit-bar')
-            console.log(y);
             var bars=document.querySelectorAll('.edit-bar')
             for(var x=0; x < bars.length; x++)
             {
                 bars[x].classList.remove('open-edit-bar');
             }
-            console.log(y);
             if (y==true){
-                console.log('oldu');
                 document.getElementById(`edit-bar-${id}`).classList.remove('open-edit-bar')
             }
             else{
                 document.getElementById(`edit-bar-${id}`).classList.add('open-edit-bar')
             }
+        }
+        
+
+        function save(id){
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            // el=document.querySelector(`#input-${id}`)
+            el=document.querySelectorAll(`#input-${id}`)
+            // char=document.querySelectorAll(`#char-${id}`)
+            dta={
+            }
+            for(var z=0; z < el.length; z++)
+            {
+                value=el[z].value
+                ty=el[z].getAttribute('name')
+                dta[`${ty}`]=value
+                console.log(dta);
+            }
             
+            
+            $.ajax({
+                method: "PATCH",
+                url: 'http://127.0.0.1:8000/api/v1.0/p/{{user.id}}/',
+                data: dta,
+                headers: {'X-CSRFToken': csrftoken},
+                success: function(s){
+                    // alert('YES')
+                    // console.log(s);
+                    for(var z=0; z < el.length; z++)
+                    { 
+                        value=el[z].value
+                        ty=el[z].getAttribute('name')
+                        var el2=document.querySelector(`[name=C-${ty}]`)
+                        console.log(el2);
+                        if (value){
+                            $(`[name=C-${ty}]`).text(value);
+                            // el.innerText=value;
+                            $(`[name=C-${ty}]`).css('color','var(--main-color)')
+                        }
+                        else{
+                            $(`[name=C-${ty}]`).text(`Please Enter your ${ty}`);
+                            $(`[name=C-${ty}]`).css('color','var(--main-orange)')
+                        }
+                        
+                    }
+
+                },
+                error: function(s){
+                    console.log(s);
+                    alert('NO')
+                }
+            });
         }
     </script>
 {% endblock %}

@@ -1,7 +1,7 @@
 from rest_framework.routers import DefaultRouter
-from api.viewsets import RecipeViewSet,SubscribeViewSet
+from api.viewsets import ProfileViewSet
 
 router=DefaultRouter()
-router.register('recipe',RecipeViewSet)
-router.register('subscribe',SubscribeViewSet)
+router.register(r'p',ProfileViewSet)
+
 

@@ -118,14 +118,17 @@ i.edit_i:hover{
 
 .edit-icon{
     color: var(--main-orange);
-    padding: 7px;
+    padding: 8px;
     border-radius: 50px;
     background-color: white;
     box-shadow: 0px 0px 15px 1px rgb(226, 226, 226);
     cursor: pointer;
     transition: box-shadow var(--transition-time);
     margin-left: 10px;  
-    font-size: 17px;  
+    font-size: 14px;  
+    height: fit-content;
+
+    
 }
 .edit-icon:hover{
     box-shadow: 0px 0px 15px 2px rgb(219, 219, 219);

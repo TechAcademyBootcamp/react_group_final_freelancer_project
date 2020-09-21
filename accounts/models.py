@@ -19,7 +19,7 @@ class CustomUser(AbstractUser):
 
     title=models.CharField('Title', null=True, blank=True,max_length=255)    
     overview=models.TextField('Overview', null=True, blank=True,max_length=1000)    
-    hourly_prize=models.IntegerField('Hourly Prize',validators=[MaxValueValidator(100)],null=True, blank=True)
+    hourly_price=models.IntegerField('Hourly Prize',validators=[MaxValueValidator(100)],null=True, blank=True)
     image=models.ImageField(upload_to='user/', null=True, blank=True)    
     active=models.BooleanField('Active', default=False)    
     
