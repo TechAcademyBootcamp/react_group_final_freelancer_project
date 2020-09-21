@@ -114,3 +114,54 @@ i.edit_i:hover{
     margin-right: 10px;
     color: var(--border-color);
 }
+
+
+.edit-icon{
+    color: var(--main-orange);
+    padding: 7px;
+    border-radius: 50px;
+    background-color: white;
+    box-shadow: 0px 0px 15px 1px rgb(226, 226, 226);
+    cursor: pointer;
+    transition: box-shadow var(--transition-time);
+    margin-left: 10px;  
+    font-size: 17px;  
+}
+.edit-icon:hover{
+    box-shadow: 0px 0px 15px 2px rgb(219, 219, 219);
+}
+
+.edit-bar{
+    position: fixed;
+    right: -500px;
+    width: 500px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0px 0px 15px 1px rgb(226, 226, 226);
+    transition: right var(--transition-time);
+}
+.open-edit-bar{
+    right: 0;
+}
+.edit-bar .top{
+    background-color: var(--background-color-2);
+    border-bottom: 1px solid var(--border-color);  
+}
+.edit-bar input{
+    margin: 10px 0;
+}
+.edit-bar btnb{
+    margin: 10px 0;
+}
+.edit-bar .padding{
+    padding: 20px;
+}
+.edit-bar textarea{
+    height: 130px;
+}
+.edit-bar h4{
+    margin: 0;
+}
+.grade_2 h4{
+    margin-top: 0;
+}
