@@ -12,6 +12,7 @@ class Skill(models.Model):
 
 
 
+
 class CustomUser(AbstractUser):
     skill=models.ManyToManyField(Skill)
 
