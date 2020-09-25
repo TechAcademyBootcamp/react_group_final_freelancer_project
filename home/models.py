@@ -38,3 +38,4 @@ class Project(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
+

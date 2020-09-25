@@ -46,3 +46,5 @@ class ProjectView(CreateView):
     def form_valid(self, *args, **kwargs):
         messages.success(self.request, 'Mesajiniz Ugurla gonderildi!')
         return super().form_valid(*args, **kwargs)
+
+
