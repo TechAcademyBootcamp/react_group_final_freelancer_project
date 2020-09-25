@@ -15,12 +15,16 @@ class Skill(models.Model):
 class CustomUser(AbstractUser):
     skill=models.ManyToManyField(Skill)
 
-    image=models.ImageField(upload_to='user/', null=True, blank=True)
     email=models.EmailField('Email',unique=True,max_length=255)
-    active=models.BooleanField('Active', default=False)    
+
+    title=models.CharField('Title', null=True, blank=True,max_length=255)    
+    overview=models.TextField('Overview', null=True, blank=True,max_length=1000)    
     hourly_prize=models.IntegerField('Hourly Prize',validators=[MaxValueValidator(100)],null=True, blank=True)
+    image=models.ImageField(upload_to='user/', null=True, blank=True)    
+    active=models.BooleanField('Active', default=False)    
     
-    REQUIRED_FIELDS = ['username', 'password']
+    
+    REQUIRED_FIELDS = ['username', 'password','first_name','last_name']
     USERNAME_FIELD='email'
 
 

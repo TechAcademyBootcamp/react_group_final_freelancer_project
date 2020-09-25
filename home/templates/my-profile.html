@@ -1,6 +1,76 @@
 
 {% extends 'includes/base2.html' %}
 {% block content %}
+
+
+
+<!--  -->
+
+
+    <div id="edit-bar-1" class="edit-bar close-edit-bar">
+        
+        <div class="top space-between padding">
+            <h4>Edit your title</h4>
+            <i class="fas fa-times" onclick="close_bar(1)"></i>
+        </div>
+        <div class="padding">
+            <h5>Your title</h5>
+            <p>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</p>
+            <input type="text" placeholder="Title" value="{{user.}}">
+            <div class="space-between">
+                <div></div>
+                <btnb>Save</btnb>
+            </div>
+        </div>
+    </div>
+    <div id="edit-bar-2" class="edit-bar ">
+        
+        <div class="top space-between padding">
+            <h4>Edit your title</h4>
+            <i class="fas fa-times" onclick="close_bar(2)"></i>
+        </div>
+        <div class="padding">
+            <h5>Your title</h5>
+            <p>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</p>
+            <input type="text" placeholder="Title" value="{{user.title}}">
+            <div class="space-between">
+                <div></div>
+                <btnb>Save</btnb>
+            </div>
+        </div>
+    </div>
+    <div id="edit-bar-3" class="edit-bar ">
+        
+        <div class="top space-between padding">
+            <h4>Overview</h4>
+            <i class="fas fa-times" onclick="close_bar(3)"></i>
+        </div>
+        <div class="padding">
+            <h5>Your Overview</h5>
+            <p>Use this space to show clients you have the skills and experience they're looking for.
+                <ul>
+                    <li><p>Describe your strengths and skills</p></li>
+                    <li><p>Highlight projects, accomplishments and education</p></li>
+                    <li><p>Keep it short and make sure it's error-free</p></li>
+                </ul>
+                
+            <textarea placeholder="Overview" value="{{user.overview}}"></textarea>
+            <div class="space-between">
+                <div></div>
+                <btnb>Save</btnb>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- EDITTTTTTTTTT -->
+
+
+
+
+
+
     <div class="my_profile_con">
         <div class="grade_1 grades">
             <div class="grade_1_left">
@@ -9,7 +79,7 @@
             <div class="grade_1_right">
                 <div class="grade_1_right_up">
                     <div>
-                        <h4>J.Tayfun</h4>
+                        <h4 class="align-center">{{user.first_name}} {{user.last_name}} <i onclick="close_bar(3)" class="fas fa-pen edit-icon"></i></h4>
                     </div>
                     <div>
                         <button>See Public View</button>
@@ -25,20 +95,25 @@
         <div class="grade_2 ">
             <div class="grade_2_left grade_part">
                 <div class="grades con">
-                    <div class="space_between">
-                        <h4>Front-End Developer</h4>
-                        <div>
-                            12 manat
+                    <div class="space-between">
+                        {% if user.title %}
+                        <h4 class="align-center">Front-End Developer<i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i></h4>
+                        {% else %}
+                        <h4 class="align-center" style='color:var(--main-orange)'>Please enter your title<i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i></h4>
+                        {% endif %}
+                        <div class="flex-row">
+                            <h5>$</h5><h5>12.00</h5><h5>/hr</h5><i onclick="close_bar(2)" class="fas fa-pen edit-icon"></i>
                         </div>
+                        
                     </div>
-                    <p>asdasdasd</p>
+                    <p><i onclick="close_bar(3)" class="fas fa-pen edit-icon"></i></p>
                 </div>
 
                 <div class="grades con">
-                    <div class="space_between">
+                    <div class="space-between">
                         <h4>Front-End Developer </h4>
                         <div>
-                            12 manat
+                            
                         </div>
                     </div>
                     <p>asdasdasd</p>
@@ -64,4 +139,25 @@
         </div>
     </div>
 
+
+    <script>
+        function close_bar(id){
+            var y=document.getElementById(`edit-bar-${id}`).classList.contains('open-edit-bar')
+            console.log(y);
+            var bars=document.querySelectorAll('.edit-bar')
+            for(var x=0; x < bars.length; x++)
+            {
+                bars[x].classList.remove('open-edit-bar');
+            }
+            console.log(y);
+            if (y==true){
+                console.log('oldu');
+                document.getElementById(`edit-bar-${id}`).classList.remove('open-edit-bar')
+            }
+            else{
+                document.getElementById(`edit-bar-${id}`).classList.add('open-edit-bar')
+            }
+            
+        }
+    </script>
 {% endblock %}
