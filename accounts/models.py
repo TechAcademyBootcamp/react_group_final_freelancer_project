@@ -12,6 +12,7 @@ class Skill(models.Model):
 
 
 
+
 class CustomUser(AbstractUser):
     skill=models.ManyToManyField(Skill)
 
@@ -24,7 +25,7 @@ class CustomUser(AbstractUser):
     active=models.BooleanField('Active', default=False)    
     
     
-    REQUIRED_FIELDS = ['username', 'password','first_name','last_name']
+    REQUIRED_FIELDS = ['username']
     USERNAME_FIELD='email'
 
 
