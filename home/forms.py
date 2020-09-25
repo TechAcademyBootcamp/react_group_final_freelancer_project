@@ -30,7 +30,7 @@ class ProjectForm(forms.ModelForm):
             })
         }
 class RepliesForm(forms.ModelForm):
-    message=forms.CharField()
+    
     duration=forms.DateTimeField()
     
     class Meta:
