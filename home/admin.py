@@ -1,11 +1,16 @@
 from django.contrib import admin
 
 # Register your models here.
-from home.models import Project,Upload
+from home.models import Project,Upload,Level,Currency,Replies
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display=('title','author','short_description','long_description','price_type','price_min','price_max','level','admit_time','status','author','currency','upload_files' )
+    list_display=('title','author','description','price_type','price_min','price_max','level','admit_time','status','author','currency','upload_files' )
 
+class LevelAdmin(admin.ModelAdmin):
+    list_display=('level_type',)
 
 
 admin.site.register(Project,ProjectAdmin)
+admin.site.register(Level,LevelAdmin)
+admin.site.register(Currency)
+admin.site.register(Replies)

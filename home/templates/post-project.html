@@ -27,6 +27,8 @@
 
                     </div>
                     <div class="form_sec">
+                        
+
                         <div class="sec_1">
                             <svg class="undo_icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                     viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
@@ -72,12 +74,15 @@
                             <h3>Post a project</h3>
                             <svg class="close_icon" xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>
                         </div>
-                        <div class="sec_2">
-                            {{form}}
+                        
+                        <form class="sec_2" action="#" method="POST" enctype="multipart/form-data" > 
+                            {% csrf_token %}                           
                             <div class="form-control">
+                                {{form.errors}}
+
                                 <h4>What skills are required?</h4>
-                               
-                                <input type="text" placeholder="e.g. Build me a website">
+                                {{form.title}}
+                                <!-- <input type="text" placeholder="e.g. Build me a website"> -->
                                 <div class="input_details">
                                     <small>Please enter at least 10 characters!:</small>
                                     <span for="">5 skills remaining</span>
@@ -86,18 +91,28 @@
                             <div class="form-control">
                                 <h4>Choose a name of your contest</h4>
                                 <p>Start with a bit about yourself or your business, and include an overview of what you need done.</p>
-                                <textarea placeholder="Describe your contest here..." name="" id="" cols="30" rows="10"></textarea>
+                                {{form.description}}
+                                <!-- <textarea placeholder="Describe your contest here..." name="" id="" cols="30" rows="10"></textarea> -->
                                 <div class="input_details">
                                     <small>Please enter at least 10 characters!</small>
                                     <span for="">255 characters remaining</span>
                                 </div>
                                 <p>Drag & drop any images or documents that might be helpful in explaining your brief here (Max file size: 25 MB).</p>
-                                <input type="file" name="" id="">
+                                {{form.upload_files}}
+                                
+                                
+                            </div>
+                            <div class="form-control">
+                                <h4>Levels</h4>
+                                {{form.level}}
+                                <!-- <input type="text" placeholder="e.g. Build me a website"> -->
+                                
                             </div>
                             <div class="form-control">
                                 <h4>What skills are required?</h4>
                                 <p>Enter up to 5 skills that best describe your contest. Freelancers will use these skills to find contests they are most interested and experienced in.</p>
-                                <input type="text" placeholder="e.g. Build me a website">
+                                {{form.skills}}
+                                <!-- <input type="text" placeholder="e.g. Build me a website"> -->
                                 <div class="input_details">
                                     <span>Suggested skills:</span>
                                     <span for="">5 skills remaining</span>
@@ -105,16 +120,20 @@
                             </div>
                             <div class="form-control">
                                 <h4>What is your estimated budget?</h4>
-                                <select name="" id="">
-                                    <option value="">AZN</option>
-                                </select>
+                                <!-- <select name="" id=""> -->
+                                    {{form.currency}}
+                                    {{form.price_type}}
+                                    <!-- <option value="">AZN</option> -->
+                                <!-- </select> -->
                                 <p>Minimum budget</p>
-                                <input type="password" placeholder="Enter a budget here">    
+                                {{form.price_min}}
+                                <!-- <input type="password" placeholder="Enter a budget here">     -->
                                 <!-- <div class="input_details">
                                     <small>Please enter at least 10 characters!</small>
                                 </div> -->
                                 <p>Maximum budget</p>
-                                <input type="password" placeholder="Enter a budget here">    
+                                {{form.price_max}}
+                                <!-- <input type="password" placeholder="Enter a budget here">     -->
                                 <!-- <div class="input_details">
                                     <small>Please enter at least 10 characters!</small>
                                 </div> -->
@@ -141,20 +160,23 @@
                                     </div>
                                 </div>
                                 <p>Enter up to 5 skills that best describe your contest. Freelancers will use these skills to find contests they are most interested and experienced in.</p>
-                                <input type="text" placeholder="e.g. Build me a website">
+                                {{form.skills}}
+                                <!-- <input type="text" placeholder="e.g. Build me a website"> -->
                                 <div class="input_details">
                                     <span>Suggested skills:</span>
                                     <span for="">5 skills remaining</span>
                                 </div>
                             </div>
                             <div class="form-next">
-                                <button>Next</button>
-                                <done>Yes, post my project</done>
+                                
+                                <!-- <button>Next</button> -->
+                                <input class="done" type="submit" value="Yes, post my project">
+                               
                             </div>
                             
+                           
                             
-                            
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

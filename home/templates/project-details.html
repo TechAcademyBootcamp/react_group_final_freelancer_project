@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/csa.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/project-detail.css' %}" type="text/css">
+
+
+    <div class="top_blue">
+        <button style="padding-top:80px">
+            Details
+        </button>
+        <button style="padding-top:80px">
+            Proposal
+        </button>
+    </div>
+
+    <sections>
+        {% csrf_token %}
+        <div class="custom-container">
+            <div style="display: flex;flex-direction: row;margin-top:100px;width: 100%;">
+                
+                    
+                
+                <div  class="card_container_left">
+                    <div class="top_dash_details">
+                        <div class="header_dash">
+                            <h4 style="margin:25px; font-weight: 700;">Project Details</h4>
+                            <div class="align-items" style="margin:20px 23px 10px 23px;">
+                                <h4 style="margin: 0px;">$10.000-$50.000</h4>
+                                <span>bidding ends in 5 day ,22hours</span>
+                            </div>
+                            
+                        </div>
+                        <div class="detail_first_tab">                                                        
+                            <div>
+                              <div>
+                                    <p class="paragraph">{{form.message}} </p>
+                              </div>
+                              <div class="skill_details">
+                                    <h5>Skills required</h5>
+                                    <div class="skill_box">
+                                        <h5 class="skill_item">Javascript</h5>
+                                        <h5 class="skill_item">Html</h5>
+                                        <h5 class="skill_item">Python</h5>
+                                        <h5 class="skill_item">Turkish</h5>
+                                        <h5 class="skill_item">Python</h5>
+                                        <h5 class="skill_item">Turkish</h5>
+                                    </div>
+                              </div>
+                            </div>                            
+                        </div>
+                        
+                    </div>
+                                    
+                </div>
+                <div class="card_container_right">
+                    <div class="info_box">
+                        <div class="right_main_details">
+                            <h4 class="paragraph">About the Employer <br><b>Atilla</b></h4>                           
+                        </div>
+                        <div>
+                            
+                            <div class="endbox">
+                                
+                                <div class="last_piece__end">
+                                    <div class="top_right_details">
+                                        <i class="fas fa-map-marker-alt icon_detail"></i>
+                                        <p class="paragraph_det">Account balance</p>                                        
+                                    </div>
+                                    <div class="top_right_details">
+                                        <i class="fas fa-desktop icon_detail"></i>
+                                        <p class="paragraph_det">11 project completed</p>                                        
+                                    </div>
+                                    <div class="top_right_details">
+                                        <i class="far fa-clock icon_detail"></i>
+                                        <p class="paragraph_det">Member since Aug 9 ,2019</p>                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="med_main_details">
+                                    <h4 class="paragraph">Employer Verification</h4>                           
+                                </div>
+                                <div class="last_piece__end">
+                                    <div class="top_right_details">                                        
+                                        <i class="far fa-address-card icon_detail"></i>
+                                        <p class="paragraph_det">Identity verified</p>                                        
+                                    </div>
+                                    <div class="top_right_details">
+                                        <i class="far fa-money-bill-alt icon_detail"></i>                                        
+                                        <p class="paragraph_det">Payment method verified</p>                                        
+                                    </div>
+                                    <div class="top_right_details">
+                                        <i class="far fa-credit-card icon_detail"></i>
+                                        <p class="paragraph_det">Deposite made</p>                                        
+                                    </div>
+                                   
+                                    <div class="top_right_details">
+                                        <i class="far fa-envelope icon_detail"></i>
+                                        <p class="paragraph_det">Email address verified</p>                                        
+                                    </div>
+                                    <div class="top_right_details">
+                                        <i class="far fa-user-circle icon_detail"></i>
+                                        <p class="paragraph_det">Profile completed</p>                                        
+                                    </div>
+                                    <div class="top_right_details">
+                                        <i class="fas fa-phone-alt icon_detail"></i>
+                                        <p class="paragraph_det">Phone number verified</p>                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                       
+                    </div>
+                    <div class="middle_details">
+                        <h4>How to write winning bid</h4>
+                        <p>Your best chance of winning this
+                            project is writing a great bid
+                            proposal here! <br>
+                            <br>
+                            <br>
+                            <br>
+
+                            
+                            Great bids are ones that:
+                            <br>
+
+                            
+                            * Are engaging and well written
+                            without spelling or grammatical
+                            errors
+                            <br>
+                            <br>
+                            <br>
+
+                            * Showa clear understanding of
+                            what is required for this specific
+                            project - personalize your
+                            response!
+                            <br>
+                            <br>
+                            <br>
+
+
+                           * Explain how your skills &
+                            experience relate to the project
+                            
+                            and your approach to working on
+                            it
+                            
+                            * Ask questions to clarify any
+                            unclear details
+                            
+                            Most of all - don't spam or post cut-
+                            and-paste bids. You will be
+                            penalized or banned if you do so.</p>
+                    </div>
+                                    
+                </div>
+                  
+            </div>
+        </div>
+    </sections>
+
+
+{% endblock %}
