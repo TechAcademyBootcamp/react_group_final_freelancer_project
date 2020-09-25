@@ -59,7 +59,7 @@
     margin-right: 100px;
 }
 .search input{
-    border-right: none;
+    border-right: none !important;
 } 
 
 .search button{
@@ -92,6 +92,12 @@ input:focus +  button{
     border-collapse: collapse;
     margin: 50px 0;
 }
+
+.table tbody th{
+    width: 1px;
+    padding: 0px;
+    padding-left: 24px;
+}
 .table, th, td{
     border: 1px solid var(--border-color);
     text-align: left;
@@ -99,8 +105,7 @@ input:focus +  button{
 }
 
 .table th, .table td {
-    padding: 12px;
-    padding-left: 20px;
+    padding: 12px 20px;
 }
 
 .table thead tr, .table thead th{
