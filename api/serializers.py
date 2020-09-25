@@ -13,7 +13,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             'image',
             'title',
             'overview',
-            'hourly_prize',
+            'hourly_price',
             
         )
 

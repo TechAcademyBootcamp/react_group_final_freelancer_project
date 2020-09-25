@@ -12,8 +12,16 @@
         </div>
         <div class="padding">
             <h5>Your Name and Surname</h5>
-            <input name='first_name' type="text" id="input-1" placeholder="Title" value="{{user.first_name}}">
-            <input name="last_name" type="text" id="input-1" placeholder="Title" value="{{user.last_name}}">
+            <input name='first_name' type="text" id="input-1" placeholder="Name" value="{{user.first_name}}">
+            <div class="input_details">
+                <small name='error-first_name'></small>
+                <span for=""></span>
+            </div>
+            <input name="last_name" type="text" id="input-1" placeholder="Surname" value="{{user.last_name}}">
+            <div class="input_details">
+                <small name='error-last_name'></small>
+                <span for=""></span>
+            </div>
             <div class="space-between">
                 <div></div>
                 <btnb onclick="save(1)">Save</btnb>
@@ -30,6 +38,10 @@
             <h5>Your title</h5>
             <p>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</p>
             <input name="title" id="input-2" type="text" placeholder="Title" value="{{user.title}}">
+            <div class="input_details">
+                <small name='error-title'></small>
+                <span for=""></span>
+            </div>
             <div class="space-between">
                 <div></div>
                 {% csrf_token %}
@@ -53,6 +65,10 @@
                 </ul>
                 
             <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea>
+            <div class="input_details">
+                <small name='error-overview'></small>
+                <span for=""></span>
+            </div>
             <div class="space-between">
                 <div></div>
                 <btnb onclick="save(3)">Save</btnb>
@@ -75,6 +91,10 @@
                 </ul>
                 
             <input name="hourly_prize" id='input-4' placeholder="Hourly Prize" value="{{user.hourly_prize}}">
+            <div class="input_details">
+                <small name='error-hourly_prize'></small>
+                <span for=""></span>
+            </div>
             <div class="space-between">
                 <div></div>
                 <btnb onclick="save(4)">Save</btnb>
@@ -98,8 +118,11 @@
             </div>
             <div class="grade_1_right">
                 <div class="grade_1_right_up">
-                    <div>
-                        <h4 class="align-center">{{user.first_name}} {{user.last_name}} <i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i></h4>
+                    <div class="align-center">
+                        <h4 name='C-first_name' class="align-center">{{user.first_name}} </h4>
+                        &nbsp;
+                        <h4 name='C-last_name' class="align-center">{{user.last_name}} </h4>
+                        <i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i>
                     </div>
                     <div>
                         <button>See Public View</button>
@@ -219,6 +242,7 @@
                 ty=el[z].getAttribute('name')
                 dta[`${ty}`]=value
                 console.log(dta);
+                $(`[name=error-${ty}]`).text('');
             }
             
             
@@ -228,8 +252,8 @@
                 data: dta,
                 headers: {'X-CSRFToken': csrftoken},
                 success: function(s){
-                    // alert('YES')
-                    // console.log(s);
+                    alert('YES')
+                    console.log(s);
                     for(var z=0; z < el.length; z++)
                     { 
                         value=el[z].value
@@ -250,7 +274,25 @@
 
                 },
                 error: function(s){
+                    console.log(s['responseJSON']);
+                    // console.log(s['responseText'].json-view);
                     console.log(s);
+
+                    for(var z=0; z < el.length; z++)
+                    { 
+                        value=el[z].value
+                        ty=el[z].getAttribute('name')
+                        var el2=document.querySelector(`[name=C-${ty}]`)
+                        console.log(el2);
+                        if (s['responseJSON'][`${ty}`]){
+                            $(`[name=error-${ty}]`).text(s['responseJSON'][`${ty}`]);
+                          
+                        }
+                        else{
+                            console.log('HMMMMM');
+                        }
+                        
+                    }
                     alert('NO')
                 }
             });

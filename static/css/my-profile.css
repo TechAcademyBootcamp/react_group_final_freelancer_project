@@ -151,7 +151,7 @@ i.edit_i:hover{
     border-bottom: 1px solid var(--border-color);  
 }
 .edit-bar input{
-    margin: 10px 0;
+    margin: 3px 0;
 }
 .edit-bar btnb{
     margin: 10px 0;
