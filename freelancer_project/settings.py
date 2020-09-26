@@ -158,11 +158,8 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 ASGI_APPLICATION = 'freelancer_project.routing.application'
 WSGI_APPLICATION = 'freelancer_project.wsgi.application'
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
+CHANNEL_LAYERS={
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }
