@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView,DetailView,CreateView,FormView
 from home.forms import ProjectForm,RepliesForm
 from django.contrib import messages
+from home.models import Project
 
 # Create your views here.
 
@@ -20,6 +21,12 @@ class Project_DetailView(FormView):
 
     def form_valid(self,form):
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(Project_DetailView, self).get_context_data(**kwargs)
+        # context['detail'] = Project.objects.get(id=self.kwargs['id'])
+
+        return context
 
 
 class MyProfileView(TemplateView):
