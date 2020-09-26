@@ -35,5 +35,5 @@ class RepliesForm(forms.ModelForm):
     
     class Meta:
         model=Replies
-        fields=['message','duration']
+        fields=['reply','duration']
         
