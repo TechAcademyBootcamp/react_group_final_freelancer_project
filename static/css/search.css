@@ -251,7 +251,7 @@ option:checked:hover, select:focus option:checked:hover {
 .skill_href{
     display: flex;
     width: fit-content;
-    height: fit-content;
+    height: 40px;
     background-color: var(--third-color);
     justify-content: flex-start;   
     color: white;
@@ -265,10 +265,12 @@ option:checked:hover, select:focus option:checked:hover {
     box-shadow: 0 0 10px var(--third-color) ;
     color: white;
     white-space: nowrap;
+    overflow: hidden;
+    border-color: var(--third-color);
 }
 .skill_btn{
     
-    width: 120px;
+    width: fit-content;
     height: 40px;
     transition: 0.5s;
     background-color: var(--main-orange);
@@ -286,4 +288,80 @@ option:checked:hover, select:focus option:checked:hover {
     outline-style: none;
 }
 
+.slidecontainer {
+    width: 100%;
+  }
+  
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
 
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: var(--main-orange);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.filter_cont{
+    display: flex;
+    align-items: flex-end;
+    z-index: 22;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    padding-right:100px;
+    
+}
+.filter_tab{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+.paragraph_filter{
+    font-size: 15px;
+    font-weight: 600;
+
+}
+
+.flex-row-filter{
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (max-width: 800px) {
+    .flex-row-filter{
+        display: flex;
+        flex-direction: column;
+    }
+    .filter_cont{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0px;
+    }
+}
