@@ -26,7 +26,7 @@ urlpatterns = [
     path('inbox/',include('inbox.urls')),
     path('api/v1.0/',include('api.urls')),
     
-    path('search/',SearchView.as_view(),name='search'),
+    path('search/', SearchView.as_view(), name='search'),
     path('dashboard/',DashboardView.as_view(),name='dasboard'),
     
 ]

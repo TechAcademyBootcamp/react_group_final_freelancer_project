@@ -20,12 +20,17 @@
                         <button class="skill_btn" >
                             Clear skills
                         </button>
-                        <a href="#" class="skill_href">Edit Profile Skills</a>
+                        <button class="skill_href">
+                            Edit Profile Skills
+                        </button>
+                   
 
                     </div>
-                    <div id="range">
-                        <span id="currentVal">50</span>
-                    </div>  
+                    <div class="slidecontainer">
+                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                        <p>Value: <span id="demo"></span></p>
+                    </div>
+
                     <h4 style="align-items: flex-start; width: 100%;">Languages</h4>
                     <div class="skill_box">
                         <h5 class="skill_item">English</h5>
@@ -38,9 +43,7 @@
                             Clear skills
                         </button>
                     </div> 
-                    <input type="range" value="" min="50" max="800" aria-required="true" aria-invalid="false" data-rangeslider name='input_5' id='input_1_5' oninput="document.getElementById('electric_bill').value = this.value">
-
-                    <input type="text" id="electric_bill" name="electric_bill" value="" />
+                   
                     
                     
                 </div>
@@ -71,7 +74,7 @@
                         </div>
                         <div class="middle_2 space-between">
                             
-                            <div class="align-center">
+                            <div class="align-center" style="z-index: 1;">
                                 <i class="fas fa-poll-h icon_container"></i>
                                 <h5 class="count_120">
                                     120,753
@@ -80,14 +83,111 @@
                                     jobs found
                                 </p>
                             </div>
-                            <p>sadsa</p>
+                            <div class="filter_cont">
+                                <btnb>Filter</btnb>
+                              
+                            </div>
+                            
                         </div>
-                </div>
+                        
+                    </div>
+                <div class="middle border-bottom" style="flex-direction: column;">
+                    <div class=" flex-row-filter" style="width: 100%;">
+                       
+                        <div class="filter_cont">
+                            <h4>Job Types</h4>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 15px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                        </div>
+                        <div class="filter_cont">
+                            <h4>Job Types</h4>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                        </div>
+                        <div class="filter_cont">
+                            <h4>Job Types</h4>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 13px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                        </div>
+                        <div class="filter_cont" style="padding-right: 20px;width: 100%;align-items: flex-start;">
+                            <h4>Job Types</h4>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px;cursor: pointer;"><p class="paragraph_filter">Any budget</p>
+                            </div>
+                            <input type="number" placeholder="Enter a budget here">    
+                        </div>
+                    </div>  
+                    <div class=" flex-row-filter" style="width: 100%; padding-top: 50px;">
+                       
+                        <div class="filter_cont">
+                            <h4>Job Types</h4>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 15px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                        </div>
+                        <div class="filter_cont">
+                            <h4>Job Types</h4>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                        </div>
+                        <div class="filter_cont">
+                            <h4>Job Types</h4>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 12px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                            <div class="flex-row"  style="width: fit-content;">
+                                <input type="checkbox" style="margin: 13px 5px; cursor: pointer;"><p class="paragraph_filter">Adobe</p>
+                            </div>
+                        </div>
+                        <div class="filter_cont" style="padding-right: 20px;">
+                           
+                        </div>
+                    </div>                                 
+                </div>  
                 <div class="middle border-bottom">
+                    {%for result in results%}
                     <div class="mid_title">
                     <h4 class="title" style="font-weight:700;">
-                            Title
+                            {{result.title}}
                         </h4>
+                    {%endfor%}
                         <p>
                             <b>Hourly</b>   <span style="font-weight: 600;">-remaining  Expert  Time:More than 6 Months,10-30 hours/week</span>
                         </p>
@@ -197,5 +297,15 @@
             var electricrange = '$0-50';
         }
     });
+</script>
+
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function() {
+        output.innerHTML = this.value;
+    }
 </script>
 {% endblock %}

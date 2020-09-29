@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView,DetailView,CreateView,FormView
+from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
 from home.forms import ProjectForm,RepliesForm
 from django.contrib import messages
-
+from .models import Project
 # Create your views here.
 
 class HomeView(TemplateView):
@@ -29,9 +29,15 @@ class MyProfileView(TemplateView):
 class MyProfileEditView(TemplateView):
     template_name='my-profile-edit.html'
 
-class SearchView(TemplateView):
+class SearchView(ListView):
     template_name='search.html'
-    
+    context_object= 'results'
+    model=Project
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        return Project.objects.filter(name__contains=query)
+
 class MyProjectsView(TemplateView):
     template_name='my-projects.html'
 
@@ -56,4 +62,4 @@ class ProjectView(CreateView):
         project.save()
         return super().form_valid(form)
     
-        
+    
