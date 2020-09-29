@@ -29,11 +29,20 @@ class ProjectForm(forms.ModelForm):
                 'placeholder':'select'
             })
         }
-class RepliesForm(forms.ModelForm):
-    
-    duration=forms.DateTimeField()
-    
+class RepliesForm(forms.ModelForm): 
     class Meta:
         model=Replies
-        fields=['reply','duration']
-        
+        fields=['reply','duration','price']
+        widgets = {
+            'duration':forms.NumberInput(attrs={
+                'placeholder': 'Enter number of days'
+            }),
+            'price':forms.NumberInput(attrs={
+                'placeholder':'Enter bid amount'
+            }),
+            'reply':forms.Textarea(attrs={
+                'placeholder':'What makes you the best candidate for this project?'
+            }),
+            
+
+        }

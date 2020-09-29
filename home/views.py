@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView,DetailView,CreateView,FormView
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.views.generic import TemplateView,DetailView,CreateView,FormView, ListView
 from home.forms import ProjectForm,RepliesForm
 from django.contrib import messages
-from home.models import Project
+from home.models import Project, Replies
 
 # Create your views here.
 
@@ -14,19 +15,44 @@ class HomeView(TemplateView):
 class GetStartedView(TemplateView):
     template_name='get-started.html'
 
-class Project_DetailView(FormView):
+
+class ProjectProposalsView(ListView):
+    template_name='project-proposals.html'
+    paginate_by = 7
+
+    def get_queryset(self):
+        queryset = Replies.objects.filter(project=self.kwargs['id']).order_by('-created_at')    
+        return queryset
+    
+   
+
+
+
+
+class ProjectDetailView(CreateView):
     template_name='project-details.html'
     form_class=RepliesForm
-    success_url='/'
-
-    def form_valid(self,form):
-        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
-        context = super(Project_DetailView, self).get_context_data(**kwargs)
-        # context['detail'] = Project.objects.get(id=self.kwargs['id'])
-
+        context = super(ProjectDetailView, self).get_context_data(**kwargs)
+        context['detail'] = Project.objects.get(id=self.kwargs['id'])
         return context
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        if self.request.user:
+            obj.user = self.request.user
+            obj.project =  Project.objects.get(id=self.kwargs['id'])
+        else:
+            form.add_error('non_field_error', 'User should be loginned')
+            return self.form_invalid(form)
+
+        return super(ProjectDetailView, self).form_valid(form)
+    
+    def get_success_url(self, **kwargs):    
+            url= f'/project-proposals/{self.kwargs["id"]}'     
+            return url
+        
 
 
 class MyProfileView(TemplateView):
@@ -39,8 +65,76 @@ class MyProfileEditView(TemplateView):
 class SearchView(TemplateView):
     template_name='search.html'
     
-class MyProjectsView(TemplateView):
-    template_name='my-projects.html'
+class MyProjectsEmployerView(ListView):
+    template_name='my-projects-employer.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = Project.objects.filter(author=self.request.user).order_by('-created_at')
+        # self.paginate_by = self.request.GET.get('paginate_by', 10) or 10            
+        return queryset
+
+    def get(self, request):
+        self.paginate_by = request.GET.get('paginate_by', 10) or 10
+        print(self.paginate_by)
+        data = Project.objects.filter(author=self.request.user).order_by('-created_at')
+        print(data)
+        paginator = Paginator(data, self.paginate_by)
+        page = request.GET.get('page')
+
+        try:
+            self.paginated = paginator.get_page(page)
+        except PageNotAnInteger:
+            self.paginated = paginator.get_page(1)
+        except EmptyPage:
+            self.paginated = paginator.page(paginator.num_pages)
+        
+        print(self.paginated)
+
+        return render(request, self.template_name, {'object_list':self.paginated, 'paginate_by':self.paginate_by,'page_obj':self.paginated})
+
+class MyProjectsFreelancerView(ListView):
+    template_name='my-projects-freelancer.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = Project.objects.filter(author=self.request.user).order_by('-created_at')
+        # self.paginate_by = self.request.GET.get('paginate_by', 10) or 10            
+        return queryset
+
+    def get(self, request):
+
+        self.paginate_by = request.GET.get('paginate_by', 10) or 10
+        print(self.paginate_by)
+        data = Project.objects.filter(author=self.request.user).order_by('-created_at')
+        print(data)
+        paginator = Paginator(data, self.paginate_by)
+        page = request.GET.get('page')
+
+        try:
+            self.paginated = paginator.get_page(page)
+        except PageNotAnInteger:
+            self.paginated = paginator.get_page(1)
+        except EmptyPage:
+            self.paginated = paginator.page(paginator.num_pages)
+        
+        print(self.paginated)
+
+        return render(request, self.template_name, {'object_list':self.paginated, 'paginate_by':self.paginate_by,'page_obj':self.paginated})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class InboxView(TemplateView):
     template_name='inbox.html'

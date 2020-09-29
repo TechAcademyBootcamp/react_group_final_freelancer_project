@@ -93,18 +93,14 @@ input:focus +  button{
     margin: 50px 0;
 }
 
-.table tbody th{
-    width: 1px;
-    padding: 0px;
-    padding-left: 24px;
-}
 .table, th, td{
     border: 1px solid var(--border-color);
     text-align: left;
     background-color: white;
 }
 
-.table th, .table td {
+
+.table th, .table td  {
     padding: 12px 20px;
 }
 
@@ -116,4 +112,26 @@ input:focus +  button{
 
 .stage_1{
     margin: 30px 0;
+}
+
+
+.table_proposals{
+    cursor: pointer;
+    transition: background-color var(--transition-time);
+}
+.table_proposals:hover{
+    background-color: var(--background-color-2);
+}
+.tr:hover{
+    background-color: red;
+}
+.table_view{
+    transition: background-color,color;
+    transition-duration: var(--transition-time);
+    cursor: pointer;
+    color: var(--main-orange);
+}
+.table_view:hover{
+    background-color: var(--background-color-2);
+    /* color:white; */
 }

@@ -5,3 +5,4 @@ from accounts.models import *
 
 
 admin.site.register(CustomUser, UserAdmin)
+admin.site.register(Skill)

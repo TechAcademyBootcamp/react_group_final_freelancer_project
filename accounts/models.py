@@ -5,7 +5,7 @@ from django.core.validators import MaxValueValidator
 # Create your models here.
 class Skill(models.Model):
     title=models.CharField('Skill',max_length=50)
-    category=models.ForeignKey('self',on_delete=models.CASCADE)
+    category=models.ForeignKey('self',on_delete=models.CASCADE, blank=True, null=True)
 
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)

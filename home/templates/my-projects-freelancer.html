@@ -1,0 +1,80 @@
+
+{% extends 'includes/base2.html' %}
+{% load static %}
+{% load filters %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
+  <link rel="stylesheet" href="{% static 'css/project-proposals.css' %}" type="text/css">
+  <div class="space-between stage_1">
+      <h4>Projects and Contents</h4>        
+      <div class="flex-row">
+          <a href="{% url 'my-projects-employer' %}" class="employer_btn btn_off  align-center">Employer</a>
+          <a class="freelancer_btn selected_btn align-center">Freelancer</a>
+      </div>
+  </div>
+  <div class="space-between">
+      <div class="search flex-row">
+          <input type="text">
+          <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="space-between">
+        <label for="cars">Show:</label>
+
+        <select name="cars" onchange="location = this.value;" id="pages">
+          <option value="{{paginate_by}}" selected disabled hidden>{{paginate_by}}</option>
+        
+          <option value="?page={{page_obj.number}}&paginate_by=10">10</option>
+          <option value="?page={{page_obj.number}}&paginate_by=20">20</option>
+          <option value="?page={{page_obj.number}}&paginate_by=30">30</option>
+        </select>
+      </div>
+  </div>
+
+
+
+
+
+    <table class="table">      
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">PROJECT NAME</th>
+            <th scope="col">PRICE</th>
+            <th scope="col">CREATED AT</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for project in object_list %}
+          <tr>
+            <th scope="row">{{project.id}}</th>
+            <td>{{project.title}}</td>
+            <td>{{project.price_min}}{{project.currency}}-{{project.price_max}}{{project.currency}}</td>
+            <td>{{project.created_at}}</td>
+          </tr>
+          {% endfor %}
+         
+        </tbody>
+      </table>
+
+      
+
+
+      {% include 'includes/pagination.html' %}
+
+    <script>
+        $('.employer_btn').on('click',function(){
+            $('.employer_btn').addClass('selected_btn')
+            $('.freelancer_btn').removeClass('selected_btn')
+            $('.freelancer_btn').addClass('btn_off')
+
+        })
+
+        $('.freelancer_btn').on('click',function(){
+            $('.employer_btn').removeClass('selected_btn')
+            $('.freelancer_btn').addClass('selected_btn')
+            $('.employer_btn').addClass('btn_off')
+
+        })
+    </script>
+
+{% endblock %}
