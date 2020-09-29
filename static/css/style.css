@@ -379,7 +379,7 @@ input::-webkit-file-upload-button:hover {
     align-items: center;
 }
 
-button, btna,btnb{
+button, btna,btnb,.btnb{
     font-size: 14px;
     color: var(--main-color);
     font-weight: bold;
@@ -405,14 +405,16 @@ button:hover{
 btna:hover{
     border-color: var(--main-orange);
 } */
-btnb{
+btnb,.btnb{
     background-color: var(--main-orange);
     color: var(--main-white);
-    border:0;   
-    transition: background-color var(--transition-time);
+    border:1px solid var(--main-orange);   
+    transition: background-color var(--transition-time),color var(--transition-time);
 }
-btnb:hover{
+btnb:hover,.btnb:hover{
     background-color: var(--black-orange);
+    color: white;
+    border:1px solid var(--black-orange);   
 }
 
 

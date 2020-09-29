@@ -45,12 +45,9 @@
 .right_main_details{
     display: flex;
     justify-content: center;
+    padding: 8px;
     flex-direction: column;
     border-bottom: var(--border-color) solid  1px;
-    width: 100%;
-}
-.box-padding{
-    padding: 20px 20px;
 }
 
 .top_right_details{
@@ -58,6 +55,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -90,8 +88,9 @@
     align-items: flex-start;
     box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
-    padding-bottom: 0px;
+    padding-bottom: 10px;
     background-color: white;
+    margin-bottom: 10px !important;
 }
 
 proposal{
@@ -124,71 +123,38 @@ proposal{
 
 .header_dash{
     padding: 20px;
+    padding-bottom: 10px;
     border: 0;
     background-color: white;
-    border-bottom: 1px solid var(--border-color);
+    /* border-bottom: 1px solid var(--border-color); */
     
 }
 h4{
     margin: 0 !important;
-    font-weight: bold;
 }
 h5{
     margin: 0 !important;
-    font-weight: bold;
     /* margin-bottom: 7px !important; */
 }
 .p_con{
-    padding: 10px 20px;
+    padding: 5px 20px;
 }
 .box-container{
     margin-bottom: 15px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
-    padding-bottom: 10px;
-    background-color: white;
-}
-.post{
-    padding: 20px;
-}
-input{
-    margin-top: 10px;
-}
-textarea::placeholder,input::placeholder{
-    color: var(--second-color);
 }
 textarea{
-    margin: 15px 0;
     height: 130px;
-    padding: 9px 10px;
 }
 .input_details small{
     padding: 0 !important;
     margin: 0 !important;
 }
-.post-con{
-    width: 100%;
-    padding: 25px 20px;
-}
-.bid-grid{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.bid-grid div{
-    width: 100%;
 
+.image{
+    width: 60px;
+    height: 60px;
+    background-color: var(--border-color);
+    border-radius: 50px;
+    margin-right: 20px;
 }
-.bid-grid input{
-    max-width: 270px;
-}
-.field_con{
-    margin-top: 25px;
-}
-.top_right_details p{
-    margin: 5px 0;
-}
-
-.p_con h5{
-    margin-bottom: 10px !important;
-}
+/* PEGINATION */

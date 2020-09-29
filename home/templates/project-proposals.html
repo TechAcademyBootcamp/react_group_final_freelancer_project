@@ -3,7 +3,9 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/csa.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/project-proposals.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/project-detail.css' %}" type="text/css">
+
 
     <div class="top_blue">
         <button style="padding-top:80px">
@@ -19,100 +21,39 @@
         <div class="custom-container">
             <div style="display: flex;flex-direction: row;margin-top:100px;width: 100%;">
                 
-                    
+                
+                
                 
                 <div  class="card_container_left">
-                    <div class="top_dash_details box-container flex-column">
-                        <div class="header_dash align-center">
-                            <h4>{{detail.title}}</h4>
-                            <div class="align-items">
-                                <div class="align-center">
-                                    {% if detail.price_min > detail.price_max %}
-                                    <h5>{{detail.price_max}}</h5>
-                                    <h5>{{detail.currency}}</h5>
-                                    <h5>&nbsp;-&nbsp;</h5>
-                                    <h5>{{detail.price_min}}</h5>
-                                    <h5>{{detail.currency}}</h5>
-                                    {% else %}
-                                    <h5>{{detail.price_min}}</h5>
-                                    <h5>{{detail.currency}}</h5>
-                                    <h5>-</h5>
-                                    <h5>{{detail.price_max}}</h5>
-                                    <h5>{{detail.currency}}</h5>
-                                    {% endif %}
+                    {% for reply in object_list %}
+                        <div class="top_dash_details box-container flex-column">
+                            <div class="header_dash align-center">
+                                <div class="flex-row align-center">
+                                    <div class="image">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div class="flex-column">
+                                        <h5>{{reply.user.first_name}} {{reply.user.last_name}}</h5>
+                                        <p>@{{reply.user.username}}</p>
+                                    </div>
                                 </div>
-                                <span>bidding ends in 5 day ,22hours</span>
-                            </div>
-                            
-                        </div>
-                        <div class="p_con">
-                            <p>{{detail.description}}</p>
-                        </div>
-                        <div class="p_con flex-column">
-                            {{form.message}}
-                            <h5>Skills required</h5>
-                            <div class="flex-row">
-                                <tag>Adobe XD</tag>
-                                <tag>{{detail.skills}}</tag>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="top_dash_details box-container flex-column">
-                        <div class="header_dash align-center">
-                            <h4>Apply on this project</h4>
-                        </div>
-                        <div class="p_con post-con">
-                            <form action="" method="POST">
+                                <div class="align-items flex-row align-center">
+                                    <h4>{{reply.price}} AZN &nbsp;</h4>
+                                    <p>in {{reply.duration}} days</p>
+                                </div>
                                 
-                                <div class="bid-grid">
-                                    {% csrf_token %}
-                                    {{form.non_field_errors}}
-                                    {{form.non_field_error}}
-                                    {% for error in form.non_field_errors %}
-                                    <small>{{error}}</small>
-                                    {% endfor %}
-                                    
-                                    <div class="flex-column">
-                                        <h5>Bid Amount</h5>
-                                        {{form.price}}
-                                        {% for error in form.price.errors %}
-                                            <small>{{error}}</small>
-                                        {% endfor %}
-                                    </div>
-                                    <div class="flex-column">
-                                        <h5>This project will be delivered in</h5>
-                                        {{form.duration}}
-                                        <div class="input_details">
-                                            {% for error in form.duration.errors %}
-                                                <small>{{error}}</small>
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field_con">
-                                    <h5>Describe your proposal</h5>
-                                    
-                                    {{form.reply}}
-                                    <div class="input_details">
-                                        <div class="flex-column">
-                                            {% for error in form.reply.errors %}
-                                            <small>{{error}}</small>
-                                            {% endfor %}
-                                        </div>
-                                        <span for=""></span>
-                                    </div>
-                                </div>
-                                <div class="space-between">
-                                    <div></div>
-                                    <button class="btnb">Apply</button>
-                                </div>
-                            </form>
+                            </div>
+                            <div class="p_con">
+                                <p>{{reply.reply}}</p>
+                            </div>
                         </div>
-                        
-                    </div>
+                    {% endfor %}
+
+                    {% include 'includes/pagination.html' %}
+                    
 
                     
-                                    
+           
                 </div>
                 <div class="card_container_right">
                     <div class="info_box top_dash_details box-container">

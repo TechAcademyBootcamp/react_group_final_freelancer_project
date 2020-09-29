@@ -293,7 +293,7 @@ input:focus, textarea:focus{
     border: 1px solid var(--main-orange);
     color: var(--main-color);  
 }
-input::placeholder{
+input::placeholder, textarea::placeholder{
     color: var(--border-color);  
 }
 
@@ -305,11 +305,13 @@ input[type='file']{
     border: 1px dashed var(--border-color);
 }
 
-
+textarea::placeholder,input::placeholder{
+    color: var(--second-color);
+}
 
 textarea{
     border: 1px solid var(--border-color);
-    padding: 9px 17px;
+    padding: 9px 10px;
     transition: border 0.2s;
     width: 100%;
     font-size: 14px;

@@ -1,5 +1,5 @@
 from django.db import models
-from accounts.models import CustomUser
+from accounts.models import CustomUser, Skill
 from datetime import datetime
 
 
@@ -31,8 +31,8 @@ class Project(models.Model):
     price_max = models.PositiveIntegerField(verbose_name='Maximum Price')  
  
     admit_time = models.DateTimeField(default=datetime.now)  
-    status = models.CharField('status',choices=STATUS_TYPES, max_length=250) 
-    skills=models.CharField('skills',max_length=50)
+    status = models.IntegerField('status',choices=STATUS_TYPES) 
+    skills=models.ForeignKey(Skill, on_delete=models.CASCADE)
     upload_files = models.FileField(upload_to='media/',blank=True, null=True)
 
 
@@ -48,5 +48,15 @@ class Project(models.Model):
 class  Replies(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     project=models.ForeignKey(Project,on_delete=models.CASCADE)
-    reply=models.CharField('Reply',max_length=300,)
-    duration=models.DateTimeField(default=datetime.now,)
+    reply=models.TextField('Reply',max_length=2500)
+    duration=models.IntegerField('Duration' )
+    price=models.DecimalField('Price',max_digits = 10, decimal_places = 2)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Proposals(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    project=models.ForeignKey(Project,on_delete=models.CASCADE, related_name='proposals')
+    
+    created_at=models.DateTimeField(auto_now_add=True)
