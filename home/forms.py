@@ -9,12 +9,17 @@ LEVEL_TYPES=((1, 'Entry Level'), (2, 'Intermediate'), (3, 'Expert'))
 class ProjectForm(forms.ModelForm):
     title=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Title'}))
     # description=forms.(widget=forms.TextInput(attrs={'placeholder': 'Long description'}))
-    price_min=forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': 'Minimum price'}))
-    price_max=forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder': 'Maximum price'}))
+    price_min=forms.DecimalField(widget=forms.NumberInput(attrs={'placeholder': 'Minimum price'}))
+    price_max=forms.DecimalField(widget=forms.NumberInput(attrs={'placeholder': 'Maximum price'}))
     skills=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Skills'}))
     upload_files=forms.FileField(widget=forms.FileInput())
-   
+    
 
+    def __init__(self, *args, **kwargs):
+        super(ProjectForm, self).__init__(*args, **kwargs)
+        
+        self.fields['price_min'].widget.attrs['min'] = 10   
+        
 
     class Meta:
         model=Project

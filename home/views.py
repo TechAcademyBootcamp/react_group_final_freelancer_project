@@ -5,6 +5,10 @@ from home.forms import ProjectForm,RepliesForm
 from django.contrib import messages
 from home.models import Project, Replies
 
+from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
+from home.forms import ProjectForm,RepliesForm
+from django.contrib import messages
+from .models import Project
 # Create your views here.
 
 class HomeView(TemplateView):
@@ -62,7 +66,7 @@ class MyProfileView(TemplateView):
 class MyProfileEditView(TemplateView):
     template_name='my-profile-edit.html'
 
-class SearchView(TemplateView):
+class SearchView(ListView):
     template_name='search.html'
     
 class MyProjectsEmployerView(ListView):
