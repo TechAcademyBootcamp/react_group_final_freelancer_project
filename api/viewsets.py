@@ -44,8 +44,16 @@ class ProfileViewSet(ModelViewSet):
     permission_classes=[IsAuthenticated,]
     serializer_class=ProfileSerializer
     queryset=CustomUser.objects.all()
+    http_method_names = ['patch']
 
-    # http_method_names = [u'get', u'post', u'put', u'patch', u'delete', u'head', u'options', u'trace']
+    def patch(self, request, pk):
+        print("ASDDSADASDSADDAS")
+        testmodel_object = self.get_object(pk)
+        serializer = TestModelSerializer(testmodel_object, data=request.data, partial=True) # set partial=True to update a data partially
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(code=201, data=serializer.data)
+        return JsonResponse(code=400, data="wrong parameters")
 
 
 

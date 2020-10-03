@@ -18,9 +18,11 @@ from django.urls import path,include
 from home.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+from django_email_verification import urls as mail_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('email/', include(mail_urls)),
     path('',include('home.urls')),
     path('accounts/',include('accounts.urls')),
     path('inbox/',include('inbox.urls')),

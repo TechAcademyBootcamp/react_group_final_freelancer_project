@@ -25,20 +25,27 @@ i.edit_i:hover{
     border: 1px solid var(--border-color);
     background-color: white;
 }
+.grades .right_main_details{
+    flex-direction: row;
+    justify-content: space-between;
+}
 .grad{
     display: flex;
     justify-content: space-between;
 }
-
+.grade_1{
+    display: flex;
+}
 .my_profile_con .grade_1{
     width: 100%;
     /* height: 130px; */
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-bottom: var(--gap);
     display: flex;
     padding: var(--gap);
     align-items: center;
     box-sizing: border-box;
+    display: flex;
 }
 
 .grade_1_left{
@@ -46,7 +53,7 @@ i.edit_i:hover{
     height: var(--bar-height);
     border-radius: 100px;
     background-color: var(--border-color);
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-right: var(--gap);
     display: table;
 }
@@ -55,7 +62,7 @@ i.edit_i:hover{
     display: flex;
     flex-direction: column;
     /* flex-basis: auto; */
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: var(--bar-height);
     width: 100%;
 }
@@ -63,13 +70,13 @@ i.edit_i:hover{
     display: flex;
     justify-content: space-between;
     flex-basis: 50%;
-    border: 1px solid red;
-    align-items: center;
+    /* border: 1px solid red; */
+    align-items: flex-start;
 
 }
 .grade_1_right_down{
     flex-basis: 50%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .my_profile_con .grade_2{
@@ -81,7 +88,7 @@ i.edit_i:hover{
     flex-basis: 75%;
     height: auto;
     width: 100%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin-right: var(--gap);
 }
 
@@ -104,7 +111,7 @@ i.edit_i:hover{
     width: 100%;
     flex-basis: 25%;
     height: auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 
@@ -115,56 +122,26 @@ i.edit_i:hover{
     color: var(--border-color);
 }
 
-
-.edit-icon{
-    color: var(--main-orange);
-    padding: 8px;
-    border-radius: 50px;
-    background-color: white;
-    box-shadow: 0px 0px 15px 1px rgb(226, 226, 226);
-    cursor: pointer;
-    transition: box-shadow var(--transition-time);
-    margin-left: 10px;  
-    font-size: 14px;  
-    height: fit-content;
-
-    
-}
-.edit-icon:hover{
-    box-shadow: 0px 0px 15px 2px rgb(219, 219, 219);
-}
-
-.edit-bar{
-    position: fixed;
-    right: -500px;
-    width: 500px;
-    height: 100vh;
-    background-color: white;
-    box-shadow: 0px 0px 15px 1px rgb(226, 226, 226);
-    transition: right var(--transition-time);
-}
-.open-edit-bar{
-    right: 0;
-}
-.edit-bar .top{
-    background-color: var(--background-color-2);
-    border-bottom: 1px solid var(--border-color);  
-}
-.edit-bar input{
-    margin: 3px 0;
-}
-.edit-bar btnb{
-    margin: 10px 0;
-}
-.edit-bar .padding{
-    padding: 20px;
-}
-.edit-bar textarea{
-    height: 130px;
-}
-.edit-bar h4{
-    margin: 0;
-}
 .grade_2 h4{
     margin-top: 0;
 }
+
+h4,p,h5{
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.name-con h4{
+    margin: 3px 0;
+}
+
+.card_container_right{
+    margin: 0;
+}
+h5{
+    display: flex;
+    align-items: center;
+}
+
+

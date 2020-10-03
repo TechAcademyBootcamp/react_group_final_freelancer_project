@@ -35,11 +35,25 @@
         
     <!-- BACKGROUND -->
 
+    <sections style="margin-top:100px">
+        <div class="custom-container">
+            {% if messages %}
+            <div class="box-con message-con message-open">
+                <div class="message-text-con space-between">
+                    <div class="flex-column">
+                        {% for message in messages %}
+                        <h5>{{message}}</h5>
+                        {% endfor %}    
+                    </div>
+                    <i class="fas fa-times" onclick="close_message()"></i>
+                </div>
+            </div>
+            {% endif %}
+            {% block content %}
 
-    {% block content %}
-
-    {% endblock %}
-
+            {% endblock %}
+        </div>
+    </sections>
     
     
 </body>
@@ -86,7 +100,9 @@
         }
         prevScrollpos = currentScrollPos;
         }
-
+    function close_message(){
+        $('.message-con').toggleClass('message-open')
+    }
 </script>
 
 {% endblock %}

@@ -37,19 +37,21 @@
     <table class="table">      
         <thead>
           <tr>
-            <th scope="col">ID</th>
+            <th scope="col">PROJECT ID</th>
             <th scope="col">PROJECT NAME</th>
-            <th scope="col">PRICE</th>
+            <th scope="col">PROJECT PRICE </th>
+            <th scope="col">BID AMOUNT </th>
             <th scope="col">CREATED AT</th>
           </tr>
         </thead>
         <tbody>
-          {% for project in object_list %}
+          {% for reply in object_list %}
           <tr>
-            <th scope="row">{{project.id}}</th>
-            <td>{{project.title}}</td>
-            <td>{{project.price_min}}{{project.currency}}-{{project.price_max}}{{project.currency}}</td>
-            <td>{{project.created_at}}</td>
+            <th scope="row">{{reply.project.id}}</th>
+            <td>{{reply.project.title}}</td>
+            <td>{{reply.project.price_min}}{{reply.project.currency}}-{{reply.project.price_max}}{{reply.project.currency}}</td>
+            <td>{{reply.price}} {{reply.project.currency}}</td>
+            <td>{{reply.created_at}}</td>
           </tr>
           {% endfor %}
          

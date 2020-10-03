@@ -5,6 +5,8 @@ body{
     background-color: var(--background-color-2) !important;
     user-select: none;
     -moz-user-select: none;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 *{

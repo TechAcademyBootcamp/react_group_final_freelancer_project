@@ -10,7 +10,7 @@ urlpatterns = [
 
     path('get-started/', GetStartedView.as_view(), name='get-started'),
     path('my-profile/', login_required(MyProfileView.as_view()), name='my-profile'),
-    path('my-profile-edit/', login_required(MyProfileEditView.as_view()), name='my-profile'),
+    path('my-profile-edit/', login_required(MyProfileEditView.as_view()), name='my-profile-edit'),
 
     path('my-projects/employer', login_required(MyProjectsEmployerView.as_view()), name='my-projects-employer'),
     path('my-projects/freelancer', login_required(MyProjectsFreelancerView.as_view()), name='my-projects-freelancer'),
