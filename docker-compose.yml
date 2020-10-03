@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-  nginx-proxy:
-    image: jwilder/nginx-proxy
-    restart: "always"
-    ports:
-      - "80:80"
-    volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
-      - ./nginx/vhost/:/etc/nginx/vhost.d:ro
-      - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
-      - ./static/:/code/static/
-      - ./media/:/code/media/
+  # nginx-proxy:
+  #   image: jwilder/nginx-proxy
+  #   restart: "always"
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - /var/run/docker.sock:/tmp/docker.sock:ro
+  #     - ./nginx/vhost/:/etc/nginx/vhost.d:ro
+  #     - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
+  #     - ./static/:/code/static/
+  #     - ./media/:/code/media/
 
   postgres:
     image: postgres
@@ -24,20 +24,24 @@ services:
       POSTGRES_USER: 'freelancer_db_user'
       POSTGRES_PASSWORD: '12345'
 
-  web:
-    build: .
-    restart: "always"
-    ports:
-      - 8000:8000
-    volumes:
-      - .:/code
-      - ./static/:/code/static/
-      - ./media/:/code/media/
-    depends_on:
-      - "postgres"
-    environment:
-      - VIRTUAL_HOST=13.58.21.90,localhost
-      - VIRTUAL_PORT=8000
-      - DEBUG=False
+  # web:
+  #   build: .
+  #   restart: "always"
+  #   ports:
+  #     - 8000:8000
+  #   volumes:
+  #     - .:/code
+  #     - ./static/:/code/static/
+  #     - ./media/:/code/media/
+  #   depends_on:
+  #     - "postgres"
+  #   environment:
+  #     - VIRTUAL_HOST=13.58.21.90,localhost
+  #     - VIRTUAL_PORT=8000
+  #     - DEBUG=False
 
-  
+  redis:
+    image: redis
+    restart: "always"
+    ports: 
+      - 6379:6379
