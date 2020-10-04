@@ -37,7 +37,6 @@ class ProjectForm(forms.ModelForm):
 class RepliesForm(forms.ModelForm): 
     class Meta:
         model=Replies
-<<<<<<< HEAD
         fields=['reply','duration','price']
         widgets = {
             'duration':forms.NumberInput(attrs={
@@ -52,7 +51,3 @@ class RepliesForm(forms.ModelForm):
             
 
         }
-=======
-        fields=['reply','duration']
-        
->>>>>>> idris
