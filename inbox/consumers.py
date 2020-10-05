@@ -1,6 +1,8 @@
 import json
 from asgiref.sync import async_to_sync
+from channels.db import database_sync_to_async
 from channels.generic.websocket import WebsocketConsumer
+from inbox.models import Group, Message
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
@@ -15,7 +17,6 @@ class ChatConsumer(WebsocketConsumer):
         
         self.accept()
         
-
     def disconnect(self, close_code):
         # Leave room group
         async_to_sync(self.channel_layer.group_discard)(
@@ -27,22 +28,42 @@ class ChatConsumer(WebsocketConsumer):
     # Receive message from WebSocket
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
+        print(text_data_json)
         message = text_data_json['message']
-
-        # Send message to room group
-        async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name,
-            {
-                'type': 'chat_message',
-                'message': message
-            }
-        )
+        group_id = text_data_json['group_id']
+        user = self.scope['user']
+        self.save_message(user, group_id, message)
+        print(user)
+        user_ids = self.get_users(group_id)
+        print(user_ids)
+        for user_id in user_ids:
+            room_group_name = 'chat_%d' % user_id
+            # Send message to room group
+            async_to_sync(self.channel_layer.group_send)(
+                room_group_name,
+                {
+                    'type': 'chat_message',
+                    'message': message,
+                    'user_id': user.id
+                }
+            )
 
     # Receive message from room group
     def chat_message(self, event):
         message = event['message']
-
+        user_id = event['user_id']
         # Send message to WebSocket
         self.send(text_data=json.dumps({
-            'message': message
+            'message': message,
+            'user_id': user_id
         }))
+
+    # @database_sync_to_async
+    def get_users(self, group_id):
+        group = Group.objects.get(pk=group_id)
+        return group.users.values_list('id', flat=True)
+
+    def save_message(self, user, group_id, message):
+        group = Group.objects.get(pk=group_id)
+        Message.objects.create(sender=user, group=group, text=message)
+        
