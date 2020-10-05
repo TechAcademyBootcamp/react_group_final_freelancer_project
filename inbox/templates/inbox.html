@@ -19,75 +19,14 @@
     <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
     
 
-    <!-- BACKGROUND -->
-        
-    <!-- BACKGROUND -->
+</head>
+<body>
+    <div class="post_project">
+        <div>
 
-
-    <div class="inbox-con flex-row">
-        <div class="inbox flex-column">
-            <div class="inbox_1 flex-column">
-                <div class="search flex-row">
-                    <input type="text">
-                    <button type="submit"><i class="fas fa-search"></i></button>
-                </div>
-                <div class="p_all space-between" class="space-between">
-                    <p class="p_on">ACTIVE</p>
-                    <p class="p_off">UNREAD</p>
-                    <p class="p_off">SUPPORT</p>
-                    <p class="p_off">ARCHIVED</p>
-                </div>
-            </div>
-            <div class="inbox_2 flex-column">
-                {% for group in groups %}
-                <div class="card flex-row align-center">
-                    <div class="card_image">
-
-                    </div>
-                    <div class="flex-column align">
-                        <h5>
-                            {{group.title}}
-                        </h5>
-                        <span>
-                            asdsd
-                        </span>
-                    </div>
-                </div>
-                {% endfor  %}
-                
-            </div>
         </div>
-        <div class="messages flex-column">
-            <div id="messages">
-                <div class="person2">
-                    <div class="flex-row">
-                        <div class="card_image">
-                            
-                        </div>
-                        <div class="flex-column">
-                            <p class="message">
-                                adasdadasdasd
-                            </p>
-                            <!-- <p class="message">
-                                adasdadasdasdasd
-                            </p> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="person1">
-                    <div class="flex-row">
-                        <div class="card_image">
+        <div>
 
-                        </div>
-                    </div>
-                </div>
-        </div>
-
-            <form class="write-message">
-                
-                <input type="text" autofocus=true id="chat-message-input">
-                <input type="submit" id="chat-message-submit">
-            </form>
         </div>
     </div>
     <sections>
@@ -99,7 +38,6 @@
                             <div class="form_header">
                                 <div class="image-small">
     
-<<<<<<< HEAD
                                 </div>
                             </div>
                             <div class="form_accounts">
@@ -153,19 +91,6 @@
                             <div class="form_header">
                                 <div class="flex-row ">
                                     <div class="image-small">
-=======
-</body>
-</html>
-<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-<script>
-    // $('.counter').counterUp({
-    //     delay: 10,
-    //     time: 1000
-    // });
-
-    elements=$('.p_all p');
->>>>>>> 73e18d78ff4444a2cc3f2175f50ab124a4b49399
     
                                     </div>
                                     <div class="flex-column top-padding">
@@ -231,7 +156,6 @@
                 var element=elements[i];
                 element.classList.remove('account-selected')
             }
-<<<<<<< HEAD
             this.classList.add('account-selected')
             
         })
@@ -239,103 +163,3 @@
     </script>
 </body>
 </html>
-=======
-
-            this.classList.add('p_on')
-        
-        });
-
-    }
-
-    
-
-</script>
-
-
-<script>
-
-    const roomName = "{{request.user.id}}";
-    let group_id = 1;
-    var chatSocket = new WebSocket(
-        'ws://'
-        + window.location.host
-        + '/ws/chat/'
-        + roomName
-        + '/'
-    );
-    
-    
-    chatSocket.onmessage = function(e) {
-        const data = JSON.parse(e.data);
-        console.log(data);
-        let {user_id, message} = data;
-        if (user_id == "{{user.id}}"){
-        document.querySelector('#messages').innerHTML +=  `
-        <div class="person1">
-                <div class="flex-row">
-                    <div class="card_image">
-                        
-                    </div>
-                    <div class="flex-column">
-                        <p class="message">
-                            ${message}
-                        </p>
-                        
-                    </div>
-                </div>
-            </div>`;
-        }
-        else{
-            document.querySelector('#messages').innerHTML +=  `
-        <div class="person2">
-                <div class="flex-row">
-                    <div class="card_image">
-                        
-                    </div>
-                    <div class="flex-column">
-                        <p class="message">
-                            ${message}
-                        </p>
-                        
-                    </div>
-                </div>
-            </div>`;
-        }
-    };
-
-    chatSocket.onclose = function(e) {
-        console.error('Chat socket closed unexpectedly');
-    };
-
-    // document.querySelector('#chat-message-input').focus();
-    // document.querySelector('#chat-message-input').onsubmit = function(e) {
-    //     if (e.keyCode === 13) {  // enter, return
-    //         document.querySelector('#chat-message-submit').click();
-    //     }
-    // };
-    
-
-    document.querySelector('form').onsubmit = function(e) {
-        e.preventDefault();
-        let messageInputDom = document.querySelector('#chat-message-input');
-        let message = messageInputDom.value;
-        data = JSON.stringify(
-                {
-                    'message': message,
-                    'group_id': group_id
-                }
-            )
-        console.log(data)
-        chatSocket.send(data);
-        messageInputDom.value = '';
-        
-    };
-</script>
-
-<script src="https://use.fontawesome.com/dec111573d.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
-{% endblock %}
->>>>>>> 73e18d78ff4444a2cc3f2175f50ab124a4b49399
