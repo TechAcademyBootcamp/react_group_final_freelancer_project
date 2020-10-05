@@ -41,6 +41,7 @@
             <th scope="col">PROJECT NAME</th>
             <th scope="col">PROJECT PRICE </th>
             <th scope="col">BID AMOUNT </th>
+            <th scope="col">DURATION</th>
             <th scope="col">CREATED AT</th>
           </tr>
         </thead>
@@ -51,7 +52,12 @@
             <td>{{reply.project.title}}</td>
             <td>{{reply.project.price_min}}{{reply.project.currency}}-{{reply.project.price_max}}{{reply.project.currency}}</td>
             <td>{{reply.price}} {{reply.project.currency}}</td>
-            <td>{{reply.created_at}}</td>
+            {% if reply.duration < 2 %}
+              <td>{{reply.duration}} Day</td>
+            {% else %}
+              <td>{{reply.duration}} Days</td>
+            {% endif %}
+            <td>{{reply.created_at|date:'j M, Y'}}</td>
           </tr>
           {% endfor %}
          
