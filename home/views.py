@@ -4,9 +4,9 @@ from django.views.generic import TemplateView,DetailView,CreateView,FormView, Li
 from home.forms import ProjectForm,RepliesForm
 from django.contrib import messages
 from home.models import Project, Replies
-
+from django.db.models import Q
 from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
-from home.forms import ProjectForm,RepliesForm
+from home.forms import ProjectForm,RepliesForm,FilterForm
 from django.contrib import messages
 from .models import Project
 # Create your views here.
@@ -66,8 +66,43 @@ class MyProfileView(TemplateView):
 class MyProfileEditView(TemplateView):
     template_name='my-profile-edit.html'
 
-class SearchView(ListView):
-    template_name='search.html'
+class SearchFreelancerView(ListView):
+    template_name='search-freelancer.html'
+    model=Project
+    # def get_queryset(self):
+    #     query = self.request.GET.get('q')
+    #     return Project.objects.filter(name__icontains=query)
+    def get_queryset(self):
+        query = self.request.GET.get('search')
+        print(query)
+        queryset=super().get_queryset()
+        if query:
+            
+            queryset= queryset.filter(
+                Q(title__icontains=query)                               
+            )
+        print(queryset)
+
+        return  queryset
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['form'] = FilterForm(initial={
+            'search': self.request.GET.get('search', ''),
+            
+        })
+
+        return context
+
+
+
+class SearchJobView(TemplateView):
+    template_name='search-job.html'
+    context_object='results'
+    
+     
+   
+    
     
 class MyProjectsEmployerView(ListView):
     template_name='my-projects-employer.html'

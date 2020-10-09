@@ -23,3 +23,9 @@
     justify-content: flex-end;
 }
 
+.flex-end-column{
+    display: none;
+    justify-content: end;
+    align-items: flex-end;
+    flex-direction: column;
+}

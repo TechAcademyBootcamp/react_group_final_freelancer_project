@@ -1,5 +1,6 @@
 from django import forms
 from home.models import Project,Currency ,PRICE_TYPES,Replies
+from django.forms import Form, ChoiceField
 
 
 
@@ -51,3 +52,12 @@ class RepliesForm(forms.ModelForm):
             
 
         }
+
+
+
+class FilterForm(forms.ModelForm):
+    
+    search = forms.CharField(required=False)
+    class Meta:
+        model=Project
+        fields='__all__'

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from accounts.models import CustomUser
-
+from home.models import Project
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -17,6 +17,15 @@ class ProfileSerializer(serializers.ModelSerializer):
             
         )
 
+
+
+class SearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = '__all__'
+
+
+        
 # class ReadRecipeSerializer(serializers.ModelSerializer):
 #     category=CategorySerializer()
 #     # tags=TagSerializer()

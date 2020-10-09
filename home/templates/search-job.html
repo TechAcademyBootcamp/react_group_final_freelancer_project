@@ -26,6 +26,7 @@
                    
 
                     </div>
+                    <div id="test-slider"></div>
                     <div class="slidecontainer">
                         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
                         <p>Value: <span id="demo"></span></p>
@@ -62,9 +63,9 @@
                 </div>
                 <div  class="base_middle border-bottom">
                     <div class="top" style="border: 0px; margin-top:30px;">
-                        <select style="margin-right: 20px;"  name="" id="" >
-                            <option   value="">Jobs</option>
-                            <option value="">Freelancers</option>
+                        <select style="margin-right: 20px; " onchange="location = this.value;" name="" id="" >
+                        <option   value=""  selected>Jobs</option>
+                            <option value="{%url 'searchfreelancer'%}">Freelancers</option>
                         </select>
                         <input type="text">
 
@@ -182,12 +183,10 @@
                     </div>                                 
                 </div>  
                 <div class="middle border-bottom">
-                    {%for result in results%}
                     <div class="mid_title">
                     <h4 class="title" style="font-weight:700;">
-                            {{result.title}}
+                            Title
                         </h4>
-                    {%endfor%}
                         <p>
                             <b>Hourly</b>   <span style="font-weight: 600;">-remaining  Expert  Time:More than 6 Months,10-30 hours/week</span>
                         </p>
@@ -260,7 +259,7 @@
     </div>
 </sections>
  
-
+<!-- 
 <script>
     $('#input_1_5').change(function(){
         var electricbill = $(this).val();
@@ -297,7 +296,7 @@
             var electricrange = '$0-50';
         }
     });
-</script>
+</script> -->
 
 <script>
     var slider = document.getElementById("myRange");
@@ -307,5 +306,21 @@
     slider.oninput = function() {
         output.innerHTML = this.value;
     }
+</script>
+<script>
+    var slider = document.getElementById('test-slider');
+    noUiSlider.create(slider, {
+        start: [20, 80],
+        connect: true,
+        step: 1,
+        orientation: 'horizontal', // 'horizontal' or 'vertical'
+        range: {
+            'min': 0,
+            'max': 100
+        },
+        format: wNumb({
+            decimals: 0
+        })
+    });
 </script>
 {% endblock %}

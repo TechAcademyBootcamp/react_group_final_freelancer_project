@@ -23,6 +23,9 @@ class Level(models.Model):
     def __str__(self):
         return self.level_type
 
+
+
+
 class Project(models.Model):
     title= models.CharField(max_length=50, verbose_name='title')
     description=models.TextField()  

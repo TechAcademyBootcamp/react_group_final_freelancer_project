@@ -3,6 +3,8 @@ from django.contrib.auth.admin import UserAdmin
 from accounts.models import *
 # Register your models here.
 
+class SkillAdmin(admin.ModelAdmin):
+    list_display=('title',)
 
 admin.site.register(CustomUser, UserAdmin)
-admin.site.register(Skill)
+admin.site.register(Skill,SkillAdmin)
