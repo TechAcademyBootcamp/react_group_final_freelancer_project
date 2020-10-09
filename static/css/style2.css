@@ -38,7 +38,8 @@ body{
     --navbar-margin-side:30px;
 
     --medium-btn-padding: 5px 15px;
-    
+
+    --shadow: 0 0px 15px 1px rgba(0, 0, 0, 0.1);
 }
 sections{
     display: flex;
@@ -48,6 +49,7 @@ sections .container5{
     width: var(--container-width);
     max-width: 100%;
     min-height: 550px;
+    margin:0 var(--navbar-margin-side);
 
     
 }
@@ -365,7 +367,7 @@ input::-webkit-file-upload-button:hover {
     align-items: center;
 }
 
-button, btna,btnb{
+button, btna,btnb, .btnb, .btna{
     font-size: 14px;
     color: var(--main-color);
     font-weight: bold;
@@ -391,14 +393,50 @@ button:hover{
 btna:hover{
     border-color: var(--main-orange);
 } */
-btnb{
+btnb, .btnb{
     background-color: var(--main-orange);
     color: var(--main-white);
-    border:0;   
+    border-color: var(--main-orange);   
     transition: background-color var(--transition-time);
 }
-btnb:hover{
+btnb:hover, .btnb:hover{
     background-color: var(--black-orange);
+    color: white;
+}
+
+.box-con{
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    background-color: var(--main-white);
+    margin-bottom: 20px;
 }
 
 
+.message-con{
+    /* border-top: 0 ; */
+    display: none;
+    /* transition: max-height var(--transition-time); */
+    box-sizing: border-box;
+}
+.message-text-con{
+    border-left: 5px solid var(--main-orange);
+    padding-left: 40px;
+    height: 100%;
+    overflow: hidden;
+}
+.message-text-con h4{
+    color: var(--main-orange);
+}
+.message-open{
+    display: flex;
+    flex-direction: column;
+}
+
+.p-button{
+    transition: color var(--transition-time);
+    cursor: pointer;
+}
+.p-button:hover{
+    color: var(--main-orange);
+}

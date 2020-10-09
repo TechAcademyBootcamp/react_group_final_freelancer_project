@@ -43,6 +43,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django_email_verification',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -164,3 +165,18 @@ CHANNEL_LAYERS={
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
 }
+
+
+# EMAIL
+
+EMAIL_ACTIVE_FIELD = 'email_auth'
+EMAIL_SERVER = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_ADDRESS = 'herou.business@gmail.com'
+EMAIL_FROM_ADDRESS = 'herou.business@gmail.com'
+EMAIL_PASSWORD = 'huyahuy123' 
+EMAIL_MAIL_SUBJECT = 'Confirm your email'
+EMAIL_MAIL_HTML = 'mail_body.html'
+EMAIL_MAIL_PLAIN = 'mail_body.txt'
+EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
+EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'

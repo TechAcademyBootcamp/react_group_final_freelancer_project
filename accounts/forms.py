@@ -21,13 +21,36 @@ class LoginForm(AuthenticationForm):
         model=CustomUser
         fields='__all__'
 
-class ProfileForm(forms.ModelForm):
-    def clean_regions(self):
-        regions = self.cleaned_data['regions']
-        if len(regions) > 5:
-            raise forms.ValidationError('You can add maximum 5 skills')
-        return regions
+# class ProfileForm(forms.ModelForm):
+#     def clean_regions(self):
+#         regions = self.cleaned_data['regions']
+#         if len(regions) > 5:
+#             raise forms.ValidationError('You can add maximum 5 skills')
+#         return regions
 
-    class Meta:
-        model = CustomUser
-        fields = '__all__'
+#     class Meta:
+#         model = CustomUser
+#         fields = '__all__'
+
+
+
+
+# EDIT PROFILE 
+
+class ProfileForm(forms.ModelForm):
+    first_name=forms.CharField(required=False,widget=forms.TextInput(attrs={'placeholder': 'First name'}))
+    last_name=forms.CharField(required=False,widget=forms.TextInput(attrs={'placeholder': 'Last name'}))
+
+    class Meta():
+        model=CustomUser
+        fields=['first_name','last_name','hourly_price','title','overview']
+
+        widgets={
+            'title':forms.TextInput(attrs={
+                'placeholder':"Enter your title"
+            }),
+            'overview':forms.Textarea(attrs={
+                'placeholder':"Enter your overview"
+            }),
+        }
+

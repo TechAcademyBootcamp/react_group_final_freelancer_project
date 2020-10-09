@@ -1,216 +1,361 @@
-
-{% extends 'includes/base2.html' %}
+{% extends 'includes/base3.html' %}
+{% load static %}
+{% load filters %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'css/csa.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/project-detail.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/side-bar.css' %}">
+<link rel="stylesheet" href="{% static 'css/my-profile.css' %}">
 
+    <!-- <div class="top_blue">
+        <button style="padding-top:80px">
+            Details
+        </button>
+        <button style="padding-top:80px">
+            Proposal
+        </button>
+    </div> -->
 
-
-    <div id="edit-bar-1" class="edit-bar close-edit-bar">
+    <form method="POST" action="#">
         
-        <div class="top space-between padding">
-            <h4>Edit your Fullname</h4>
-            <i class="fas fa-times" onclick="close_bar(1)"></i>
-        </div>
-        <div class="padding">
-            <h5>Your Name and Surname</h5>
-            <input name='first_name' type="text" id="input-1" placeholder="Name" value="{{user.first_name}}">
-            <div class="input_details">
-                <small name='error-first_name'></small>
-                <span for=""></span>
+        <div id="edit-bar-1" class="edit-bar {% if form.first_name.errors or form.last_name.errors %} open-edit-bar{% endif %}">
+            
+            <div class="top space-between padding">
+                <h4>Edit your Fullname</h4>
+                <i class="fas fa-times" onclick="close_bar(1)"></i>
             </div>
-            <input name="last_name" type="text" id="input-1" placeholder="Surname" value="{{user.last_name}}">
-            <div class="input_details">
-                <small name='error-last_name'></small>
-                <span for=""></span>
-            </div>
-            <div class="space-between">
-                <div></div>
-                <btnb onclick="save(1)">Save</btnb>
-            </div>
-        </div>
-    </div>
-    <div id="edit-bar-2" class="edit-bar ">
-        
-        <div class="top space-between padding">
-            <h4>Edit your title</h4>
-            <i class="fas fa-times" onclick="close_bar(2)"></i>
-        </div>
-        <div class="padding">
-            <h5>Your title</h5>
-            <p>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</p>
-            <input name="title" id="input-2" type="text" placeholder="Title" value="{{user.title}}">
-            <div class="input_details">
-                <small name='error-title'></small>
-                <span for=""></span>
-            </div>
-            <div class="space-between">
-                <div></div>
+            <div class="padding">
+            
+                <h5>Your Name and Surname</h5>
                 {% csrf_token %}
-                <btnb onclick="save(2)" id="btnb-2">Save</btnb>
-            </div>
-        </div>
-    </div>
-    <div id="edit-bar-3" class="edit-bar ">
-        
-        <div class="top space-between padding">
-            <h4>Overview</h4>
-            <i class="fas fa-times" onclick="close_bar(3)"></i>
-        </div>
-        <div class="padding">
-            <h5>Your Overview</h5>
-            <p>Use this space to show clients you have the skills and experience they're looking for.
-                <ul>
-                    <li><p>Describe your strengths and skills</p></li>
-                    <li><p>Highlight projects, accomplishments and education</p></li>
-                    <li><p>Keep it short and make sure it's error-free</p></li>
-                </ul>
-                
-            <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea>
-            <div class="input_details">
-                <small name='error-overview'></small>
-                <span for=""></span>
-            </div>
-            <div class="space-between">
-                <div></div>
-                <btnb onclick="save(3)">Save</btnb>
-            </div>
-        </div>
-    </div>
-    <div id="edit-bar-4" class="edit-bar ">
-        
-        <div class="top space-between padding">
-            <h4>Hourly Prize</h4>
-            <i class="fas fa-times" onclick="close_bar(4)"></i>
-        </div>
-        <div class="padding">
-            <h5>Your Overview</h5>
-            <p>Use this space to show clients you have the skills and experience they're looking for.
-                <ul>
-                    <li><p>Describe your strengths and skills</p></li>
-                    <li><p>Highlight projects, accomplishments and education</p></li>
-                    <li><p>Keep it short and make sure it's error-free</p></li>
-                </ul>
-                
-            <input name="hourly_prize" id='input-4' placeholder="Hourly Prize" value="{{user.hourly_prize}}">
-            <div class="input_details">
-                <small name='error-hourly_prize'></small>
-                <span for=""></span>
-            </div>
-            <div class="space-between">
-                <div></div>
-                <btnb onclick="save(4)">Save</btnb>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- EDITTTTTTTTTT -->
-
-
-
-
-
-
-    <div class="my_profile_con">
-        <div class="grade_1 grades">
-            <div class="grade_1_left">
-
-            </div>
-            <div class="grade_1_right">
-                <div class="grade_1_right_up">
-                    <div class="align-center">
-                        <h4 name='C-first_name' class="align-center">{{user.first_name}} </h4>
-                        &nbsp;
-                        <h4 name='C-last_name' class="align-center">{{user.last_name}} </h4>
-                        <i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i>
+                {{form.first_name}}
+                <!-- <input name='first_name' type="text" id="input-1" placeholder="Name" value="{{user.first_name}}"> -->
+                <div class="input_details">
+                    <div class="flex-column">
+                        {% for error in form.first_name.errors %}
+                        <small name='error-first_name'>{{error}}</small>
+                        {% endfor %}
                     </div>
-                    <div>
-                        <button>See Public View</button>
-                        <btnb>Edit Profile</btnb>
+                    <span for=""></span>
+                </div>
+                {{form.last_name}}
+                <!-- <input name="last_name" type="text" id="input-1" placeholder="Surname" value="{{user.last_name}}"> -->
+                <div class="input_details">
+                    <div class="flex-column">
+                        {% for error in form.last_name.errors %}
+                        <small name='error-first_name'>{{error}}</small>
+                        {% endfor %}
                     </div>
+                    <span for=""></span>
+                </div>
+                <div class="space-between">
+                    <div class="flex-column">
+                        {% for error in form.non_field_errors %}
+                            <small name='error-first_name'>{{error}}</small>
+                        {% endfor %}
+                    </div>
+                    <!-- <button type="submit" class="btnb" onclick="save(1)">Save</btnb> -->
+                    <button type="submit"  name='fullname' class="btnb">Save</button>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div id="edit-bar-2" class="edit-bar {% if form.title.errors %} open-edit-bar{% endif %}">
+            
+            <div class="top space-between padding">
+                <h4>Edit your title</h4>
+                <i class="fas fa-times" onclick="close_bar(2)"></i>
+            </div>
+            <div class="padding">
+                <h5>Your title</h5>
+                <p>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</p>
+                <!-- <input name="title" id="input-2" type="text" placeholder="Title" value="{{user.title}}"> -->
+                {{form.title}}
+                <div class="input_details">
+                    <div class="flex-column">
+                        {% for error in form.title.errors %}
+                        <small name='error-first_name'>{{error}}</small>
+                        {% endfor %}
+                    </div>
+                    <span for=""></span>
+                </div>
+                <div class="space-between">
+                    <div class="flex-column">
+                        {% for error in form.non_field_errors %}
+                        <small>{{error}}</small>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" name="Title" class="btnb">Save</button>
+                    <!-- <btnb onclick="save(2)" id="btnb-2">Save</btnb> -->
+                </div>
+            </div>
+        </div>
+        <div id="edit-bar-3" class="edit-bar {% if form.overview.errors %} open-edit-bar{% endif %}">
+            <div class="top space-between padding">
+                <h4>Overview</h4>
+                <i class="fas fa-times" onclick="close_bar(3)"></i>
+            </div>
+            <div class="padding">
+                <h5>Your Overview</h5>
+                <p>Use this space to show clients you have the skills and experience they're looking for.
+                    <ul>
+                        <li><p>Describe your strengths and skills</p></li>
+                        <li><p>Highlight projects, accomplishments and education</p></li>
+                        <li><p>Keep it short and make sure it's error-free</p></li>
+                    </ul>
                     
+                <!-- <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea> -->
+                {{form.overview}}
+                <div class="input_details">
+                    <div class="flex-column">
+                        {% for error in form.overview.errors %}
+                        <small>{{error}}</small>
+                        {% endfor %}
+                    </div>
+                    <span for=""></span>
                 </div>
-                <div class="grade_1_right_down">
+                <div class="space-between">
+                    <div class="flex-column">
+                        {% for error in form.non_field_errors %}
+                            <small name='error-first_name'>{{error}}</small>
+                        {% endfor %}
+                    </div>
+                    <!-- <btnb onclick="save(3)">Save</btnb> -->
+                    <!-- <button type="submit" class="btnb" name="overview">Save</button> -->
+                    <button type="submit" name='Overview' class="btnb">Save</button>
 
                 </div>
             </div>
+        
         </div>
-        <div class="grade_2 ">
-            <div class="grade_2_left grade_part">
-                <div class="grades con">
-                    <div class="space-between">
-                        <div class="flex-row">
-                            {% if user.title %}
-                            <h4 name='C-title' class="align-center">{{user.title}}</h4>
-                            {% else %}
-                            <h4 name='C-title' class="align-center" style='color:var(--main-orange)'>Please enter your title</h4>
-                            {% endif %}
-                            <i onclick="close_bar(2)" class="fas fa-pen edit-icon"></i>
+        <div id="edit-bar-4" class="edit-bar {% if form.hourly_price.errors %} open-edit-bar{% endif %}">
+            <div class="top space-between padding">
+                <h4>Change hourly rate</h4>
+                <i class="fas fa-times" onclick="close_bar(4)"></i>
+            </div>
+            <div class="padding">
+                <h5>Hourly Rate</h5>
+                <p>Total amount the client will see </p>
+                    
+                <!-- <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea> -->
+                {{form.hourly_price}}
+                <div class="input_details">
+                    <div class="flex-column">
+                        {% for error in form.hourly_price.errors %}
+                        <small>{{error}}</small>
+                        {% endfor %}
+                    </div>
+                    <span for=""></span>
+                </div>
+                <div class="space-between">
+                    <div class="flex-column">
+                        {% for error in form.non_field_errors %}
+                            <small name='error-first_name'>{{error}}</small>
+                        {% endfor %}
+                    </div>
+                    <!-- <btnb onclick="save(3)">Save</btnb> -->
+                    <!-- <button type="submit" class="btnb" name="overview">Save</button> -->
+                    <button type="submit" name='Hourly_price' class="btnb">Save</button>
+
+                </div>
+            </div>
+        
+        </div>
+    </form>
+    <div style="display: flex;flex-direction: row;width: 100%;"> 
+        <div  class="card_container_left">
+
+            <!-- NEW -->
+            <div class="grade_1 grades box-con">
+                <div class="grade_1_left">
+    
+                </div>
+                <div class="grade_1_right">
+                    <div class="grade_1_right_up">
+                        <div class="flex-column">
+                            <div class="name-con align-center">
+                                <h4 name='C-first_name' class="align-center">{{user.first_name}} </h4>
+                                &nbsp;
+                                <h4 name='C-last_name' class="align-center">{{user.last_name}} </h4>
+                                <i onclick="close_bar(1)" class="fas fa-pen edit-icon"></i>
+                            </div>
+                            <p>@{{user.username}}</p>
+                        </div>
+                        <div>
+                            <button>See Public View</button>
+                            <btnb>Edit Profile</btnb>
                         </div>
                         
-                        <div class="flex-row">
+                    </div>
+                    <div class="grade_1_right_down">
+    
+                    </div>
+                </div>
+            </div>
+            <div class="grade_2 ">
+                <div class="grade_2_left grade_part">
+                    <div class="grades box-container">
+                        <div class="right_main_details box-padding">
+                            <div class="flex-row">
+                                {% if user.title %}
+                                <h4 name='C-title' class="align-center">{{user.title}}</h4>
+                                {% else %}
+                                <h4 name='C-title' class="align-center" style='color:var(--main-orange)'>Your title</h4>
+                                {% endif %}
+                                <i onclick="close_bar(2)" class="fas fa-pen edit-icon"></i>
+                            </div>
                             
-                            {% if user.title %}
-                            <h5>$</h5>
-                            <h5 name='C-hourly_price' class="align-center">{{user.hourly_price}}</h4>
-                            <h5>/hr</h5>
+                            
+                            
+                            <div class="flex-row">
+                                <i onclick="close_bar(4)" class="fas fa-pen edit-icon"></i>
+                                
+                                {% if user.hourly_price %}
+                                <h5>$</h5>
+                                <h5 name='C-hourly_price' class="align-center">{{user.hourly_price}}</h4>
+                                <h5>/hr</h5>
+                                {% else %}
+                                <h5 name='C-hourly_price' class="align-center" style='color:var(--main-orange)'>Your hourly price</h4>
+                                {% endif %}
+                                
+            
+                            </div>
+                            
+                        </div>
+                        <div class="last_piece__end endbox flex-row">
+                            {% if user.overview %}
+                                <p  name='C-overview' class="flex-row">{{user.overview}}</p>
                             {% else %}
-                            <h5 name='C-hourly_price' class="align-center" style='color:var(--main-orange)'>Please enter your hourly prize</h4>
+                                <p name='C-overview'  class="flex-row" style="color: var(--main-orange);">Your Overview</p>
                             {% endif %}
-                            
+                            <i onclick="close_bar(3)" class="fas fa-pen edit-icon"></i>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="grades con box-con">
+                        <div class="space-between">
+                            <h4>Front-End Developer </h4>
+                            <div>
+                                
+                            </div>
+                        </div>
+                        <p>asdasdasd</p>
+                    </div>
+                </div>
+
+            </div>
+            <!-- NEW --><!-- NEW -->
+        </div>
         
-                            <i onclick="close_bar(4)" class="fas fa-pen edit-icon"></i>
+
+        <!-- RIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHT -->
+
+
+
+
+
+
+
+
+
+
+
+        <div class="card_container_right">
+            <div class="info_box top_dash_details box-container">
+                <div class="right_main_details box-padding">
+                    <h4 >About</h4>                     
+                </div>
+                <div style="width: 100%;">
+                    
+                    
+                    <div class="last_piece__end endbox">
+                        <h5>{{user.first_name}} {{user.last_name}} &nbsp;</h5> 
+                        <p></p>
+                        <div class="top_right_details">
+                            <i class="fas fa-user icon_detail"></i>
+                            <p>Username: {{user.username}}</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-envelope icon_detail"></i>
+                            <p>Email: {{user.email}}</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-desktop icon_detail"></i>
+                            {% if user|projects <= 1  %}
+                            <p>{{user|projects}}</p><p>&nbsp;posted project</p>  
+                            {% else %}
+                            <p>{{user|projects}}</p><p>&nbsp;posted projects</p>  
+                            {% endif %}                                       
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-clock icon_detail"></i>
+                            <p>Member since {{user.date_joined|date:'j M, Y'}}</p>                                        
                         </div>
                         
                     </div>
-                    <div class="flex-row">
-                        {% if user.title %}
-                            <p  name='C-overview' class="flex-row">{{user.overview}}</p>
-                        {% else %}
-                            <p name='C-overview'  class="flex-row" style="color: var(--main-orange);">Please enter your Overview</p>
-                        {% endif %}
-                        <i onclick="close_bar(3)" class="fas fa-pen edit-icon"></i>
+                    <div class="med_main_details endbox">
+                        <h4 >Verification</h4>                           
                     </div>
-                    
+                    <div class="verification-con endbox">
+                        
+                        <div class="top_right_details">                                        
+                            <i class="fas fa-address-card icon-panel "></i>
+                            <p>Identity not verified</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            {% if user.email_auth %}
+                                <i style="color: var(--main-orange);" class="fas fa-envelope icon-panel"></i>
+                                <p >Email Verified</p>
+                                {% else %}
+                                <div style="width: 100%;" class="space-between align-center">
+                                    <div class="align-center">
+                                        <i class="fas fa-envelope icon-panel"></i>
+                                        <p>Email not Verified</p>  
+                                    </div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" name="email-auth">Resend</button>
+                                    </form>
+                                </div>
+                            {% endif %}                                        
+                        </div>
+                        <div class="top_right_details">
+                            {% if user.active %}
+                                <i style="color: var(--main-orange);" class="fas fa-user-circle icon-panel"></i>
+                                <p style="color: var(--main-orange);">Profile completed</p>
+                                {% else %}
+                                <div style="width: 100%;" class="space-between align-center">
+                                    <div class="align-center">
+                                        <i class="fas fa-user-circle icon-panel"></i>
+                                        <p>Profile not completed</p>  
+                                    </div>
+                                </div>
+                            {% endif %}   
+                            
+                            <p ></p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-phone-alt icon-panel"></i>
+                            <p >Phone number not verified</p>                                        
+                        </div>
+                        
+                    </div>
                     
                 </div>
 
-                <div class="grades con">
-                    <div class="space-between">
-                        <h4>Front-End Developer </h4>
-                        <div>
-                            
-                        </div>
-                    </div>
-                    <p>asdasdasd</p>
-                </div>
-            </div>
-            <div class="grade_2_right grade_part">
-                <div class="grades con">
-                    <div class="align_center">
-                        <h4>Front-End Developer</h4>
-                    </div>
-                    <div class="space_between">
-                        <div class="align-center">
-                            <i class="fas fa-envelope icon-panel"></i>
-                            <p>Email Verified</p>
-                        </div>
-                        <div>
-                            <p>Verified</p>
-                        </div>
-                    </div>
-                </div>
                 
             </div>
+                            
         </div>
+        
+            
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script
-  src="https://code.jquery.com/jquery-3.5.1.min.js"
-  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-  crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/side-bar.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
 
     <script>
         function close_bar(id){
@@ -227,75 +372,6 @@
                 document.getElementById(`edit-bar-${id}`).classList.add('open-edit-bar')
             }
         }
-        
-
-        function save(id){
-            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-            // el=document.querySelector(`#input-${id}`)
-            el=document.querySelectorAll(`#input-${id}`)
-            // char=document.querySelectorAll(`#char-${id}`)
-            dta={
-            }
-            for(var z=0; z < el.length; z++)
-            {
-                value=el[z].value
-                ty=el[z].getAttribute('name')
-                dta[`${ty}`]=value
-                console.log(dta);
-                $(`[name=error-${ty}]`).text('');
-            }
-            
-            
-            $.ajax({
-                method: "PATCH",
-                url: 'http://127.0.0.1:8000/api/v1.0/p/{{user.id}}/',
-                data: dta,
-                headers: {'X-CSRFToken': csrftoken},
-                success: function(s){
-                    alert('YES')
-                    console.log(s);
-                    for(var z=0; z < el.length; z++)
-                    { 
-                        value=el[z].value
-                        ty=el[z].getAttribute('name')
-                        var el2=document.querySelector(`[name=C-${ty}]`)
-                        console.log(el2);
-                        if (value){
-                            $(`[name=C-${ty}]`).text(value);
-                            // el.innerText=value;
-                            $(`[name=C-${ty}]`).css('color','var(--main-color)')
-                        }
-                        else{
-                            $(`[name=C-${ty}]`).text(`Please Enter your ${ty}`);
-                            $(`[name=C-${ty}]`).css('color','var(--main-orange)')
-                        }
-                        
-                    }
-
-                },
-                error: function(s){
-                    console.log(s['responseJSON']);
-                    // console.log(s['responseText'].json-view);
-                    console.log(s);
-
-                    for(var z=0; z < el.length; z++)
-                    { 
-                        value=el[z].value
-                        ty=el[z].getAttribute('name')
-                        var el2=document.querySelector(`[name=C-${ty}]`)
-                        console.log(el2);
-                        if (s['responseJSON'][`${ty}`]){
-                            $(`[name=error-${ty}]`).text(s['responseJSON'][`${ty}`]);
-                          
-                        }
-                        else{
-                            console.log('HMMMMM');
-                        }
-                        
-                    }
-                    alert('NO')
-                }
-            });
-        }
     </script>
+
 {% endblock %}

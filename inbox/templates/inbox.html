@@ -48,71 +48,55 @@
                 </div>
             </div>
             <div class="inbox_2 flex-column">
+                {% for group in groups %}
                 <div class="card flex-row align-center">
                     <div class="card_image">
 
                     </div>
                     <div class="flex-column align">
                         <h5>
-                            asdasd
+                            {{group.title}}
                         </h5>
                         <span>
                             asdsd
                         </span>
                     </div>
                 </div>
-                <div class="card flex-row align-center">
-                    <div class="card_image">
-
-                    </div>
-                    <div class="flex-column align">
-                        <h5>
-                            asdasd
-                        </h5>
-                        <span>
-                            asdsd
-                        </span>
-                    </div>
-                </div>
-                <div class="card flex-row align-center">
-                    <div class="card_image">
-
-                    </div>
-                    <div class="flex-column align">
-                        <h5>
-                            asdasd
-                        </h5>
-                        <span>
-                            asdsd
-                        </span>
-                    </div>
-                </div>
+                {% endfor  %}
+                
             </div>
         </div>
         <div class="messages flex-column">
-            <div class="person2">
-                <div class="flex-row">
-                    <div class="card_image">
-                        
-                    </div>
-                    <div class="flex-column">
-                        <p class="message">
-                            adasdadasdasd
-                        </p>
-                        <p class="message">
-                            adasdadasdasdasd
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="person1">
-                <div class="flex-row">
-                    <div class="card_image">
-
+            <div id="messages">
+                <div class="person2">
+                    <div class="flex-row">
+                        <div class="card_image">
+                            
+                        </div>
+                        <div class="flex-column">
+                            <p class="message">
+                                adasdadasdasd
+                            </p>
+                            <!-- <p class="message">
+                                adasdadasdasdasd
+                            </p> -->
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="person1">
+                    <div class="flex-row">
+                        <div class="card_image">
 
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+            <form class="write-message">
+                
+                <input type="text" autofocus=true id="chat-message-input">
+                <input type="submit" id="chat-message-submit">
+            </form>
         </div>
     </div>
 
@@ -121,7 +105,7 @@
     
 </body>
 </html>
-<script src="./js/jquery.counterup.min.js"></script>
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
 <script>
     // $('.counter').counterUp({
@@ -153,6 +137,86 @@
 
 </script>
 
+
+<script>
+
+    const roomName = "{{request.user.id}}";
+    let group_id = 1;
+    var chatSocket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/chat/'
+        + roomName
+        + '/'
+    );
+    
+    
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        console.log(data);
+        let {user_id, message} = data;
+        if (user_id == "{{user.id}}"){
+        document.querySelector('#messages').innerHTML +=  `
+        <div class="person1">
+                <div class="flex-row">
+                    <div class="card_image">
+                        
+                    </div>
+                    <div class="flex-column">
+                        <p class="message">
+                            ${message}
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>`;
+        }
+        else{
+            document.querySelector('#messages').innerHTML +=  `
+        <div class="person2">
+                <div class="flex-row">
+                    <div class="card_image">
+                        
+                    </div>
+                    <div class="flex-column">
+                        <p class="message">
+                            ${message}
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>`;
+        }
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    // document.querySelector('#chat-message-input').focus();
+    // document.querySelector('#chat-message-input').onsubmit = function(e) {
+    //     if (e.keyCode === 13) {  // enter, return
+    //         document.querySelector('#chat-message-submit').click();
+    //     }
+    // };
+    
+
+    document.querySelector('form').onsubmit = function(e) {
+        e.preventDefault();
+        let messageInputDom = document.querySelector('#chat-message-input');
+        let message = messageInputDom.value;
+        data = JSON.stringify(
+                {
+                    'message': message,
+                    'group_id': group_id
+                }
+            )
+        console.log(data)
+        chatSocket.send(data);
+        messageInputDom.value = '';
+        
+    };
+</script>
 
 <script src="https://use.fontawesome.com/dec111573d.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
