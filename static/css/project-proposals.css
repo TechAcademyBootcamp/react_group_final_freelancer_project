@@ -50,14 +50,14 @@
     border-bottom: var(--border-color) solid  1px;
 }
 
-.top_right_details{
+/* .top_right_details{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
     margin-top: 10px;
     width: 100%;
-}
+} */
 
 .icon_detail{
     margin-right: 5px;
@@ -99,6 +99,7 @@ proposal{
 }
 .card_container_right{
     display: flex;
+    margin-right: 0;
     
 }
 @media only screen and (max-width: 1000px) {

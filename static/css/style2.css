@@ -21,6 +21,11 @@ body{
     --black-orange:#E37600;
     --main-orange:#FF8800;
     --second-orange:#FFA200;
+    --orange-2:#FFB054;
+    --orange-3:#FFDAB2;
+    --orange-4:#F6F2EA;
+
+
     --border-color:  #D3D3D3;
     --second-color: #707070;
     --small-padding:5px;
@@ -372,7 +377,7 @@ button, btna,btnb, .btnb, .btna{
     color: var(--main-color);
     font-weight: bold;
     border: 1px solid var(--border-color) ;
-    padding: var(--medium-btn-padding);
+    padding: var(--medium-btn-padding) !important;
 
     outline: none;
     white-space: nowrap;
@@ -380,7 +385,12 @@ button, btna,btnb, .btnb, .btna{
     cursor: pointer;
     transition: border , color;
     transition-duration: var(--transition-time);
-    background-color: transparent;    
+    background-color: transparent; 
+    
+    outline:none !important;
+}
+input{
+    outline:none !important;
 }
 button:hover{
     border-color: var(--main-orange);
@@ -440,3 +450,4 @@ btnb:hover, .btnb:hover{
 .p-button:hover{
     color: var(--main-orange);
 }
+

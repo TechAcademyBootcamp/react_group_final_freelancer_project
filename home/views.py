@@ -6,17 +6,14 @@ from django.views.generic import TemplateView,DetailView,CreateView,FormView, Li
 from home.forms import ProjectForm,RepliesForm
 from django.contrib import messages
 from home.models import Project, Replies
-<<<<<<< HEAD
 from django.db.models import Q
 from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
 from home.forms import ProjectForm,RepliesForm,FilterForm
-=======
 from datetime import datetime, timedelta
 
 from django_email_verification import sendConfirm
 from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
 from home.forms import *
->>>>>>> 73e18d78ff4444a2cc3f2175f50ab124a4b49399
 from django.contrib import messages
 from .models import Project
 from accounts.forms import *

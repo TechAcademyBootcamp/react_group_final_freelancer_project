@@ -55,14 +55,16 @@
                     </div>
                     <div class="flex-column align">
                         <h5>
-                            {{group.title}}
+                            {{group}}
                         </h5>
                         <span>
                             asdsd
+                            {{group.messages}}
                         </span>
                     </div>
                 </div>
                 {% endfor  %}
+                
                 
             </div>
         </div>
@@ -205,12 +207,12 @@
         e.preventDefault();
         let messageInputDom = document.querySelector('#chat-message-input');
         let message = messageInputDom.value;
-        data = JSON.stringify(
-                {
-                    'message': message,
-                    'group_id': group_id
-                }
-            )
+        data={
+            'message': message,
+            'group_id': group_id
+        }
+        alert(data)
+        data = JSON.stringify(data)
         console.log(data)
         chatSocket.send(data);
         messageInputDom.value = '';

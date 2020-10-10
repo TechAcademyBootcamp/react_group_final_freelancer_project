@@ -1,6 +1,7 @@
 from django import forms
 from home.models import Project,Currency ,PRICE_TYPES,Replies
 from django.forms import Form, ChoiceField
+from inbox.models import Group
 
 
 
@@ -61,3 +62,7 @@ class FilterForm(forms.ModelForm):
     class Meta:
         model=Project
         fields='__all__'
+class ProposalsForm(forms.ModelForm):
+    class Meta:
+        model=Group
+        fields=()

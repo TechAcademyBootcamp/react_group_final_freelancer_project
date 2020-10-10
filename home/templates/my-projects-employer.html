@@ -44,7 +44,6 @@
             <th scope="col">PROPOSALS</th>
             <th scope="col">STATUS</th>
             <th scope="col">ACTION</th>
-
           </tr>
         </thead>
         <tbody>
@@ -53,7 +52,7 @@
             <th scope="row">{{project.id}}</th>
             <td>{{project.title}}</td>
             <td>{{project.price_min}}{{project.currency}}-{{project.price_max}}{{project.currency}}</td>
-            <td>{{project.created_at}}</td>
+            <td>{{project.created_at|date:'j M, Y'}}</td>
             <td class="table_proposals" onclick="window.location.href=`{% url 'project-proposals' id=project.id %}`">{{project|proposals}}</td>
             <td>{{project.status}}</td>
             <td class="table_view" onclick="window.location.href=`{% url 'project-detail' id=project.id %}`">View</td>
