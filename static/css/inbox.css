@@ -131,6 +131,7 @@ body{
     padding: 25px;
     padding-left: 40px;
     background-color: var(--main-orange);
+    
 }
 
 .inbox-header .card_image{
@@ -138,3 +139,10 @@ body{
     height: 60px;
     margin-right: 20px;
 }
+
+
+
+
+
+
+

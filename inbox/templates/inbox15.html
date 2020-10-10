@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+{% load static %}
+{% load filters %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post_project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project-detail.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/inbox2.css' %}">
+    <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
+    
+
+</head>
+<body>
+    <div class="post_project">
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <sections>
+        <div class="container5">
+            <div class="pp_center_con">
+                <div class="form">
+                    <div class="form_sec">
+                        <div class="form_left">
+                            <div class="form_header">
+                                <div class="image-small">
+    
+                                </div>
+                            </div>
+                            <div class="form_accounts">
+                                <div class="form_search">
+                                    <div>
+                                        <i class="fas fa-search search-icon"></i>
+                                        <input type="text" placeholder="Search">
+                                        
+
+                                    </div>
+                                </div>
+                                {% for group in groups %}
+                                    <div class="account" name='{{group.id}}' title="{{group|sender:user.id}}">
+                                        <div class="align-center">
+                                            <div class="image">
+                                            </div>
+                                            <div class="flex-column">
+                                                <h5>{{group|sender:user.id}}</h5>
+                                               
+                                                <span>salam</span>
+                                            </div>
+                                        </div>
+                                        <span>12:54</span>
+                                    </div>
+                                {% endfor %}
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="flex-column" style="width: 100%;height: 100%;">
+                            <div class="form_header">
+                                <div class="flex-row header-sender">
+                                    <div class="image-small">
+    
+                                    </div>
+                                    <div class="flex-column top-padding">
+                                        <h5 id="sender-name"></h5>
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form_messages">
+                                
+                                <div class="messages">
+                                    <!-- <div class="message-con-2">
+                                        <div class="message-2">
+                                            <p>   salamsalamsalam</p>
+                                            <span class="flex-end">21:00</span>
+                                        </div>
+                                    </div>
+                                    <div class="message-con-1">
+                                        <div class="message-1">
+                                            <p> salamsalam salamsalamsalam</p>
+                                            <p> lam   salamsalamsalam salamsalamsalam</p>
+
+                                            <span>21:01</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="message-con-3">
+                                        <p>Yesterday</p>
+                                    </div> -->
+
+
+
+
+                                </div>
+                                <form class="send-form">
+                                    <div class="send">
+                                        <div></div>
+                                        <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                                        <input class="send-input" type="text">
+                                        <button type="submit" class="send-icon">
+                                            <i class="fas fa-paper-plane "></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sections>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script>
+        elements=$('.account');
+        $('.account').on('click',function(){
+            for(let i = 0; i < elements.length; i++){ 
+                var element=elements[i];
+                element.classList.remove('account-selected')
+            }
+            this.classList.add('account-selected')
+            this.getAttribute('id')
+            
+        })
+    </script>
+    <script>
+
+        const roomName = "{{request.user.id}}";
+        var group_id;
+        const logined_user_id='{{request.user.id}}'
+        var chatSocket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/chat/'
+            + roomName
+            + '/'
+        );
+        
+        
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            // console.log(data);
+            let {user_id, message, created_at} = data;
+            if (user_id == "{{user.id}}"){
+                document.querySelector('.messages').innerHTML +=  `
+                    <div class="message-con-1">
+                        <div class="message-1">
+                            <p>${message}</p>
+                            <span class="">${created_at}</span>
+                        </div>
+                    </div>`;
+            }
+            else{
+                document.querySelector('.messages').innerHTML +=  `
+                    <div class="message-con-2">
+                        <div class="message-2">
+                            <p>${message}</p>
+                            <span class="flex-end">${created_at}</span>
+                        </div>
+                    </div>`;
+            }
+        };
+    
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+    
+        // document.querySelector('#chat-message-input').focus();
+        // document.querySelector('#chat-message-input').onsubmit = function(e) {
+        //     if (e.keyCode === 13) {  // enter, return
+        //         document.querySelector('#chat-message-submit').click();
+        //     }
+        // };
+        
+        
+        document.querySelector('.send-form').onsubmit = function(e){
+            e.preventDefault();
+            e.stopImmediatePropagation()
+            let messageInputDom = document.querySelector('.send-input');
+            let message = messageInputDom.value;
+            alert(group_id)
+            data={
+            'message': message,
+            'group_id': group_id
+            }
+            data = JSON.stringify(data)
+            console.log(data)
+            chatSocket.send(data);
+            messageInputDom.value = '';
+        };
+
+        $('.account').on('click',function(){
+            document.querySelector('.messages').innerHTML = ''
+            
+            group_id=this.getAttribute("name");
+            
+            sender_name=this.getAttribute("title");
+            $('#sender-name').text(sender_name)
+            $('.send-form').css('visibility','visible')
+            $('.header-sender').css('visibility','visible')
+
+
+
+            // Messages on screen
+            urll=`http://127.0.0.1:8000/api/v1.0/group/${group_id}`
+            $.ajax({
+                url:urll,
+                method:'GET',
+                success:function(e){
+                    // messages=e['messages'].reverse()
+                    messages=e['messages']
+
+                    document.querySelector('.messages').innerHTML = ''
+                    for (id in messages){
+                        text=messages[id].text
+                        sender=messages[id].sender
+                        created_at=messages[id].created_at
+                        // console.log(text,sender, created_at);
+
+                        // console.log(logined_user_id);
+                        if (sender==logined_user_id){
+                            // console.log('YES');
+                            document.querySelector('.messages').innerHTML +=  `
+                                <div class="message-con-1">
+                                    <div class="message-1">
+                                        <p>${text}</p>
+                                        <span class="">${created_at}</span>
+                                    </div>
+                                </div>`;
+                        }
+                        else{
+                            document.querySelector('.messages').innerHTML +=  `
+                                <div class="message-con-2">
+                                    <div class="message-2">
+                                        <p>${text}</p>
+                                        <span class="flex-end">${created_at}</span>
+                                    </div>
+                                </div>`;
+
+                        }
+
+                    }
+                },
+                error:function(e){
+                    console.log(e);
+                },
+            })
+            
+        })
+        
+    </script>
+</body>
+</html>

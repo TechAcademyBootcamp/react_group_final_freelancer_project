@@ -1,8 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 from accounts.models import CustomUser
-from api.serializers import ProfileSerializer
+from home.models import Project
+
+from inbox.models import Group,Message
+from api.serializers import ProfileSerializer,GroupSerializer, ProjectSerializer, MessagesSerializer
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 
 
@@ -55,6 +59,60 @@ class ProfileViewSet(ModelViewSet):
             return JsonResponse(code=201, data=serializer.data)
         return JsonResponse(code=400, data="wrong parameters")
 
+class MessagesViewSet(ModelViewSet):
+    permission_classes=[IsAuthenticated,]
+    serializer_class=GroupSerializer
+    queryset=Group.objects.all()
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        queryset = super(MessagesViewSet, self).get_queryset()
+        user=self.request.user
+        # print(queryset)
+        queryset=queryset.filter(users=user)
+        # print(queryset)
+        # queryset=queryset.filter()
+        return queryset 
+    
+class EditProjectViewSet(ModelViewSet):
+    permission_classes=[IsAuthenticated,]
+    serializer_class=ProjectSerializer
+    queryset=Project.objects.all()
+    http_method_names = ['patch']
+
+    def get_queryset(self):
+        queryset = super(EditProjectViewSet, self).get_queryset()
+        user=self.request.user
+        print(queryset)
+        print(queryset.filter(author=user))
+        queryset=queryset.filter(author=user)
+        # queryset=queryset.filter()
+        return queryset
+    
+    # def patch(self, request, pk):
+    #     testmodel_object = self.get_object(pk)
+    #     serializer = ProjectSerializer(testmodel_object, data=request.data, partial=True) # set partial=True to update a data partially
+    #     print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+    #     print(serializer.data)
+    #     if 
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #         return JsonResponse(code=201, data=serializer.data)
+    #     return JsonResponse(code=400, data="wrong parameters")
+    def update(self, request, *args, **kwargs):
+        id=kwargs['pk']
+        user=self.request.user
+        project=Project.objects.get(id=id)
+
+        if project.author != user:
+            error_msg = 'It is not your project'
+            return Response({'error': error_msg}, status=status.HTTP_400_BAD_REQUEST)
+
+        if project.status == 2:
+            error_msg = "You can't change completed Project description"
+            return Response({'error': error_msg}, status=status.HTTP_400_BAD_REQUEST)
+
+        return super(EditProjectViewSet,self).update(request, *args, **kwargs)
 
 
 # class SubscribeViewSet(ModelViewSet):

@@ -176,6 +176,8 @@
 }
 .message-1 p{
     margin-left: 15px ;
+    display: flex;
+    justify-content: flex-end;
 }
 .message-2 p{
     margin-right: 15px ;
@@ -299,15 +301,15 @@ span{
 
 .send-icon{
     color: var(--main-orange);
-    padding: 5px;
+    padding: 10px;
     cursor: pointer;
     border-radius: 50px;
     border:1px solid var(--main-orange);
     transition: color, background-color;
     transition-duration: var(--transition-time);
     font-size: 16px;
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -342,5 +344,16 @@ span{
     position: absolute;
     margin-top: 8px;
     margin-left: 10px;
+    
     /* transition: color 0.1s; */
+}
+
+
+.send-form{
+    visibility: hidden;
+    /* transition: visibility var(--transition-time); */
+}
+.header-sender{
+    visibility: hidden;
+    /* transition: visibility var(--transition-time); */
 }

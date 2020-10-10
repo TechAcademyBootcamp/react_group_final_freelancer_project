@@ -1,5 +1,6 @@
 from django import forms
 from home.models import Project,Currency ,PRICE_TYPES,Replies
+from inbox.models import Group
 
 
 
@@ -51,3 +52,8 @@ class RepliesForm(forms.ModelForm):
             
 
         }
+
+class ProposalsForm(forms.ModelForm):
+    class Meta:
+        model=Group
+        fields=()

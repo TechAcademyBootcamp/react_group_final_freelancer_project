@@ -377,7 +377,7 @@ button, btna,btnb, .btnb, .btna{
     color: var(--main-color);
     font-weight: bold;
     border: 1px solid var(--border-color) ;
-    padding: var(--medium-btn-padding);
+    padding: var(--medium-btn-padding) !important;
 
     outline: none;
     white-space: nowrap;
@@ -385,7 +385,12 @@ button, btna,btnb, .btnb, .btna{
     cursor: pointer;
     transition: border , color;
     transition-duration: var(--transition-time);
-    background-color: transparent;    
+    background-color: transparent; 
+    
+    outline:none !important;
+}
+input{
+    outline:none !important;
 }
 button:hover{
     border-color: var(--main-orange);
@@ -445,3 +450,4 @@ btnb:hover, .btnb:hover{
 .p-button:hover{
     color: var(--main-orange);
 }
+

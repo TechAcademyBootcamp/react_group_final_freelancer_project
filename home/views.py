@@ -5,11 +5,13 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import TemplateView,DetailView,CreateView,FormView, ListView, UpdateView, View
 from home.forms import ProjectForm,RepliesForm
 from django.contrib import messages
-from home.models import Project, Replies
+from home.models import Project, Replies,Proposals
 from datetime import datetime, timedelta
+from inbox.models import Group
 
 from django_email_verification import sendConfirm
 from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
+from django.views.generic.edit import FormMixin
 from home.forms import *
 from django.contrib import messages
 from .models import Project
@@ -26,14 +28,135 @@ class GetStartedView(TemplateView):
     template_name='get-started.html'
 
 
-class ProjectProposalsView(ListView):
-    template_name='project-proposals.html'
+class ProjectProposalsView(ListView,FormMixin):
+    template_name = 'project-proposals.html'
     paginate_by = 7
+    object_list=[]
+    form_class = ProposalsForm
+    success_url=reverse_lazy('inbox')
+
+    def dispatch(self, request, *args, **kwargs):
+        # do something extra here ...
+        id=self.kwargs['id']
+        print(Proposals.project_time(id))
+        # if not Proposals.project_time(id):
+        #     project=Project.objects.get(id=id)
+        #     project.status=3
+        #     project.save()
+
+        return super(ProjectProposalsView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectProposalsView, self).get_context_data(**kwargs)
+        context['detail'] = Project.objects.get(id=self.kwargs['id'])
+
+        if context['detail'].status==2:
+            context['reply1']=Replies.objects.get(project=context['detail'],user=context['detail'].proposals.get().user)
+        return context
 
     def get_queryset(self):
-        queryset = Replies.objects.filter(project=self.kwargs['id']).order_by('-created_at')    
+        queryset = Replies.objects.filter(project=self.kwargs['id']).order_by('-created_at') 
+        
         return queryset
-    
+
+    def validate(self,request):
+
+        self.project=Project.objects.get(id=self.kwargs['id'])
+        self.user1=self.request.user
+        self.user2=CustomUser.objects.get(id=self.form.data['user_id'])
+     
+        if not self.project:
+            self.form.add_error(None,'Project is not selected')
+            return self.form_invalid(self.form)
+
+        if not self.user1:
+            self.form.add_error(None,'Login required')
+            return self.form_invalid(self.form)
+
+        if not self.user2:
+            self.form.add_error(None,'User apllied on your project is required')
+            return self.form_invalid(self.form)
+ 
+        if not request.user.is_authenticated:
+            self.form.add_error(None,'Login required')
+            return self.form_invalid(self.form)
+        
+        if self.project.author != self.user1:
+            self.form.add_error(None,'It is not your project')
+            return self.form_invalid(self.form)
+        
+        if not self.project.replies.filter(user=self.user2).count():
+            self.form.add_error(None,'This user have not applied on this project')
+            return self.form_invalid(self.form)
+
+        if not self.user2.active:
+            self.form.add_error(None,"This user's profile is not activated")
+            return self.form_invalid(self.form)
+
+        self.group=Group.objects.filter(is_accepted=True,project=self.project,title=self.project.title,users=self.user1)
+
+        if self.project.status !=1:
+            self.form.add_error(None,"Project has already been closed")
+            return self.form_invalid(self.form)
+
+        self.group=Group.objects.filter(project=self.project,title=self.project.title ,users=self.user2).filter(users=self.user1)
+        if 'chat' in self.request.POST:
+            if self.group.count():
+                self.form.add_error(None,"Chat with this user on this project has already been started")
+                return self.form_invalid(self.form)
+ 
+
+    def post(self, request, *args, **kwargs):
+        self.queryset = Replies.objects.filter(project=self.kwargs['id']).order_by('-created_at')
+        self.object_list=self.queryset
+        self.form = self.get_form()
+
+        self.validate(request)
+
+
+
+        if self.form.is_valid():
+            return self.form_valid(self.form)
+        else:
+            return self.form_invalid(self.form)
+
+
+
+    def form_valid(self, form):
+        if 'chat'in form.data:
+            self.new_object=Group(project=self.project,title=self.project.title)
+            self.new_object.save()
+            self.new_object.users.add(self.user2)
+            self.new_object.users.add(self.user1)
+            self.new_object.save()
+        elif 'accept' in form.data:
+
+            if self.group.count():
+                print('chat yaradilib ancaq indi accept olunur')
+                self.new_object=self.group[0]
+                self.new_object.is_accepted=True
+                self.new_object.save()
+                self.group=Group.objects.filter(project=self.project,title=self.project.title ,users=self.user2).filter(users=self.user1)
+            else:
+                print('chat yaradilmayib ve accept olunur')
+                self.new_object=Group(is_accepted=True,project=self.project,title=self.project.title)
+                self.new_object.save()
+                self.new_object.users.add(self.user2)
+                self.new_object.users.add(self.user1)
+                self.new_object.save()
+            
+            obj=Proposals(user=self.user2,project=self.project)
+            obj.save()
+            
+            self.project.status=2
+            self.project.save()
+        else: 
+            self.form.add_error(None,"Method is not allowed")
+            return self.form_invalid(self.form)
+        
+
+        
+        return HttpResponseRedirect(self.get_success_url())
    
 
 
@@ -43,39 +166,66 @@ class ProjectDetailView(CreateView):
     template_name='project-details.html'
     form_class=RepliesForm
 
+    def dispatch(self, request, *args, **kwargs):
+        # do something extra here ...
+        print('ASD')
+        print(self.kwargs['id'])
+        id=self.kwargs['id']
+        project=Project.objects.get(id=id)
+        print(project.admit_time)
+
+        # id=self.kwargs['id']
+        # if Proposals.project_time(id):
+        #     project=Project.objects.get(id=id)
+        #     project.status=3
+        #     project.save()
+        return super(ProjectDetailView, self).dispatch(request, *args, **kwargs)
+
+    
+
     def get_context_data(self, **kwargs):
         context = super(ProjectDetailView, self).get_context_data(**kwargs)
         context['detail'] = Project.objects.get(id=self.kwargs['id'])
+
+        if context['detail'].status==2:
+            context['reply']=Replies.objects.get(project=context['detail'],user=context['detail'].proposals.get().user)
         return context
 
     def form_valid(self, form):
         obj = form.save(commit=False)
         print(self.request.user.active)
-        if self.request.user:
-            if self.request.user.active:
-                if self.request.user !=  Project.objects.get(id=self.kwargs['id']).author:
-                    now = datetime.now()
-                    time=now-timedelta(days=1)
-                    count=Replies.objects.filter(user=self.request.user , created_at__gt=time).count()
-                    if(count<3):
-                        if not Replies.objects.filter(user=self.request.user, project=Project.objects.get(id=self.kwargs['id'])).count():
-                        
-                            obj.user = self.request.user
-                            obj.project =  Project.objects.get(id=self.kwargs['id'])
+        if Project.objects.filter(id=self.kwargs['id']).count():
+            if self.request.user:
+                if self.request.user.active:
+                    if self.request.user !=  Project.objects.get(id=self.kwargs['id']).author:
+                        now = datetime.now()
+                        time=now-timedelta(days=1)
+                        count=Replies.objects.filter(user=self.request.user , created_at__gt=time).count()
+                        if(count<3):
+                            if not Replies.objects.filter(user=self.request.user, project=Project.objects.get(id=self.kwargs['id'])).count():
+                                if Project.objects.get(id=self.kwargs['id']).status==1:
+                                    obj.user = self.request.user
+                                    obj.project =  Project.objects.get(id=self.kwargs['id'])
+                                else:
+                                    form.add_error(None, "This project has already been closed")
+                                    return self.form_invalid(form)    
+                            else:
+                                form.add_error(None, "You can't apply on same project more than one")
+                                return self.form_invalid(form)    
                         else:
-                            form.add_error(None, "You can't apply on same project more than one")
-                            return self.form_invalid(form)    
+                            form.add_error(None, "You can only apply 3 times in a day")
+                            return self.form_invalid(form) 
                     else:
-                        form.add_error(None, "You can only apply 3 times in a day")
-                        return self.form_invalid(form) 
+                        form.add_error(None, "You can't apply on your project")
+                        return self.form_invalid(form)
                 else:
-                    form.add_error(None, "You can't apply on your project")
+                    form.add_error(None, "Your account is not activated. Checkout your profile")
                     return self.form_invalid(form)
             else:
-                form.add_error(None, "Your account is not activated. Checkout your profile")
+                form.add_error(None, 'User should be loginned')
                 return self.form_invalid(form)
         else:
-            form.add_error(None, 'User should be loginned')
+            form.add_error(None, 'Project is not valid')
             return self.form_invalid(form)
 
         return super(ProjectDetailView, self).form_valid(form)
