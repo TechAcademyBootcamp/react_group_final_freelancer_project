@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'channels',
     'accounts',
     'inbox',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import CustomUser, Skill
 from datetime import datetime
-from django.utils.translation import ugettext as _
+
 
 from datetime import datetime,timedelta,timezone
 from pytz import timezone

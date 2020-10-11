@@ -10,6 +10,7 @@ class LevelAdmin(admin.ModelAdmin):
     list_display=('level_type',)
 
 
+
 admin.site.register(Project,ProjectAdmin)
 admin.site.register(Level,LevelAdmin)
 admin.site.register(Currency)

@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django_email_verification import urls as mail_urls
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('email/', include(mail_urls)),
@@ -27,8 +28,8 @@ urlpatterns = [
     path('accounts/',include('accounts.urls')),
     path('inbox/',include('inbox.urls')),
     path('api/v1.0/',include('api.urls')),
-    
-    path('search/', SearchView.as_view(), name='search'),
-    path('dashboard/',DashboardView.as_view(),name='dasboard'),
-    
+    path('search/freelancer/', SearchFreelancerView.as_view(), name='searchfreelancer'),
+    path('search/job/', SearchJobView.as_view(), name='searchjob'),
+    path('dashboard/',DashboardView.as_view(),name='dasboard'), 
+
 ]

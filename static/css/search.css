@@ -230,6 +230,10 @@ option:checked:hover, select:focus option:checked:hover {
 }
 
 .skill_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: reverse-column;
     border:  var(--border-color) solid  1px;
     padding: 5px 8px;
     width:fit-content;
@@ -336,6 +340,10 @@ option:checked:hover, select:focus option:checked:hover {
     padding-right:100px;
     
 }
+#searc_skills{
+    margin: 15px;
+    border-radius: 10px;
+}
 .filter_tab{
     display: flex;
     align-items: center;
@@ -346,6 +354,23 @@ option:checked:hover, select:focus option:checked:hover {
     font-size: 15px;
     font-weight: 600;
 
+}
+.exit{
+    display: flex;
+    width: 15px;
+    height: 20px;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 16px;
+    color:  rgb(77, 64, 64);
+    cursor: pointer;
+    transition: 0.3s;
+    /* border: 1px red solid; */
+    margin:0px 0px  5px 5px;
+
+}
+.exit:hover{
+    color: rgb(10, 9, 9);
 }
 
 .flex-row-filter{

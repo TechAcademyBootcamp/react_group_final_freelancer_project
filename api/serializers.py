@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from accounts.models import CustomUser
+from accounts.models import CustomUser,Skill
+from home.models import Project
 from inbox.models import Group,Message
 from home.models import Project
 
@@ -50,6 +51,25 @@ class ProjectSerializer(serializers.ModelSerializer):
             'description',
         )
 
+class SkillSearializer(serializers.ModelSerializer):
+    class Meta:
+        model=Skill
+        fields=(
+            'id',
+            'title'
+        )
+
+
+
+class SearchSerializer(serializers.ModelSerializer):
+    skills=SkillSearializer(many=True)
+    class Meta:
+        model = Project
+        fields = '__all__'
+
+
+
+        
 # class ReadRecipeSerializer(serializers.ModelSerializer):
 #     category=CategorySerializer()
 #     # tags=TagSerializer()
