@@ -7,7 +7,7 @@ body{
     overflow: hidden;
 }
 .inbox-con{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     height: 100vh;
     overflow: hidden;
     box-sizing: border-box;
@@ -86,11 +86,26 @@ body{
 }
 /* MESSAGES */
 
-.messages{
-    padding: 100px;
-    background-color: white;
-    
+.messages-con{
+    width: 100%;
+    height: 100%;
 }
+.messages-header{
+    padding: 50px;
+    background-color: var(--background-color-2);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.messages{
+    padding: 60px;
+    padding-top: 40px;
+    background-color: rgb(236, 236, 236);
+    height: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+
 
 .person2{
     display: flex;
@@ -104,6 +119,30 @@ body{
 
 .message{
     border-radius: 0px 10px 10px 10px ;
-    padding: 5px 20px;
-    background-color:var(--background-color-2);
+    padding: 30px 40px;
+    padding-right: 10px;
+    padding-top: 20px;
+
+    background-color: white;
 }
+
+
+.inbox-header{
+    padding: 25px;
+    padding-left: 40px;
+    background-color: var(--main-orange);
+    
+}
+
+.inbox-header .card_image{
+    width: 60px;
+    height: 60px;
+    margin-right: 20px;
+}
+
+
+
+
+
+
+

@@ -11,12 +11,14 @@
                 
                 
                <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                    <video onclick="event.preventDefault(); return false;" autoplay muted loop class="back_vid" controls>
-                        <source src="{%static 'images/production ID_3969421.mp4'%}" type="video/mp4">
-                        <!-- <source src="{%static 'images/video.mp4'%}" type="video/mp4"> -->
-        
-                        
-                    </video>
+                    <div style="width: 100%; height: 100vh;">
+                        <video onclick="event.preventDefault(); return false;" autoplay muted loop class="back_vid" controls>
+                            <source src="{%static 'images/production ID_3969421.mp4'%}" type="video/mp4">
+                            <!-- <source src="{%static 'images/video.mp4'%}" type="video/mp4"> -->
+            
+                            
+                        </video>
+                    </div>
                     <div class="head_text">
                         <h1 class="middle_text" >
                             Find & Hire <br> Expert Freelancers
@@ -82,9 +84,57 @@
 
             <div class="talent_box_container">
                 <div class="col talent_box">
+                    <div style="background-image: url('{% static 'icons/development.svg' %}');" class="back_img" alt=""></div>
+                    <div class="talent_box-p">
+                        <h5>Web, Mobile & Software Dev</h5>
+                    </div>                               
+                </div>
+                <div class="col talent_box">
+                    <div style="background-image: url('{% static 'icons/design.svg' %}');" class="back_img" alt=""></div>
+                    <div class="talent_box-p">
+                        <h5>Design & Creative</h5>
+                    </div>                               
+                </div>
+                <div class="col talent_box">
+                    <div style="background-image: url('{% static 'icons/writing.svg' %}');" class="back_img" alt=""></div>
+                    <div class="talent_box-p">
+                        <h5>Writing</h5>
+                    </div>                               
+                </div>
+                <div class="col talent_box">
+                    <div style="background-image: url('{% static 'icons/marketing.svg' %}');" class="back_img" alt=""></div>
+                    <div class="talent_box-p">
+                        <h5>Sales & Marketing</h5>
+                    </div>                               
+                </div>
+                <div class="col talent_box">
+                    <div style="background-image: url('{% static 'icons/support.svg' %}');" class="back_img" alt=""></div>
+                    <div class="talent_box-p">
+                        <h5>Admin Support</h5>
+                    </div>                               
+                </div>
+                <div class="col talent_box">
+                    <div style="background-image: url('{% static 'icons/service.svg' %}');" class="back_img" alt=""></div>
+                    <div class="talent_box-p">
+                        <h5>Customer Service</h5>
+                    </div>                               
+                </div>
+                <div class="col talent_box">
+                    <div style="background-image: url('{% static 'icons/data.svg' %}');" class="back_img" alt=""></div>
+                    <div class="talent_box-p">
+                        <h5>Data Science & Analytics</h5>
+                    </div>                               
+                </div>
+                <div class="col talent_box">
+                    <div style="background-image: url('{% static 'icons/engineering.svg' %}');" class="back_img" alt=""></div>
+                    <div class="talent_box-p">
+                        <h5>Engineering & Architecture</h5>
+                    </div>                               
+                </div>
+                <!-- <div class="col talent_box">
                     <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset="">
                     <div class="img_container">
-                        <!-- <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset=""> -->
+                       
                         <i class="fas fa-laptop-code"></i>
                     </div>  
                     <h4 class="talent_box_h4">Web developing</h4>                                   
@@ -92,7 +142,7 @@
                 <div class="col talent_box">
                     <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset="">
                     <div class="img_container">
-                        <!-- <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset=""> -->
+                        
                         <i class="fas fa-laptop-code"></i>
                     </div>  
                     <h4 class="talent_box_h4">Web developing</h4>                                   
@@ -100,7 +150,7 @@
                 <div class="col talent_box">
                     <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset="">
                     <div class="img_container">
-                        <!-- <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset=""> -->
+                       
                         <i class="fas fa-laptop-code"></i>
                     </div>  
                     <h4 class="talent_box_h4">Web developing</h4>                                   
@@ -108,7 +158,7 @@
                 <div class="col talent_box">
                     <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset="">
                     <div class="img_container">
-                        <!-- <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset=""> -->
+                       
                         <i class="fas fa-laptop-code"></i>
                     </div>  
                     <h4 class="talent_box_h4">Web developing</h4>                                   
@@ -116,20 +166,12 @@
                 <div class="col talent_box">
                     <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset="">
                     <div class="img_container">
-                        <!-- <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset=""> -->
+                       
                         <i class="fas fa-laptop-code"></i>
                     </div>  
                     <h4 class="talent_box_h4">Web developing</h4>                                   
                 </div>
-                <div class="col talent_box">
-                    <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset="">
-                    <div class="img_container">
-                        <!-- <img src="{%static 'images/pexels-pixabay-73873.jpg'%}" class="back_img" srcset=""> -->
-                        <i class="fas fa-laptop-code"></i>
-                    </div>  
-                    <h4 class="talent_box_h4">Web developing</h4>                                   
-                </div>
-                
+                 -->
             </div>
             
 

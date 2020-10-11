@@ -3,6 +3,7 @@ from asgiref.sync import async_to_sync
 from channels.db import database_sync_to_async
 from channels.generic.websocket import WebsocketConsumer
 from inbox.models import Group, Message
+from datetime import datetime
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
@@ -32,8 +33,9 @@ class ChatConsumer(WebsocketConsumer):
         message = text_data_json['message']
         group_id = text_data_json['group_id']
         user = self.scope['user']
-        self.save_message(user, group_id, message)
+        created_at=self.save_message(user, group_id, message)
         print(user)
+        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         user_ids = self.get_users(group_id)
         print(user_ids)
         for user_id in user_ids:
@@ -44,6 +46,7 @@ class ChatConsumer(WebsocketConsumer):
                 {
                     'type': 'chat_message',
                     'message': message,
+                    'created_at': created_at,
                     'user_id': user.id
                 }
             )
@@ -52,11 +55,15 @@ class ChatConsumer(WebsocketConsumer):
     def chat_message(self, event):
         message = event['message']
         user_id = event['user_id']
-        # Send message to WebSocket
-        self.send(text_data=json.dumps({
+        created_at=event['created_at']
+        created_at = datetime.strftime(created_at,'%H:%M')
+        my_dictionary={
             'message': message,
-            'user_id': user_id
-        }))
+            'created_at': created_at,
+            'user_id': user_id,
+        }
+        # Send message to WebSocket
+        self.send(text_data=json.dumps(my_dictionary))
 
     # @database_sync_to_async
     def get_users(self, group_id):
@@ -65,5 +72,11 @@ class ChatConsumer(WebsocketConsumer):
 
     def save_message(self, user, group_id, message):
         group = Group.objects.get(pk=group_id)
-        Message.objects.create(sender=user, group=group, text=message)
+        message=Message.objects.create(sender=user, group=group, text=message)
+        # print(message.text)
+        # print(message.sender)
+        # print(message.created_at)
+
+
+        return message.created_at
         

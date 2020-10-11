@@ -1,5 +1,7 @@
 {% extends 'includes/base3.html' %}
 {% load static %}
+{% load filters %}
+
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/csa.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
@@ -16,157 +18,315 @@
         </button>
     </div>
 
-    <sections>
-        {% csrf_token %}
-        <div class="custom-container">
-            <div style="display: flex;flex-direction: row;margin-top:100px;width: 100%;">
-                
-                
-                
-                
-                <div  class="card_container_left">
-                    {% for reply in object_list %}
-                        <div class="top_dash_details box-container flex-column">
-                            <div class="header_dash align-center">
-                                <div class="flex-row align-center">
-                                    <div class="image">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="flex-column">
-                                        <h5>{{reply.user.first_name}} {{reply.user.last_name}}</h5>
-                                        <p>@{{reply.user.username}}</p>
-                                    </div>
-                                </div>
-                                <div class="align-items flex-row align-center">
-                                    <h4>{{reply.price}} AZN &nbsp;</h4>
-                                    <p>in {{reply.duration}} days</p>
-                                </div>
-                                
-                            </div>
-                            <div class="p_con">
-                                <p>{{reply.reply}}</p>
-                            </div>
-                        </div>
-                    {% endfor %}
 
-                    {% include 'includes/pagination.html' %}
-                    
+    {% csrf_token %}
+    <div style="display: flex;flex-direction: row;margin-top:100px;width: 100%;">
 
-                    
-           
-                </div>
-                <div class="card_container_right">
-                    <div class="info_box top_dash_details box-container">
-                        <div class="right_main_details box-padding">
-                            <h4 >About the Employer</h4>        
-                            
-                                              
+        <div  class="card_container_left">
+            {% if detail.status != 1 %}
+                <div class="box-con message-con message-open">
+                    <div class="message-text-con space-between">
+                        <div class="flex-column">
+                            {% if detail.status == 3 %}
+                            <h4>Project has already been canceled</h4>
+                            {% elif detail.status == 2 %}
+                            <h4>Work on it</h4>
+                            {% elif detail.status == 4 %}
+                            <h4>Project has already been completed</h4>
+                            {% endif %}
+    
                         </div>
-                        <div style="width: 100%;">
-                            
-                            
-                            <div class="last_piece__end endbox">
-                                <h5>{{detail.author.first_name}} {{detail.author.last_name}} &nbsp;</h5> 
-                                <p>@{{detail.author.username}}</p>
-                                <div class="top_right_details">
-                                    <i class="fas fa-map-marker-alt icon_detail"></i>
-                                    <p>Account balance</p>                                        
-                                </div>
-                                <div class="top_right_details">
-                                    <i class="fas fa-desktop icon_detail"></i>
-                                    <p>11 project completed</p>                                        
-                                </div>
-                                <div class="top_right_details">
-                                    <i class="far fa-clock icon_detail"></i>
-                                    <p>Member since Aug 9 ,2019</p>                                        
-                                </div>
-                                
-                            </div>
-                            <div class="med_main_details endbox">
-                                <h4 >Employer Verification</h4>                           
-                            </div>
-                            <div class="last_piece__end endbox">
-                                <div class="top_right_details">                                        
-                                    <i class="far fa-address-card icon_detail"></i>
-                                    <p>Identity verified</p>                                        
-                                </div>
-                                <div class="top_right_details">
-                                    <i class="far fa-money-bill-alt icon_detail"></i>                                        
-                                    <p >Payment method verified</p>                                        
-                                </div>
-                                <div class="top_right_details">
-                                    <i class="far fa-credit-card icon_detail"></i>
-                                    <p >Deposite made</p>                                        
-                                </div>
-                                
-                                <div class="top_right_details">
-                                    <i class="far fa-envelope icon_detail"></i>
-                                    <p>Email address verified</p>                                        
-                                </div>
-                                <div class="top_right_details">
-                                    <i class="far fa-user-circle icon_detail"></i>
-                                    <p >Profile completed</p>                                        
-                                </div>
-                                <div class="top_right_details">
-                                    <i class="fas fa-phone-alt icon_detail"></i>
-                                    <p >Phone number verified</p>                                        
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-
-                       
+                        <!-- <i class="fas fa-times" onclick="close_message()"></i> -->
                     </div>
-                    <div class="info_box top_dash_details box-container box-padding">
-                        <h4>How to write winning bid</h4>
-                        <p>Your best chance of winning this
-                            project is writing a great bid
-                            proposal here! <br>
-                            <br>
-                            
-                            Great bids are ones that:
-                            <br>
-                            <br>
-
-
-                            
-                            * Are engaging and well written
-                            without spelling or grammatical
-                            errors
-                            <br>
-                            <br>
-
-                            * Showa clear understanding of
-                            what is required for this specific
-                            project - personalize your
-                            response!
-                            <br>
-                            <br>
-
-
-
-                           * Explain how your skills &
-                            experience relate to the project
-                            
-                            and your approach to working on
-                            it
-                            <br>
-                            <br>
-                            
-                            * Ask questions to clarify any
-                            unclear details
-                            
-                            Most of all - don't spam or post cut-
-                            and-paste bids. You will be
-                            penalized or banned if you do so.</p>
-                    </div>
-                                    
                 </div>
-                  
-            </div>
+            {% endif %}
+            {% if detail.status == 2 %}
+                <div class="top_dash_details box-container flex-column">
+                    <div class="header_dash align-center">
+                        <div class="flex-row align-center">
+                            <div class="image">
+                                <img src="" alt="">
+                            </div>
+                            <div class="flex-column">
+                                <h5>{{ reply1.user.last_name }} {{reply1.user.last_name}} <i style="color:var(--main-orange);margin-left: 10px;" class="fas fa-check-circle"></i></h5>
+                                <p>@{{reply1.user.username}}</p>
+                            </div>
+                        </div>
+                        <div class="align-items flex-row align-center">
+                            <h4>{{reply1.price}} AZN </h4>
+                            <p>&nbsp;in {{reply1.duration}} days</p>
+                        </div>
+                        
+                    </div>
+                    <div class="p_con">
+                        <p>{{reply1.reply}}</p>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% for reply in object_list %}
+                {% if reply1.user != reply.user %}
+                    <div class="top_dash_details box-container flex-column">
+                        <div class="header_dash align-center">
+                            <div class="flex-row align-center">
+                                <div class="image">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="flex-column">
+                                    <h5>{{reply.user.first_name}} {{reply.user.last_name}}</h5>
+                                    <p>@{{reply.user.username}}</p>
+                                </div>
+                            </div>
+                            <div class="align-items flex-row align-center">
+                                <h4>{{reply.price}} AZN &nbsp;</h4>
+                                <p>in {{reply.duration}} days</p>
+                            </div>
+                            
+                        </div>
+                        <div class="p_con">
+                            <p>{{reply.reply}}</p>
+                        </div>
+                        <div class="p_con" style="padding-top: 0;">
+                            {% if reply.project.status == 1 and reply.project.author == request.user %}
+                            <form style="align-items: flex-end;" class="space-between" action="" method="POST">
+                                
+                                <div class="flex-column">
+                                    {% if form.non_field_errors  %}
+                                        {% for error in form.non_field_errors %}
+                                            <small>{{error}}</small>
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+
+
+                                
+                                <div class="flex-row">        
+                                    {% csrf_token %}
+                                    <input hidden name="user_id" value="{{reply.user.id}}" type="text">
+                                    <button name="chat" type="submit" style="margin-right: 10px;">Chat</button>
+                                    <button name="accept" class="btnb">Accept</button>
+                                </div>
+                            </form>
+
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            {% include 'includes/pagination.html' %}
+            
+
+            
+    
         </div>
-    </sections>
+        <div class="card_container_right">
+            <div class="info_box top_dash_details box-container">
+                <div class="right_main_details box-padding">
+                    <h4 >About the Project</h4>                           
+                </div>
+                <div style="width: 100%;">
+                    <div class="last_piece__end endbox">
+                        <div class="top_right_details">
+                            <i class="fas fa-address-card icon_detail"></i>
+                            <p>Project ID:&nbsp;</p><p>{{detail.id}}</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-map-marker-alt icon_detail"></i>
+                            <p>Status:&nbsp;</p>
+                            {% if detail.status == 1 %}
+                            <p>Project is aviable</p>
+                            {% elif detail.status == 2 %}
+                            <p>Work on it</p>
+                            {% elif detail.status == 3 %}
+                            <p>Project is canceled</p>
+                            {% elif detail.status == 4 %}
+                            <p>Project is completed</p>                                        
+                            {% endif %}
+                        </div>
+                        <div class="top_right_details align-center">
+                            <i class="fas fa-desktop icon_detail"></i>
+                            {% if detail|proposals <= 1  %}
+                            <p>{{detail|proposals}}</p><p>&nbsp;proposal</p>  
+                            {% else %}
+                            <p>{{detail|proposals}}</p><p>&nbsp;proposals</p>  
+                            {% endif %}                                      
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-clock icon_detail"></i>
+                            <p>published since {{detail.created_at|date:'j M, Y'}}</p>                                        
+                        </div>
+                        
+                    </div>
+                    {% if detail.author == request.user %}
+                    <div class="med_main_details endbox">
+                        <h4 >Actions</h4>                           
+                    </div>
+                    <div class="last_piece__end endbox">
+                        <div class="top_right_details" style="color: var(--border-color);">                                        
+                            <i class="fas fa-clock icon_detail"></i>
+                            <p style="color: var(--border-color);">Coming Soon...</p>                                        
+                        </div>
+                        <!-- <div class="top_right_details">                                        
+                            <i class="far fa-address-card icon_detail"></i>
+                            <p>Identity verified</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="far fa-money-bill-alt icon_detail"></i>                                        
+                            <p >Payment method verified</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="far fa-credit-card icon_detail"></i>
+                            <p >Deposite made</p>                                        
+                        </div>
+                        
+                        <div class="top_right_details">
+                            <i class="far fa-envelope icon_detail"></i>
+                            <p>Email address verified</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="far fa-user-circle icon_detail"></i>
+                            <p >Profile completed</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-phone-alt icon_detail"></i>
+                            <p >Phone number verified</p>                                        
+                        </div> -->
+                        
+                    </div>
+                    {% endif %}
+                </div>
+
+                
+            </div>
+            {% if detail.author != request.user %}
+            <div class="info_box top_dash_details box-container">
+                <div class="right_main_details box-padding">
+                    <h4 >About the Employer</h4>        
+                    
+                                        
+                </div>
+                <div style="width: 100%;">         
+                    <div class="last_piece__end endbox">
+                        <h5>{{detail.author.first_name}} {{detail.author.last_name}} &nbsp;</h5> 
+                        <p>@{{detail.author.username}}</p>
+                        <div class="top_right_details">
+                            <i class="fas fa-user icon_detail"></i>
+                            <p>Username: {{detail.author.username}}</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-desktop icon_detail"></i>
+                            {% if detail.author|projects <= 1  %}
+                            <p>{{detail.author|projects}}</p><p>&nbsp;posted project</p>  
+                            {% else %}
+                            <p>{{detail.author|projects}}</p><p>&nbsp;posted projects</p>  
+                            {% endif %}                                       
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-clock icon_detail"></i>
+                            <p>Member since {{detail.author.date_joined|date:'j M, Y'}}</p>                                        
+                        </div>
+                        
+                    </div>
+                    <div class="med_main_details endbox">
+                        <h4 >Employer Verification</h4>                           
+                    </div>
+                    <div class="verification-con endbox">
+                        
+                        <div class="top_right_details">                                        
+                            <i class="fas fa-address-card icon-panel "></i>
+                            <p>Identity not verified</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            {% if user.email_auth %}
+                                <i style="color: var(--main-orange);" class="fas fa-envelope icon-panel"></i>
+                                <p >Email Verified</p>
+                                {% else %}
+                                <div style="width: 100%;" class="space-between align-center">
+                                    <div class="align-center">
+                                        <i class="fas fa-envelope icon-panel"></i>
+                                        <p>Email not Verified</p>  
+                                    </div>
+                                </div>
+                            {% endif %}                                        
+                        </div>
+                        <div class="top_right_details">
+                            {% if user.active %}
+                                <i style="color: var(--main-orange);" class="fas fa-user-circle icon-panel"></i>
+                                <p style="color: var(--main-orange);">Profile completed</p>
+                                {% else %}
+                                <div style="width: 100%;" class="space-between align-center">
+                                    <div class="align-center">
+                                        <i class="fas fa-user-circle icon-panel"></i>
+                                        <p>Profile not completed</p>  
+                                    </div>
+                                </div>
+                            {% endif %}   
+                            
+                            <p ></p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-phone-alt icon-panel"></i>
+                            <p >Phone number not verified</p>                                        
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+                
+            </div>
+            <div class="info_box top_dash_details box-container box-padding">
+                <h4>How to write winning bid</h4>
+                <p>Your best chance of winning this
+                    project is writing a great bid
+                    proposal here! <br>
+                    <br>
+                    
+                    Great bids are ones that:
+                    <br>
+                    <br>
+
+
+                    
+                    * Are engaging and well written
+                    without spelling or grammatical
+                    errors
+                    <br>
+                    <br>
+
+                    * Showa clear understanding of
+                    what is required for this specific
+                    project - personalize your
+                    response!
+                    <br>
+                    <br>
+
+
+
+                    * Explain how your skills &
+                    experience relate to the project
+                    
+                    and your approach to working on
+                    it
+                    <br>
+                    <br>
+                    
+                    * Ask questions to clarify any
+                    unclear details
+                    
+                    Most of all - don't spam or post cut-
+                    and-paste bids. You will be
+                    penalized or banned if you do so.</p>
+            </div>
+            {% endif %}
+                            
+        </div>
+
+            
+    </div>
+
 
 
 {% endblock %}
