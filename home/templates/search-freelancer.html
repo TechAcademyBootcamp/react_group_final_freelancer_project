@@ -13,7 +13,7 @@
                         
                     </div>
                     <div id="searc_skills_cont" class="flex-end-column" style="width:100%;">
-                        <input style="width: -webkit-fill-available;"  type="text" id="searc_skills">
+                        <input type="text">
                         <div class="space-between" style="width: 100%;">
                             <button id="close" style="margin-left:15px;border-radius: 10px;background-color: red;color: white;border:0px">Close</button>
                             <button id="apply" style="margin-right:15px;border-radius: 10px;">Apply</button>
@@ -35,7 +35,7 @@
                         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
                         <p>Value: <span id="demo"></span></p>
                     </div>
-
+                    {% include 'test.html'%}
                     <h4 style="align-items: flex-start; width: 100%;">Languages</h4>
                     <div class="skill_box">
                         <h5 class="skill_item">English</h5>
@@ -76,9 +76,9 @@
                             <option   value="{%url 'searchjob'%}">Jobs</option>
                             <option value="" selected>Freelancers</option>
                         </select>
-                        <input placeholder="Search">
+                        <input id="search_input" placeholder="Search">
 
-                        <button id="search" class="btnb">Search</button>
+                        <button id="search_btn" type="submit" class="btnb">Search</button>
                         </div>
                         <div class="middle_2 space-between">
                             
@@ -163,37 +163,40 @@
 
 
 <script>
-    var url = "http://127.0.0.1:8000/api/v1.0/search/"
+  
+    
+    
+    url="http://127.0.0.1:8000/api/v1.0/search/freelancer/"
+    
+    
     function setup(){
+        
         $.ajax({
             url: url,
             method:'GET',
+            cache: false,
             success: function(data) 
             {
                 for(id in data){
-                   
+                
                     
                     project=data[id]
                     var {title,description,id,skills} = project
-                    var skill=$('.skill_box').append(`<h5 class="skill_item">${skills}</h5>`)
                     console.log(project); 
                     var element=$("#card_cont").append(`<div class="middle border-bottom">
                         <div class="mid_title">
                         <h4 class="title" style="font-weight:700;">
-                               ${title}
+                            ${title}
                             </h4>
                             <p>
                                 <b>Hourly</b>   <span style="font-weight: 600;">-remaining  Expert  Time:More than 6 Months,10-30 hours/week</span>
                             </p>
                             <p style="color:  #707070;font-weight: 500;">
-                                ${description}
+                                ${description.slice(0,250)}...
                             </p>
                             <div class="tags row">
                                 <tag style="color:  #707070;font-weight: 500;">
-                                    Adobe
-                                </tag>
-                                <tag>
-                                    Web Design
+                                    ${skills}
                                 </tag>
                             </div>
                         </div>                            
@@ -208,8 +211,20 @@
             }
         });
     }
-    $(document).ready(setup ())
-    $('#search').click(setup())
+        
+    setup()
+
+
+    $('#search_btn').click(function(){
+        
+        var title=$('#search_input').val()
+        $("#card_cont").empty(); 
+        url = `http://127.0.0.1:8000/api/v1.0/search/freelancer/?search=${title}`
+        alert(url)
+        setup()
+    })
+    alert(title)
+    // console.log(url);
 </script>
 
 <script>
@@ -242,15 +257,7 @@
         $(e.target).remove();
     });
 </script>
-<script>
-    
-    $('#apply').click(function doit(){
-        skills=$('#searc_skills').val();   
-        element=$("<h5 class='skill_item'> </h5>")
-        element.appendTo('.skill_box').text(skills)
 
-    })
-</script>
 <script>
    
     var slider = document.getElementById("myRange");

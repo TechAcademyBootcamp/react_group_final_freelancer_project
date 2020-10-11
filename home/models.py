@@ -1,7 +1,7 @@
 from django.db import models
 from accounts.models import CustomUser, Skill
 from datetime import datetime
-from django.utils.translation import ugettext as _
+
 
 User = CustomUser()
 # Create your models here.
@@ -22,9 +22,6 @@ class Level(models.Model):
     level_type=models.CharField('Level',max_length=50)
     def __str__(self):
         return self.level_type
-
-
-
 
 class Project(models.Model):
     title= models.CharField(max_length=50, verbose_name='title')
@@ -47,10 +44,6 @@ class Project(models.Model):
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
     level= models.ForeignKey(Level,on_delete=models.CASCADE,)
 
-    def clean(self, *args, **kwargs):
-        if self.skills.count() > 3:
-            raise ValidationError("You can't assign more than five skills")
-        super(Project, self).clean(*args, **kwargs)
 
 class  Replies(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
