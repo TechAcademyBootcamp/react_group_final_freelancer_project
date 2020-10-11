@@ -18,7 +18,6 @@
 
 .get_started_con .card{
     flex-direction: column;
-    justify-content: center;
     align-items: center;
      
     background-color: transparent;
@@ -26,12 +25,13 @@
     border: 0;
     width: 200px;
     max-width: 100%;
-    height: 200px;
+    min-height: 250px;
+    /* height:200px; */
     
     margin: 27px;
     transition: transform,box-shadow;
     transition-duration: var(--transition-time);
-    padding: 15px;
+    padding: 30px;
     cursor: pointer;
 }
 
@@ -53,4 +53,42 @@
 }
 .get_started_con .card h4{
     text-align: center;
+}
+
+
+/*  */
+
+
+.img_container{
+    width: 100px !important;
+    height: 100px !important;
+    margin-bottom: 25px !important;
+}
+
+/* ICON */
+
+.undo_icon{
+    color: var(--main-color);
+    font-size: 20px;
+    transition: color var(--transition-time);
+    cursor: pointer;
+    padding: 0px;
+}
+.undo_icon:hover{
+    color: var(--main-orange);
+}
+
+.form{
+    box-shadow: var(--shadow);
+}
+
+.form_inc1{
+    background-color: var(--main-orange);
+    height: 5px;
+    width: 200px !important;
+}
+.form_inc2{
+    height: 5px;
+    width: 100%;
+    background-color: var(--orange-3);
 }

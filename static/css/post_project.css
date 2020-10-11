@@ -138,3 +138,17 @@ div.post_project div:last-child{
     align-items: center;
     justify-content: center;
 }
+
+.form_inc1{
+    width: 1000px !important;
+}
+
+h4{
+    margin-bottom: 10px !important;
+}
+small{
+    margin: 10px 0 !important;
+}
+input{
+    margin-bottom: 5px;
+}

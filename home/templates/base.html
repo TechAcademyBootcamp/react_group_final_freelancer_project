@@ -41,8 +41,53 @@
 
     {% endblock %}
 
+    <sections class="footer">
+        <div class="custom-container">
+            
+            
+        </div>
+    </section>
+    <script>
+        var index=0;
+        var current=true
+        
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+
+            if (prevScrollpos > currentScrollPos) {
+                document.querySelector("nav").style.top = "0";
+            } else {
+                document.querySelector("nav").style.top = "-60px";
+            }
+            prevScrollpos = currentScrollPos;
+
+
+            // ADDED
+            // var currentScrollPos = window.pageYOffset;
+            var element=document.querySelector('nav');
+            var clicked=true
+            console.log(currentScrollPos);
+            if (currentScrollPos > 0) {
+                console.log('asagidadi');
+                if(current){
+                    // $('nav').show();
+                    $('nav').removeClass('oddAnimation').addClass('evenAnimation');
+                }
+                current=false
+            }
+            else{
+                console.log('yuxaridadi');
+
+                if(!current){
+                    $('nav').addClass('oddAnimation').removeClass('evenAnimation');
+                }
+                current=true
+            }
+        }
+        
     
-    
+    </script>
 </body>
 </html>
 
@@ -78,17 +123,7 @@
 
 <script>
     
-    var prevScrollpos = window.pageYOffset;
-        window.onscroll = function() {
-        var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            document.querySelector("nav").style.top = "0";
-        } else {
-            document.querySelector("nav").style.top = "-60px";
-        }
-        prevScrollpos = currentScrollPos;
-        }
-
+    
 </script>
 
 {% endblock %}
