@@ -30,6 +30,7 @@
     flex-direction: row;
     width: 100%;
     margin-top: 60px;
+    margin: 150px 0 200px 0;
 }
 .card_container_right{
     display: flex;
@@ -37,7 +38,7 @@
     justify-content: flex-start;
     padding: 0 var(--card-padding-side);
     border: 1px var(--border-color) solid;
-    box-shadow: 0 0 20px 1px rgb(235, 235, 235);
+    box-shadow: var(--shadow);
     height: auto ;
     width: 100%;
     flex-direction: column;
@@ -375,12 +376,16 @@ option:checked:hover, select:focus option:checked:hover {
 
 /* Bax bele css yazirlar. incime ama yuxardakilar bullshitdi xD. Diss to atilla */
 
-
+.card_container_right .footer{
+    background-color: transparent !important;
+    height: fit-content !important;
+    border-bottom: 0;
+}
 
 .up_left{
     display: flex;
     flex-direction: column;
-    height: auto;
+    height: fit-content;
     width: 100%;
     background-color: white;
     border: 1px var(--border-color) solid;
@@ -396,8 +401,8 @@ option:checked:hover, select:focus option:checked:hover {
 }
 
 .filter-sec p{
-    margin: 4px 0;
-    margin-top: 7px;
+    margin: 7px 0;
+    /* margin-top: 7px; */
 }
 .filter-sec h4{
     font-size: 16px;
@@ -430,3 +435,8 @@ option:checked:hover, select:focus option:checked:hover {
     border-color: var(--border-color);
     color: var(--main-color);
 }
+
+.pegi{
+    width: fit-content;
+}
+

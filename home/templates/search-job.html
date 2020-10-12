@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="filter-sec">
+                <div class="filter-sec" style="border-bottom: 0;">
                     <h4>Project Prize Type</h4>
                     <div class="flex-column">       
                         <div class="align-center">
@@ -252,18 +252,21 @@
                             <option value="">5</option>
                         </select>
                     </div>
-                    <div class="pagination">
-                        <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <li ><a>1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li class="active"><a href="#">5</a></li>
-                            <li><a href="#">6</a></li>
-                            <li><a href="#">7</a></li>
-                            <li class="next"><a href="#">&gt;</a></li>
-                        </ul>
+                    <div class="pegi">
+    
+
+                        <a class="fas fa-angle-double-left peg-icon" href="?page=1&paginate_by={{paginate_by}}"></a>
+                        <a class="fas fa-angle-left peg-icon" href="?page={{ page_obj.previous_page_number }}&paginate_by={{paginate_by}}"></a>
+                        <a  class="peg-numbers" href="?page={{page_obj.previous_page_number }}&paginate_by={{paginate_by}}">1</a>
+   
+                                          
+                        <div class="peg-numbers peg-selected">2</div>
+                    
+                 
+                        <a  class="peg-numbers" href="?page={{page_obj.next_page_number }}&paginate_by={{paginate_by}}">3</a>
+                        <a class="fas fa-angle-right peg-icon" href="?page={{ page_obj.next_page_number }}&paginate_by={{paginate_by}}"></a>
+                        <a class="fas fa-angle-double-right peg-icon" href="?page={{  page_obj.paginator.num_pages }}&paginate_by={{paginate_by}}"></a>   
+                    
                     </div>
                 </div>
             </div>

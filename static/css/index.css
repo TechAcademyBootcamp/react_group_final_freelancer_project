@@ -438,7 +438,7 @@ sections{
 }
 .footer{
     background-color: var(--main-color) !important;
-    height: 300px !important;
+    height: 300px;
 }
 
 .custom-container{
