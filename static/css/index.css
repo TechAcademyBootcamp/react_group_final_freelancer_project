@@ -437,7 +437,7 @@ sections{
     height: auto;
 }
 .footer{
-    background-color: var(--main-color);
+    background-color: var(--main-color) !important;
     height: 300px !important;
 }
 

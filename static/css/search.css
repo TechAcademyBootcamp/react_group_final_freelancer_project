@@ -47,17 +47,6 @@
 
 }
 
-.card_container_left_search{
-     
-    display: flex;
-    flex-basis: 25%;
-    width: 100%;
-    justify-content: space-around;
-    margin-right: 20px;
-    padding: 0 var(--card-padding-side);
-    border: 1px var(--border-color) solid;
-    box-shadow: 0 0 20px 1px rgb(235, 235, 235);
-}
 .middle{
     display: flex;
     padding: var(--card-middle-padding);
@@ -210,15 +199,7 @@ option:checked:hover, select:focus option:checked:hover {
     color: #FFFFFF;
 }
 
-.up_left{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
-}
+
 .skill_box{
     display:flex;
     flex-wrap: wrap;
@@ -389,4 +370,63 @@ option:checked:hover, select:focus option:checked:hover {
         align-items: flex-start;
         padding: 0px;
     }
+}
+
+
+/* Bax bele css yazirlar. incime ama yuxardakilar bullshitdi xD. Diss to atilla */
+
+
+
+.up_left{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    border: 1px var(--border-color) solid;
+    box-shadow: var(--shadow);
+
+    flex-basis: 25%;
+    margin-right: 20px;
+}
+
+.filter-sec{
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.filter-sec p{
+    margin: 4px 0;
+    margin-top: 7px;
+}
+.filter-sec h4{
+    font-size: 16px;
+}
+
+.skills-con{
+    padding: 10px;
+    display: flex;
+    height: auto;
+    flex-wrap: wrap;
+    border: 1px solid var(--border-color);
+}
+
+.tag-remove{
+    font-size: 12px;
+    margin-left: 4px;
+    /* font-weight: 400; */
+    /* color: var(--main-color); */
+    color: rgb(126, 126, 126);
+    cursor: pointer;
+    transition: color var(--transition-time);
+}
+.tag-remove:hover{
+    color: var(--main-orange);
+}
+.skills-con tag{
+    cursor: default;
+}
+.skills-con tag:hover{
+    border-color: var(--border-color);
+    color: var(--main-color);
 }

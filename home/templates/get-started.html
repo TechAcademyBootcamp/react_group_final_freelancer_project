@@ -52,13 +52,13 @@
                                     </div>
                                     <h4>Post a project</h5>
                                 </div>
-                                <div class="card">
+                                <div class="card" onclick="location.href = `{% url 'searchjob' %}`;">
                                     <div class="img_container" style="color: black;">
-                                        <div style="background-image: url('{% static 'icons/findajob.svg' %}');" class="back_img" alt=""></div>
+                                        <div  style="background-image: url('{% static 'icons/findajob.svg' %}');" class="back_img" alt=""></div>
                                     </div>
                                     <h4>Find freelance jobs</h4>
                                 </div>
-                                <div class="card">
+                                <div class="card" onclick="location.href = `{% url 'searchfreelancer' %}`;">
                                     <div class="img_container" style="color: black;">
                                         <div style="background-image: url('{% static 'icons/hirefreelancer.svg' %}');" class="back_img" alt=""></div>
                                     </div>
