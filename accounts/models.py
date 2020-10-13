@@ -25,7 +25,7 @@ class CustomUser(AbstractUser):
     hourly_price=models.IntegerField('Hourly Prize',validators=[MaxValueValidator(100)],null=True, blank=True)
     image=models.ImageField(upload_to='user/', null=True, blank=True)    
     active=models.BooleanField('Active', default=False)    
-    
+    email_auth=models.BooleanField('Email Authentication', default=False)    
     
     REQUIRED_FIELDS = ['first_name','last_name','username', 'password']
     USERNAME_FIELD='email'

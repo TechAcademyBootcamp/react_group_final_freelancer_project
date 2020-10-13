@@ -5,6 +5,8 @@ body{
     background-color: var(--background-color-2) !important;
     user-select: none;
     -moz-user-select: none;
+    overflow-y: scroll ;
+    overflow-x: visible;
 }
 
 *{
@@ -35,12 +37,12 @@ body{
     --navbar-height-2:50px;
     --navbar-color-initial:rgba(42,42,42,0);
     --navbar-color-end:rgba(0,0,0,0.7);
-    --container-width:1236px;
+    --container-width:1036px;
 
     --navbar-item-padding-top:5px;
     --navbar-item-padding-left:15px;
     --navbar-item-margin-side:10px;
-    --navbar-margin-side:30px;
+    --navbar-margin-side:50px;
 
     --medium-btn-padding: 5px 15px;
 
@@ -66,16 +68,22 @@ h2{
 h3{
     font-size: 26px;
     color: var(--main-color);
+
+    font-weight: 500 !important;
 }
 h4{
     font-size: 18px;
     color: var(--main-color);
     margin: 15px 0;
+
+    font-weight: 500 !important;
 }
 h5{
     font-size: 14px;
     color: var(--main-color);
     margin: 7px 0 !important;
+
+    font-weight: 500 !important;
 }
 
 p{
@@ -94,10 +102,17 @@ tag{
     color: var(--main-color);
     padding: 3px 10px;
     margin: 6px 0;
-    margin-right: 17px;
+    margin-right:10px !important;
     /* font-weight: 600; */
     font-size: 14px;
+    cursor: pointer;
     background-color: var(--background-color-2);
+    transition: color,border-color;
+    transition-duration: var(--transition-time);
+}
+tag:hover{
+    color: var(--main-orange);
+    border-color: var(--main-orange);
 }
 wbutton{
     background-color: var(--main-white);
@@ -182,6 +197,7 @@ input:not([type='checkbox']){
     width: 100%;
     font-size: 14px;
     box-sizing: border-box;
+    
 }
 
 /* CHECKBOX */
@@ -310,6 +326,15 @@ input::placeholder, textarea::placeholder{
 } */
 input[type='file']{
     border: 1px dashed var(--border-color);
+}
+input[type='radio']{
+    border: 1px solid var(--border-color) !important;
+    cursor: pointer !important;
+    width: fit-content !important;
+    margin-right: 10px;
+}
+input[type='radio']:hover{
+    border-color: var(--main-orange);
 }
 
 textarea::placeholder,input::placeholder{

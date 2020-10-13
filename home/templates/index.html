@@ -3,9 +3,12 @@
 {% block content %}
 
 
-    <sections class="background">
+
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+
+    <!-- <sections class="background">
        
-            <!-- <img src="{%static 'images/main1.jpg'%}" class="back_img" srcset=""> -->
+            
             
             <div class="custom-container">
                 
@@ -14,15 +17,15 @@
                     <div style="width: 100%; height: 100vh;">
                         <video onclick="event.preventDefault(); return false;" autoplay muted loop class="back_vid" controls>
                             <source src="{%static 'images/production ID_3969421.mp4'%}" type="video/mp4">
-                            <!-- <source src="{%static 'images/video.mp4'%}" type="video/mp4"> -->
+                           
             
                             
                         </video>
                     </div>
                     <div class="head_text">
-                        <h1 class="middle_text" >
+                        <h4 class="middle_text" >
                             Find & Hire <br> Expert Freelancers
-                        </h1>
+                        </h4>
                         <div style="margin-top: 25px;margin-bottom: 10px;">
                             <done>
                                 Get started
@@ -37,39 +40,71 @@
                </div>
                
             </div>
+    </sections> -->
+
+    <sections class="background" >
+       
+        <!-- <img src="{%static 'images/main1.jpg'%}" class="back_img" srcset=""> -->
+        
+        <div class="custom-container backgorund_img" style="background-image: url('{% static 'icons/freelancer.svg' %}');">
+            
+            <div class="head_text">
+                <h2>
+                    Find & Hire <br> Expert Freelancers
+                </h2>
+                <p>Hire proven pros with confidence using the world’s largest, remote talent platform.</p>
+                <done onclick="location.href = `{% url 'get-started' %}`;">
+                    Get started
+                </done>
+            </div>
+           <!-- <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                <div style="width: 100%; height: 100vh;">
+                    
+                </div>
+                
+                <div class="smoothly_cont">
+                    <div class="smoothly">
+                        <i class="fas fa-chevron-down" style="cursor: pointer;"></i>
+                    </div>
+                </div>
+           </div> -->
+           
+        </div>
     </sections>
 
 <!-- /////////////////////////INFO_BOX//////////////////////////////// -->
     <sections>
         <div class="custom-container">
+            
             <div class="infobox">
-                <h4 class="box_main_title"> Need something done?</h4>
+                <h3> Need something done?</h3>
+                
                 <div class="row question_box_container">
                     <div class="col question_box">
                         <div class="img_container" style="color: black;">
-                            <i class="fas fa-rocket"></i>
+                            <div style="background-image: url('{% static 'icons/postaproject.svg' %}');" class="back_img" alt=""></div>
                         </div>
-                        <h4 class="title_box">Post a job</h4>
+                        <h4 class="title_box">Post a project</h4>
                         <p class="box_paragraph">
                             It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes.
                         </p>
                     </div>
                     <div class="col question_box">
                         <div class="img_container" style="color: black;">
-                            <i class="fas fa-rocket"></i>
+                            <div style="background-image: url('{% static 'icons/findajob.svg' %}');" class="back_img" alt=""></div>
                         </div>
-                        <h4 class="title_box">Post a job</h4>
+                        <h4 class="title_box">Find a job</h4>
                         <p class="box_paragraph">
                             It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes.
                         </p>
                     </div>
                     <div class="col question_box">
                         <div class="img_container" style="color: black;">
-                            <i class="fas fa-rocket"></i>
+                            <div style="background-image: url('{% static 'icons/hirefreelancer.svg' %}');" class="back_img" alt=""></div>
                         </div>
-                        <h4 class="title_box">Post a job</h4>
+                        <h4 class="title_box">Choose freelancers</h4>
                         <p class="box_paragraph">
-                            It's easy. Simply post a job you need completed and receive competitive bids from freelancers within minutes.
+                            Whatever your needs, there will be a freelancer to get it done: from web design, mobile app development and graphic design (and a whole lot more).
                         </p>
                     </div>
                 </div>
@@ -79,54 +114,54 @@
 
     <!-- /////////////////////////TALENT_CARDS//////////////////////////////// -->
     <sections>
-        <div class="custom-container" style="padding-top: 60px;">
-            <div class="box_main_title_2"> Find quality talent or agencies </div>
+        <div class="custom-container" style="margin-top: 0px;">
+            <h3 class="box_main_title_2"> Find quality talent or agencies </h3>
 
             <div class="talent_box_container">
                 <div class="col talent_box">
-                    <div style="background-image: url('{% static 'icons/development.svg' %}');" class="back_img" alt=""></div>
+                    <div style="background-image: url('{% static 'icons/development2.svg' %}');" class="back_img" alt=""></div>
                     <div class="talent_box-p">
                         <h5>Web, Mobile & Software Dev</h5>
                     </div>                               
                 </div>
                 <div class="col talent_box">
-                    <div style="background-image: url('{% static 'icons/design.svg' %}');" class="back_img" alt=""></div>
+                    <div style="background-image: url('{% static 'icons/design2.svg' %}');" class="back_img" alt=""></div>
                     <div class="talent_box-p">
                         <h5>Design & Creative</h5>
                     </div>                               
                 </div>
                 <div class="col talent_box">
-                    <div style="background-image: url('{% static 'icons/writing.svg' %}');" class="back_img" alt=""></div>
+                    <div style="background-image: url('{% static 'icons/writing2.svg' %}');" class="back_img" alt=""></div>
                     <div class="talent_box-p">
                         <h5>Writing</h5>
                     </div>                               
                 </div>
                 <div class="col talent_box">
-                    <div style="background-image: url('{% static 'icons/marketing.svg' %}');" class="back_img" alt=""></div>
+                    <div style="background-image: url('{% static 'icons/marketing2.svg' %}');" class="back_img" alt=""></div>
                     <div class="talent_box-p">
                         <h5>Sales & Marketing</h5>
                     </div>                               
                 </div>
                 <div class="col talent_box">
-                    <div style="background-image: url('{% static 'icons/support.svg' %}');" class="back_img" alt=""></div>
+                    <div style="background-image: url('{% static 'icons/admin2.svg' %}');" class="back_img" alt=""></div>
                     <div class="talent_box-p">
                         <h5>Admin Support</h5>
                     </div>                               
                 </div>
                 <div class="col talent_box">
-                    <div style="background-image: url('{% static 'icons/service.svg' %}');" class="back_img" alt=""></div>
+                    <div style="background-image: url('{% static 'icons/service2.svg' %}');" class="back_img" alt=""></div>
                     <div class="talent_box-p">
                         <h5>Customer Service</h5>
                     </div>                               
                 </div>
                 <div class="col talent_box">
-                    <div style="background-image: url('{% static 'icons/data.svg' %}');" class="back_img" alt=""></div>
+                    <div style="background-image: url('{% static 'icons/data2.svg' %}');" class="back_img" alt=""></div>
                     <div class="talent_box-p">
                         <h5>Data Science & Analytics</h5>
                     </div>                               
                 </div>
                 <div class="col talent_box">
-                    <div style="background-image: url('{% static 'icons/engineering.svg' %}');" class="back_img" alt=""></div>
+                    <div style="background-image: url('{% static 'icons/engineering2.svg' %}');" class="back_img" alt=""></div>
                     <div class="talent_box-p">
                         <h5>Engineering & Architecture</h5>
                     </div>                               
@@ -182,37 +217,7 @@
         </div>
     </sections>
 
-    <!-- /////////////////////////COUNTER//////////////////////////////// -->
-    <sections>
-        <div class="custom-container counter-section">
-            <div class="row text-center">
-                
-                <div class="counter-box">
-                    <div class="iconbox">
-                        <i class="fa fa-bolt" aria-hidden="false"></i>
-                    </div>
-                    <h1 class="counter">150</h1>
-                    <p class="box_paragraph">With secure payments and thousands of reviewed professionals to choose from, Freelancer.com is the simplest and safest way to get work done online.</p>
-                </div> 
-                <div class="counter-box">
-                    <div class="iconbox">
-                        <i class="fa fa-bolt" aria-hidden="false"></i>
-                    </div>
-                    <h1 class="counter">150</h1>
-                    <p class="box_paragraph">With secure payments and thousands of reviewed professionals to choose from, Freelancer.com is the simplest and safest way to get work done online.</p>
-                </div> 
-                <div class="counter-box">
-                    <div class="iconbox">
-                        <i class="fa fa-bolt" aria-hidden="false"></i>
-                    </div>
-                    <h1 class="counter">150</h1>
-                    <p class="box_paragraph">With secure payments and thousands of reviewed professionals to choose from, Freelancer.com is the simplest and safest way to get work done online.</p>
-                </div>               
-            </div>
-        </div>
-    </sections>
-    
-    
+
 {% endblock %}
 
 

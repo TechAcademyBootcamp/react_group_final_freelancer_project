@@ -29,9 +29,9 @@ class UserAdmin(UserAdmin):
 
     # form = RegisterForm
     add_form = RegisterForm
-    list_display = ('username', 'email', 'first_name', 'last_name', 'active','email_auth')
-    list_filter = ('is_staff', 'is_superuser', 'active','email_auth' ,'groups')
-    search_fields = ('username', 'first_name', 'last_name', 'email','id')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'active',)
+    list_filter = ('is_staff', 'is_superuser', 'active','groups',)
+    search_fields = ('username', 'first_name', 'last_name', 'email','id',)
     # ordering = ('username',)
     # filter_horizontal = ('groups', 'user_permissions',)
 

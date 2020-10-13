@@ -9,7 +9,7 @@ LEVEL_TYPES=((1, 'Entry Level'), (2, 'Intermediate'), (3, 'Expert'))
 
 
 class ProjectForm(forms.ModelForm):
-    title=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Title'}))
+    title=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'e.g. Build me a website'}))
     # description=forms.(widget=forms.TextInput(attrs={'placeholder': 'Long description'}))
     price_min=forms.DecimalField(widget=forms.NumberInput(attrs={'placeholder': 'Minimum price'}))
     price_max=forms.DecimalField(widget=forms.NumberInput(attrs={'placeholder': 'Maximum price'}))
@@ -29,7 +29,7 @@ class ProjectForm(forms.ModelForm):
         widgets = {
             'description':forms.Textarea(attrs={
                 
-                'placeholder': 'Description'
+                'placeholder': 'Describe your project here...'
             }),
             'level':forms.RadioSelect(),
             'currency':forms.Select(attrs={

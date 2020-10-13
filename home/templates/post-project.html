@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="{% static 'css/style2.css' %}">
     <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
+
     <link rel="stylesheet" href="{% static 'css/post_project.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project-proposals.css' %}">
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+    <link rel="stylesheet" href="{% static 'css/get_started.css' %}">
+    <link rel="stylesheet" href="{% static 'css/post_project.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+
+    <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
 </head>
 <body>
     <div class="post_project">
@@ -19,60 +29,25 @@
 
         </div>
     </div>
-    <section>
-        <div class="container">
+    <sections>
+        <div class="container5">
             <div class="pp_center_con">
                 <div class="form">
-                    <div class="form_inc">
+                    <div class="flex-row">
+                        <div class="form_inc1">
 
+                        </div>
+                        <div class="form_inc2">
+
+                        </div>
                     </div>
                     <div class="form_sec">
                         
 
                         <div class="sec_1">
-                            <svg class="undo_icon" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                    viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
-                                <g>
-                                    <g>
-                                        <path d="M492,236H68.442l70.164-69.824c7.829-7.792,7.859-20.455,0.067-28.284c-7.792-7.83-20.456-7.859-28.285-0.068
-                                            l-104.504,104c-0.007,0.006-0.012,0.013-0.018,0.019c-7.809,7.792-7.834,20.496-0.002,28.314c0.007,0.006,0.012,0.013,0.018,0.019
-                                            l104.504,104c7.828,7.79,20.492,7.763,28.285-0.068c7.792-7.829,7.762-20.492-0.067-28.284L68.442,276H492
-                                            c11.046,0,20-8.954,20-20C512,244.954,503.046,236,492,236z"/>
-                                    </g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                                <g>
-                                </g>
-                            </svg>
+                            <i onclick="location.href = `{% url 'get-started' %}`;" class="fas fa-arrow-left undo_icon"></i>
                             <h3>Post a project</h3>
-                            <svg class="close_icon" xmlns="http://www.w3.org/2000/svg" height="329pt" viewBox="0 0 329.26933 329" width="329pt"><path d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>
+                            <i onclick="location.href = `{% url 'home' %}`;" class="fas fa-times undo_icon"></i>
                         </div>
                         
                         <form class="sec_2" action="#" method="POST" enctype="multipart/form-data" > 
@@ -80,7 +55,7 @@
                             <div class="form-control">
                                 {{form.errors}}
 
-                                <h4>What skills are required?</h4>
+                                <h4>Choose a name for your project</h4>
                                 {{form.title}}
                                 <!-- <input type="text" placeholder="e.g. Build me a website"> -->
                                 <div class="input_details">
@@ -89,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="form-control">
-                                <h4>Choose a name of your contest</h4>
+                                <h4>Tell us more about your project</h4>
                                 <p>Start with a bit about yourself or your business, and include an overview of what you need done.</p>
                                 {{form.description}}
                                 <!-- <textarea placeholder="Describe your contest here..." name="" id="" cols="30" rows="10"></textarea> -->
@@ -180,6 +155,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </sections>
 </body>
 </html>

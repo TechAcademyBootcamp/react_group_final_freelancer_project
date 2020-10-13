@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/settings.css' %}">
     
     
-    <link rel="stylesheet" href="{% static 'css/buttons.css' %} type="text/css">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}" type="text/css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" >
     <link rel="stylesheet" href="{% static 'css/my-profile.css' %}">
@@ -55,7 +55,7 @@
         </div>
     </sections>
     
-    
+    <script src="{% static 'js/navbar.js' %}"></script>
 </body>
 </html>
 
@@ -90,20 +90,49 @@
 
 
 <script>
+    var index=0;
+    var current=true
     
     var prevScrollpos = window.pageYOffset;
-        window.onscroll = function() {
+    window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;
+
         if (prevScrollpos > currentScrollPos) {
             document.querySelector("nav").style.top = "0";
         } else {
             document.querySelector("nav").style.top = "-60px";
         }
         prevScrollpos = currentScrollPos;
+
+        console.log('asagidadi');
+        // ADDED
+        var currentScrollPos = window.pageYOffset;
+        var element=document.querySelector('nav');
+        var clicked=true
+        if (currentScrollPos > 0) {
+            console.log('asagidadi');
+            if(current){
+                // $('nav').show();
+                $('nav').removeClass('oddAnimation').addClass('evenAnimation');
+            }
+            current=false
         }
+        else{
+            console.log('yuxaridadi');
+
+            if(!current){
+                $('nav').addClass('oddAnimation');
+            }
+            current=true
+        }
+    }
+    
+ 
     function close_message(){
         $('.message-con').toggleClass('message-open')
     }
+
+
 </script>
 
 {% endblock %}

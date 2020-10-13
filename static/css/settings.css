@@ -23,16 +23,15 @@
     justify-content: flex-end;
 }
 
-<<<<<<< HEAD
+
 .flex-end-column{
     display: none;
     justify-content: end;
     align-items: flex-end;
     flex-direction: column;
 }
-=======
+
 .flex-end{
     display: flex;
     justify-content: flex-end;
 }
->>>>>>> tayfun

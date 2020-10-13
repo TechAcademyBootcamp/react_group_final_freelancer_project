@@ -12,16 +12,19 @@
     <link rel="stylesheet" href="{% static 'css/settings.css' %}">
     
     
-    <link rel="stylesheet" href="{% static 'css/buttons.css' %} type="text/css">
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}" type="text/css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" >
     <link rel="stylesheet" href="{% static 'css/my-profile.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <script src="https://kit.fontawesome.com/13768c085c.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/13768c085c.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
 </head>
 
@@ -43,24 +46,75 @@
 
     {% endblock %}
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-<script src="jquery.counterup.min.js"></script>
+    <sections class="footer">
+        <div class="custom-container">
+            
+            
+        </div>
+    </section>
+    <script>
+        var index=0;
+        var current=true
+        
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
 
-<script>
-    $('.counter').counterUp({
-        delay: 10,
-        time: 1000,
-        offset: 70,
-        beginAt: 100,
-        formatter: function (n) {
-        return n.replace(/,/g, '.');
+            if (prevScrollpos > currentScrollPos) {
+                document.querySelector("nav").style.top = "0";
+            } else {
+                document.querySelector("nav").style.top = "-60px";
+            }
+            prevScrollpos = currentScrollPos;
+
+
+            // ADDED
+            // var currentScrollPos = window.pageYOffset;
+            var element=document.querySelector('nav');
+            var clicked=true
+            console.log(currentScrollPos);
+            if (currentScrollPos > 0) {
+                console.log('asagidadi');
+                if(current){
+                    // $('nav').show();
+                    $('nav').removeClass('oddAnimation').addClass('evenAnimation');
+                }
+                current=false
+            }
+            else{
+                console.log('yuxaridadi');
+
+                if(!current){
+                    $('nav').addClass('oddAnimation').removeClass('evenAnimation');
+                }
+                current=true
+            }
         }
-    });
-    video.removeAttribute('controls');
+        
     
-    
-</script>
+    </script>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="jquery.counterup.min.js"></script>
+
+    <script src="./jquery.counterup.min.js"></script>
+    <script>
+        $('.counter').counterUp({
+            delay: 10,
+            time: 1000,
+            offset: 70,
+            beginAt: 100,
+            formatter: function (n) {
+            return n.replace(/,/g, '.');
+            }
+        });
+        video.removeAttribute('controls');
+        
+        
+    </script>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>   
@@ -74,17 +128,7 @@
 
 <script>
     
-    var prevScrollpos = window.pageYOffset;
-        window.onscroll = function() {
-        var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            document.querySelector("nav").style.top = "0";
-        } else {
-            document.querySelector("nav").style.top = "-60px";
-        }
-        prevScrollpos = currentScrollPos;
-        }
-
+    
 </script>
 
 <script id="INLINE_PEN_JS_ID">

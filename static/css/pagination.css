@@ -29,6 +29,15 @@
 .peg-icon:hover{
     color: var(--main-orange);
 }
+.peg-icon{
+    width: 15px;
+    height: 15px;
+    margin: 0 ;
+    font-size: 14px;
+    color: rgb(201, 201, 201)
+    
+
+}
 .peg-selected{
     background-color: var(--main-orange);
     border-color: var(--main-orange);
