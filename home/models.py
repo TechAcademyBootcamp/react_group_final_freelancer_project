@@ -76,4 +76,3 @@ class Proposals(models.Model):
             return False
         else:
             return True
-        

@@ -30,6 +30,6 @@ urlpatterns = [
     path('api/v1.0/',include('api.urls')),
     path('search/freelancer/', SearchFreelancerView.as_view(), name='searchfreelancer'),
     path('search/job/', SearchJobView.as_view(), name='searchjob'),
-    path('dashboard/',DashboardView.as_view(),name='dasboard'), 
+    path('dashboard/',DashboardView.as_view(),name='dashboard'), 
 
 ]

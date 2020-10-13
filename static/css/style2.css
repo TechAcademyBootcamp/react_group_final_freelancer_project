@@ -58,7 +58,7 @@ sections .container5{
     min-height: 550px;
     margin:0 var(--navbar-margin-side);
 
-    
+    /* z-index: 20; */
 }
 
 
@@ -453,6 +453,7 @@ btnb:hover, .btnb:hover{
     display: none;
     /* transition: max-height var(--transition-time); */
     box-sizing: border-box;
+    margin-bottom: 7px ;
 }
 .message-text-con{
     border-left: 5px solid var(--main-orange);

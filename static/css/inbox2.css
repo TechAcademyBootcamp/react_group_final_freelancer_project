@@ -357,3 +357,24 @@ span{
     visibility: hidden;
     /* transition: visibility var(--transition-time); */
 }
+
+
+.messages-not{
+    margin-left: 10px; 
+    /* padding: 2px; */
+    /* width: 10px;
+    height: 10px;  */
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--main-orange);
+    border-radius: 100px;
+    color: white;
+    font-size: 9px;
+    margin: 0 !important;
+    padding:0px 5px;
+    margin-left: 10px !important;
+    display: none;
+}

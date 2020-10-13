@@ -2,13 +2,27 @@
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <nav class="nav">
     <div class="containers">
-        <div class="left_side_nav">           
-            <a class="headers">How it works</ha>
-        </div>
-        <div class="left_side_nav">
-            <a href="{% url 'login' %}" class="login">Login</a>
-            <a href="{% url 'register' %}" class="sign_up">Sign up</a>
-                       
-        </div>
+        {% if not request.user %}
+            <div class="left_side_nav">           
+                <a href="{% url 'searchjob' %}" class="headers">Search</a>
+            </div>
+            <div class="left_side_nav">
+                <a href="{% url 'login' %}" class="login">Login</a>
+                <a href="{% url 'register' %}" class="sign_up">Sign up</a>
+                        
+            </div>
+        {% else %}
+            <div class="left_side_nav">           
+                <a href="{% url 'dashboard' %}" class="headers">Dashboard</a>
+                <a href="{% url 'searchjob' %}" class="headers">Search</a>
+                <a href="{% url 'my-projects-freelancer' %}" class="headers">My projects</a>
+
+            </div>
+            <div class="left_side_nav">
+                <a href="{% url 'my-profile' %}" class="login">My Profile</a>
+                <a href="{% url 'my-profile' %}" class="logined-img"></a>
+                        
+            </div>
+        {% endif %}
     </div>
 </nav>

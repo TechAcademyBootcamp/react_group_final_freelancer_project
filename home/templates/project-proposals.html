@@ -23,6 +23,20 @@
     <div style="display: flex;flex-direction: row;margin-top:100px;width: 100%;">
 
         <div  class="card_container_left">
+            {% if form.non_field_errors %}
+            <div class="box-con message-con message-open">
+                <div class="message-text-con space-between">
+                    <div class="flex-column">
+                        {% for error in form.non_field_errors %}
+                            <small>{{error}}</small>
+                        {% endfor %}
+
+                    </div>
+                    <!-- <i class="fas fa-times" onclick="close_message()"></i> -->
+                </div>
+            </div>
+            {% endif %}
+
             {% if detail.status != 1 %}
                 <div class="box-con message-con message-open">
                     <div class="message-text-con space-between">
@@ -48,7 +62,7 @@
                                 <img src="" alt="">
                             </div>
                             <div class="flex-column">
-                                <h5>{{ reply1.user.last_name }} {{reply1.user.last_name}} <i style="color:var(--main-orange);margin-left: 10px;" class="fas fa-check-circle"></i></h5>
+                                <h5>{{ reply1.user.first_name }} {{reply1.user.last_name}} <i style="color:var(--main-orange);margin-left: 10px;" class="fas fa-check-circle"></i></h5>
                                 <p>@{{reply1.user.username}}</p>
                             </div>
                         </div>
@@ -91,11 +105,7 @@
                             <form style="align-items: flex-end;" class="space-between" action="" method="POST">
                                 
                                 <div class="flex-column">
-                                    {% if form.non_field_errors  %}
-                                        {% for error in form.non_field_errors %}
-                                            <small>{{error}}</small>
-                                        {% endfor %}
-                                    {% endif %}
+                                    
                                 </div>
 
 
