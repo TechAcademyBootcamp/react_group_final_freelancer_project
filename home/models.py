@@ -34,7 +34,7 @@ class Project(models.Model):
     price_min= models.PositiveIntegerField(verbose_name='Minimum Price')  
     price_max = models.PositiveIntegerField(verbose_name='Maximum Price')  
  
-    admit_time = models.DateTimeField()  
+    admit_time = models.DateTimeField(default=datetime.now)  
     status = models.IntegerField('status',choices=STATUS_TYPES) 
     skills=models.ManyToManyField(Skill,related_name='projects')
     upload_files = models.FileField(upload_to='media/',blank=True, null=True)
@@ -46,12 +46,9 @@ class Project(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
-    level= models.ForeignKey(Level,on_delete=models.CASCADE,)
+    level= models.ForeignKey(Level,on_delete=models.CASCADE)
 
-    # def clean(self, *args, **kwargs):
-    #     if self.skills.count() > 3:
-    #         raise ValidationError("You can't assign more than five skills")
-    #     super(Project, self).clean(*args, **kwargs)
+
 
 class  Replies(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
@@ -69,6 +66,7 @@ class Proposals(models.Model):
     
     created_at=models.DateTimeField(auto_now_add=True)
 
+    @classmethod
     def project_time(self,id):
         time=Project.objects.get(id=id).admit_time
         x=time.replace(tzinfo=None)-datetime.now().replace(tzinfo=None)
