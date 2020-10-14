@@ -16,6 +16,8 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" >
     <link rel="stylesheet" href="{% static 'css/my-profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my-projects.css' %}">
+
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
@@ -38,16 +40,16 @@
     <sections style="margin-top:100px">
         <div class="custom-container">
             {% if messages %}
-            <div class="box-con message-con message-open">
-                <div class="message-text-con space-between">
-                    <div class="flex-column">
-                        {% for message in messages %}
-                        <h5>{{message}}</h5>
-                        {% endfor %}    
+                {% for message in messages %}
+                    <div class="box-con message-con message-open">
+                        <div class="message-text-con space-between">
+                            <div class="flex-column">
+                                <h5>{{message}}</h5>     
+                            </div>  
+                            <!-- <i class="fas fa-times" onclick="close_message()"></i> -->
+                        </div>
                     </div>
-                    <i class="fas fa-times" onclick="close_message()"></i>
-                </div>
-            </div>
+                {% endfor %}    
             {% endif %}
             {% block content %}
 

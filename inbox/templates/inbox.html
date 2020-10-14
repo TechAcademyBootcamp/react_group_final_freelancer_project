@@ -121,16 +121,12 @@
     for(let i = 0; i < elements.length; i++){ 
         var element=elements[i];
         element.addEventListener("click", function(){
-
-
             for(let u = 0; u < elements.length; u++){ 
                 var element2=elements[u];
                 element2.classList.remove("p_on");
                 element2.classList.add("p_off");
             }
-
-            this.classList.add('p_on')
-        
+            this.classList.add('p_on')   
         });
 
     }

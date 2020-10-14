@@ -54,7 +54,7 @@ sections .custom-container{
     max-width: 100%;
     min-height: 550px;
     height:auto;
-    z-index: 22;
+    /* z-index: 22; */
     margin-left: var(--navbar-margin-side);
     margin-right: var(--navbar-margin-side);
 }

@@ -46,6 +46,7 @@ class ChatConsumer(WebsocketConsumer):
                 {
                     'type': 'chat_message',
                     'message': message,
+                    'group_id': group_id,
                     'created_at': created_at,
                     'user_id': user.id
                 }
@@ -56,11 +57,13 @@ class ChatConsumer(WebsocketConsumer):
         message = event['message']
         user_id = event['user_id']
         created_at=event['created_at']
+        group_id=event['group_id']
         created_at = datetime.strftime(created_at,'%H:%M')
         my_dictionary={
             'message': message,
             'created_at': created_at,
             'user_id': user_id,
+            'group_id': group_id,
         }
         # Send message to WebSocket
         self.send(text_data=json.dumps(my_dictionary))

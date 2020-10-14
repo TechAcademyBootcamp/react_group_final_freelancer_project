@@ -13,7 +13,8 @@ nav {
     transition-duration: 0.3s;
     top: 0;
     height: 60px;
-    z-index: 2222;    
+    z-index: 22;    
+    background-color: white;
 }
 nav a{
     font-size: 17px;
@@ -55,12 +56,24 @@ nav .containers{
 
 
   
-
-.login ,.sign_up{
+.headers{
+    margin-right: 20px;
+    align-items: center;
+}
+.login ,.sign_up, .logined-img{
     color: var(--main-color);
     margin-left: 35px;
     align-items: center;
     
+}
+
+.logined-img{
+   width: 40px;
+   height: 40px;
+   background-color: var(--border-color);
+   border-radius: 100px;
+
+   margin-left: 20px;
 }
 
 .sign_up{
@@ -95,3 +108,4 @@ nav .containers{
     font-family: 'Poppins';
     font-size: 20px;
 }
+

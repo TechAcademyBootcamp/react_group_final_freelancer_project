@@ -57,12 +57,15 @@
                                             <div class="image">
                                             </div>
                                             <div class="flex-column">
-                                                <h5>{{group|sender:user.id}}</h5>
-                                               
+                                                <div class="align-center">
+                                                    <h5>{{group|sender:user.id}} </h5>
+                                                    <div id="message-not-{{group.id}}" class="messages-not">0</div>
+                                                </div>
                                                 <span>salam</span>
                                             </div>
                                         </div>
-                                        <span>12:54</span>
+                                        <!-- <span>12:54</span> -->
+                                        
                                     </div>
                                 {% endfor %}
                                 
@@ -142,7 +145,7 @@
     <script>
 
         const roomName = "{{request.user.id}}";
-        var group_id;
+        var group_id = 0;
         const logined_user_id='{{request.user.id}}'
         var chatSocket = new WebSocket(
             'ws://'
@@ -155,25 +158,35 @@
         
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            // console.log(data);
             let {user_id, message, created_at} = data;
-            if (user_id == "{{user.id}}"){
-                document.querySelector('.messages').innerHTML +=  `
-                    <div class="message-con-1">
-                        <div class="message-1">
-                            <p>${message}</p>
-                            <span class="">${created_at}</span>
-                        </div>
-                    </div>`;
+            group_id_2=data['group_id']
+            el_message=$(`#message-not-${group_id_2}`)
+            if (group_id ==group_id_2){
+                el_message.css('display','none')
+                el_message.text(0)
+                if (user_id == "{{user.id}}"){
+                    document.querySelector('.messages').innerHTML +=  `
+                        <div class="message-con-1">
+                            <div class="message-1">
+                                <p>${message}</p>
+                                <span class="">${created_at}</span>
+                            </div>
+                        </div>`;
+                }
+                else{
+                    document.querySelector('.messages').innerHTML +=  `
+                        <div class="message-con-2">
+                            <div class="message-2">
+                                <p>${message}</p>
+                                <span class="flex-end">${created_at}</span>
+                            </div>
+                        </div>`;
+                }
             }
             else{
-                document.querySelector('.messages').innerHTML +=  `
-                    <div class="message-con-2">
-                        <div class="message-2">
-                            <p>${message}</p>
-                            <span class="flex-end">${created_at}</span>
-                        </div>
-                    </div>`;
+                el_message.css('display','block')
+                num=parseInt(el_message.text())
+                el_message.text(num+1)
             }
         };
     
@@ -209,13 +222,13 @@
             document.querySelector('.messages').innerHTML = ''
             
             group_id=this.getAttribute("name");
-            
             sender_name=this.getAttribute("title");
             $('#sender-name').text(sender_name)
             $('.send-form').css('visibility','visible')
             $('.header-sender').css('visibility','visible')
-
-
+            el_message=$(`#message-not-${group_id}`)
+            el_message.css('display','none')
+            el_message.text(0)
 
             // Messages on screen
             urll=`http://127.0.0.1:8000/api/v1.0/group/${group_id}`
