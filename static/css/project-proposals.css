@@ -102,13 +102,13 @@ proposal{
     margin-right: 0;
     
 }
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
     
     .card_container_left{
         flex-basis: 100%;
         margin-right: 0px;
     }
-  }
+  } */
 
 .middle_details{
     display: flex;

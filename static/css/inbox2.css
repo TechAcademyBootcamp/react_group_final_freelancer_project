@@ -137,11 +137,14 @@
     position: relative;
     padding-top: 5px;
     box-shadow: 1px 1px 2px 1px  rgba(218, 218, 218, 0.5);
+    max-width: 60%;
 
 }
 .message-1{
     background-color: var(--orange-2);
     border-radius: 7px 0px 7px 7px;
+    /* margin-left: 340px; */
+
 }   
 .message-1:before {
     content: "";
@@ -160,7 +163,11 @@
 .message-2{
     background-color: var(--orange-3);
     border-radius: 0px 7px 7px 7px;
-    
+    /* margin-right: 400px; */ 
+}
+.message-limit{
+    width: 370px;
+    max-width: 100%;
 }
 .message-2:before {
     content: "";
@@ -200,10 +207,10 @@
 }
 .message-con-2{
     display: flex;
-    margin-right: 400px;
+    /* margin-right: 400px; */
 }
 .message-con-1{
-    margin-left: 340px;
+    /* margin-left: 340px; */
     display: flex;
     justify-content: flex-end;
 }

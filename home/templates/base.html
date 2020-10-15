@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/style2.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/settings.css' %}">
     
     
@@ -90,7 +90,16 @@
                 current=true
             }
         }
-        
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.querySelector("nav").style.top = "0";
+        } else {
+            document.querySelector("nav").style.top = "-60px";
+        }
+        prevScrollpos = currentScrollPos;
+        }
     
     </script>
 </body>

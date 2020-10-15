@@ -71,8 +71,8 @@ class Proposals(models.Model):
 
     def project_time(self,id):
         time=Project.objects.get(id=id).admit_time
-        x=time.replace(tzinfo=None)-datetime.now().replace(tzinfo=None)
-        if x.total_seconds()<=0:
+        x=time.replace(tzinfo=None)-datetime.now().replace(tzinfo=None)+ timedelta(hours=4)
+        if (x.total_seconds()+14400)<=0:
             return False
         else:
             return True

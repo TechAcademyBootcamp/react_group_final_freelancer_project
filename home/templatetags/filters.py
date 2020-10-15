@@ -16,30 +16,37 @@ def proposals(value): # Only one argument.
 def end_time(time): # Only one argument.
     print(time.replace(tzinfo=None))
     print(datetime.now().replace(tzinfo=None))
+    print('YYEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
 
-    x=time.replace(tzinfo=None)-datetime.now().replace(tzinfo=None)
+    x=time.replace(tzinfo=None)-datetime.now().replace(tzinfo=None)+ timedelta(hours=4)
     print(x)
     if x.total_seconds()<=0:
         return None
     days=x.days
     hours, rem=divmod(x.seconds,3600)
-    if days<=1:
+    print(days)
+    print(hours)
+    y=''
+    if days==1:
         days=str(days)+' day'
-    else:
+        y=f'{days}, '
+        
+    elif days>1:
         days=str(days)+' days'
+        y=f'{days}, '
     
-    if hours<=1:
+    if hours==1:
         hours=str(hours)+' hour'
-    else:
+        y+=str(hours)
+    elif hours>1:
         hours=str(hours)+' hours'
+        y+=str(hours)
 
 
-    x=f'{days}, {hours}'
+    print(y)
 
 
-
-
-    return x
+    return y
 
 
 @register.filter(name='projects')

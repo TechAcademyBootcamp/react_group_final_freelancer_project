@@ -33,45 +33,45 @@
     </div>
     <sections>
         <div class="container5">
-            <div class="pp_center_con">
-                <div class="form">
-                    <div class="form_sec">
-                        <div class="form_left">
-                            <div class="form_header">
-                                <div class="image-small">
-    
-                                </div>
-                            </div>
-                            <div class="form_accounts">
-                                <div class="form_search">
-                                    <div>
-                                        <i class="fas fa-search search-icon"></i>
-                                        <input type="text" placeholder="Search">
-                                        
+            <div class="form">
+                <div class="form_sec">
+                    <div class="form_left">
+                        <div class="form_header">
+                            <div class="image-small">
 
-                                    </div>
-                                </div>
-                                {% for group in groups %}
-                                    <div class="account" name='{{group.id}}' title="{{group|sender:user.id}}">
-                                        <div class="align-center">
-                                            <div class="image">
-                                            </div>
-                                            <div class="flex-column">
-                                                <div class="align-center">
-                                                    <h5>{{group|sender:user.id}} </h5>
-                                                    <div id="message-not-{{group.id}}" class="messages-not">0</div>
-                                                </div>
-                                                <span>salam</span>
-                                            </div>
-                                        </div>
-                                        <!-- <span>12:54</span> -->
-                                        
-                                    </div>
-                                {% endfor %}
-                                
-                                
                             </div>
                         </div>
+                        <div class="form_accounts">
+                            <div class="form_search">
+                                <div>
+                                    <i class="fas fa-search search-icon"></i>
+                                    <input type="text" placeholder="Search">
+                                    
+
+                                </div>
+                            </div>
+                            {% for group in groups %}
+                                <div class="account" name='{{group.id}}' title="{{group|sender:user.id}}">
+                                    <div class="align-center">
+                                        <div class="image">
+                                        </div>
+                                        <div class="flex-column">
+                                            <div class="align-center">
+                                                <h5>{{group|sender:user.id}} </h5>
+                                                <div id="message-not-{{group.id}}" class="messages-not">0</div>
+                                            </div>
+                                            <span>salam</span>
+                                        </div>
+                                    </div>
+                                    <!-- <span>12:54</span> -->
+                                    
+                                </div>
+                            {% endfor %}
+                            
+                            
+                        </div>
+                    </div>
+                    <div style="width: 100%; height: 100%;">
                         <div class="flex-column" style="width: 100%;height: 100%;">
                             <div class="form_header">
                                 <div class="flex-row header-sender">
@@ -122,8 +122,8 @@
                                 </form>
                             </div>
                         </div>
-                       
                     </div>
+                   
                 </div>
             </div>
         </div>

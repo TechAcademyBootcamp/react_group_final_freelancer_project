@@ -32,12 +32,12 @@ body{
     --navbar-height-2:50px;
     --navbar-color-initial:rgba(42,42,42,0);
     --navbar-color-end:rgba(0,0,0,0.7);
-    --container-width:1036px !important;
+    --container-width:1236px;
 
     --navbar-item-padding-top:5px;
     --navbar-item-padding-left:15px;
     --navbar-item-margin-side:10px;
-    --navbar-margin-side:50px;
+    --navbar-margin-side:30px;
     --card-middle-padding:20px 30px;
     --medium-btn-padding: 7px 15px;
     
@@ -54,7 +54,7 @@ sections .custom-container{
     max-width: 100%;
     min-height: 550px;
     height:auto;
-    /* z-index: 22; */
+    z-index: 22;
     margin-left: var(--navbar-margin-side);
     margin-right: var(--navbar-margin-side);
 }
