@@ -12,12 +12,17 @@ class SearchAPIView(generics.ListCreateAPIView):
     filter_backends = (DynamicSearchFilter,)
     queryset = Project.objects.all()
     serializer_class = SearchSerializer  
-    search_fields = ["title", "description","price_min"]
+    search_fields = ["title", "description","price_min","price_max"]
     
     def get_queryset(self):
         
         queryset = Project.objects.all()
-        price_min=self.request.query_params.get('price_min',None)        
+        price_min=self.request.query_params.get('price_min',None)  
+        price_max=self.request.query_params.get('price_max',None)    
+        price_type=self.request.query_params.get('price_type',None)
+        skills=self.request.query_params.get('price_type',None)
+        level=self.request.query_params.get('level',None)
+        print(level)
         search=self.request.query_params.get('search',None)
         # title = self.request.query_params.get('title', None)
         if search:
@@ -26,4 +31,10 @@ class SearchAPIView(generics.ListCreateAPIView):
         if price_min:
             queryset=queryset.filter(price_min__gte=price_min)
             print(queryset)
+        if price_max:
+            queryset=queryset.filter(price_max__lte=price_max)
+        if level:
+            queryset=queryset.filter(level__id=level)
         return queryset
+
+        

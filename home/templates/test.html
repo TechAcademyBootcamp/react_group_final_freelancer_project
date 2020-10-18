@@ -1,13 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/amsify.suggestags.css">
+    <title>Document</title>
+</head>
+<body>
 
-<div id="wrapper">
-    <h1>Dynamic Tag Input Suggestions</h1>
-    <p>Start typing the name of a popular video game to get some helpful suggestions.</p>
-
-    <div id="searchbar">
-    <ul class="token-input-list-facebook"><li class="token-input-input-token-facebook"><input type="text" autocomplete="off" id="token-input-vidyagames" style="outline: none; width: 46px;"><tester style="position: absolute; top: -9999px; left: -9999px; width: auto; font-size: 13.3333px; font-family: Arial; font-weight: 400; letter-spacing: 0px; white-space: nowrap;"></tester></li></ul><input type="text" id="vidyagames" name="vidya" style="display: none;">
+    <div>
+        <input type="text" class="form-control" name="country"/>
     </div>
-</div><!-- @end #wrapper -->
-  
-    
-    
-   
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.amsify.suggestags.js"></script>
+    <script>
+        $('input[name="country"]').amsifySuggestags({
+            suggestions: ['India', 'Pakistan', 'Nepal', 'UAE', 'Iran', 'Bangladesh']
+        });
+    </script>
+</body>
+</html>
+

@@ -272,6 +272,99 @@ video {
 
 
 
+
+
+:root {
+    --color-5x: #2A2A2A;
+    --color-4x: #E37600;
+    --color-3x: #FF8800;
+    --color-2x: :#FFA200;
+    --color-1x: #e5e0fa;
+  }
+  
+  body {
+    font-family: "Poppins", sans-serif;
+    background: var(--color-1x);
+  }
+  
+  .wrapper {
+    width: 240px;
+    height: 320px;
+    background: #fff;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.09), 0 4px 12px 0 rgba(0, 0, 0, 0.19);
+    /* position: absolute; */
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    margin-left: 100px;
+  }
+  
+  .header {
+    width: 240px;
+    height: 120px;
+    background: var(--color-4x);
+    position: relative;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+  
+  .header img {
+    width: 100px;
+    height: 100px;
+    background: var(--color-2x);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-radius: 50%;
+    padding: 10px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  
+  .body {
+    width: 100%;
+    height: 240px;
+    background: none;
+    position: relative;
+    text-align: center;
+  }
+  
+  .body .text {
+    position: absolute;
+    height: auto;
+    width: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  .body .text h1 {
+    font-size: 26px;
+    margin: 0;
+    color: var(--color-5x);
+  }
+  
+  .body .text span {
+    font-size: 16px;
+    color: var(--color-2x);
+  }
+  
+
+
+
+
   
 @media only screen and (max-width: 1000px) {
     .talent_box_container{

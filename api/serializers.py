@@ -2,7 +2,7 @@ from rest_framework import serializers
 from accounts.models import CustomUser,Skill
 from home.models import Project
 from inbox.models import Group,Message
-from home.models import Project
+from home.models import Project,Level
 
 
 
@@ -59,10 +59,14 @@ class SkillSearializer(serializers.ModelSerializer):
             'title'
         )
 
-
+class LevelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Level
+        fields = '__all__'
 
 class SearchSerializer(serializers.ModelSerializer):
     skills=SkillSearializer(many=True)
+    level=LevelSerializer()
     class Meta:
         model = Project
         fields = '__all__'

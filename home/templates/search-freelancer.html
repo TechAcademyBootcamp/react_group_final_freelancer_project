@@ -5,58 +5,62 @@
 <sections>
     <div class="custom-container">
         <div class="base"> 
-            <div class="card_container_left_search">
-                <div class="up_left">
-                    <h4 style="align-items: flex-start; width: 100%;">Skills</h4>
-                    <div class="skill_box">
-                        <h5 id="skill_item" class="skill_item">sadsad<span class="exit">x</span></h5>
-                        
+            
+            <div class="up_left">
+                <div class="filter-sec">
+                    <h4>Skills</h4>
+                    <div class="skills-con">
+                        <tag>Adobe <i class="fas fa-times tag-remove"></i></tag>
+
                     </div>
-                    <div id="searc_skills_cont" class="flex-end-column" style="width:100%;">
-                        <input type="text">
-                        <div class="space-between" style="width: 100%;">
-                            <button id="close" style="margin-left:15px;border-radius: 10px;background-color: red;color: white;border:0px">Close</button>
-                            <button id="apply" style="margin-right:15px;border-radius: 10px;">Apply</button>
-                           
+                </div>
+                <div class="filter-sec">
+                    <h4>Price</h4>
+                    <div class="flex-column">
+                        <p>Min Price:</p>
+                        <input id="price_min" type="number" placeholder="Min Price">
+                    </div>
+                    <div class="flex-column">
+                        <p>Max Price:</p>
+                        <input type="number" id="price_max" placeholder="Max Price">
+                    </div>
+                </div>
+                <div class="filter-sec">
+                    <h4>Project difficulty</h4>
+                    <div class="flex-column">
+                    
+                        <div class="align-center">
+                            <input type="radio" name="difficulty" value="1">
+                            <p>Entry Level</p>
+                        </div>
+                        <div class="align-center">
+                            <input type="radio" name="difficulty" value="2">
+                            <p>Intermediate</p>
+                        </div>
+                        <div class="align-center">
+                            <input type="radio" name="difficulty" value="3">
+                            <p>Expert</p>
                         </div>
                     </div>
-                    <div class="skill_btn_cont">
-                        <button class="skill_btn" >
-                            Clear skills
-                        </button>
-                        <button class="skill_href">
-                            Edit Profile Skills
-                        </button>
-                   
-
-                    </div>
-                    <div id="test-slider"></div>
-                    <div class="slidecontainer">
-                        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                        <p>Value: <span id="demo"></span></p>
-                    </div>
-                    {% include 'test.html'%}
-                    <h4 style="align-items: flex-start; width: 100%;">Languages</h4>
-                    <div class="skill_box">
-                        <h5 class="skill_item">English</h5>
-                        <h5 class="skill_item">France</h5>
-                        <h5 class="skill_item">Turkish</h5>
-                        <h5 class="skill_item">{{skills}</h5>
-                        
-                    </div>  
-                    <div skill_btn_cont>
-                        <button class="skill_href" >
-                            Clear skills
-                        </button>
-                    </div> 
-                   
-                    
-                    
                 </div>
-                <div>
-
+                <div class="filter-sec" style="border-bottom: 0;">
+                    <h4>Project Prize Type</h4>
+                    <div class="flex-column">       
+                        <div class="align-center">
+                            <input type="radio" name="price" value="1" >
+                            <p>Single Project</p>
+                        </div>
+                        <div class="align-center">
+                            <input type="radio"  value="2">
+                            <p>Hourly Work</p>
+                        </div>                        
+                    </div>
                 </div>
+                
+                
+                
             </div>
+            
             <div class="card_container_right">
                 <div class="header border-bottom ">
                     <h4 class="searc_btn">
@@ -170,11 +174,9 @@
     
     
     function setup(){
-        
         $.ajax({
             url: url,
             method:'GET',
-            cache: false,
             success: function(data) 
             {
                 for(id in data){
@@ -206,7 +208,6 @@
             },
             error: function(err)
             {
-                console.log(err);
                 alert("NOOOOOOO")
             }
         });
@@ -216,72 +217,42 @@
 
 
     $('#search_btn').click(function(){
+        var level = $('input[name="difficulty"]:checked').val();
+        if ($('input[name="difficulty"]:checked').length > 0) {
+            var title=$('#search_input').val()
+            alert(title)
+            $("#card_cont").empty();
+            var price_min=$('#price_min').val()
+            var price_max=$('#price_max').val()
+            var url = `http://127.0.0.1:8000/api/v1.0/search/freelancer/?search=${title}&level=${level}&price_min=${price_min}&price_max=${price_max}`
+            alert(url)
+            setup()
+            // break
+
+        }
+        else{
+            level=''
+            var title=$('#search_input').val()
+            alert(title)
+            $("#card_cont").empty();
+            var price_min=$('#price_min').val()
+            var price_max=$('#price_max').val()
+            var url = `http://127.0.0.1:8000/api/v1.0/search/freelancer/?search=${title}&level=${level}&price_min=${price_min}&price_max=${price_max}`
+            alert(url)
+            setup()
+            // break
+        }
         
-        var title=$('#search_input').val()
-        $("#card_cont").empty(); 
-        url = `http://127.0.0.1:8000/api/v1.0/search/freelancer/?search=${title}`
-        alert(url)
-        setup()
-    })
-    alert(title)
-    // console.log(url);
-</script>
+        
 
-<script>
-    $('.skill_href').click(function(){
-        $('#searc_skills_cont').css('display','flex')        
-    })
-    $('#close').click(function(){
-        $('#searc_skills_cont').css('display','none')        
+        
     })
     
-    
-    
-</script>
-<script>
-    
-    // $('.skill_item').mousedown(function(event) { 
-    //     $('skill_item').closest('p').remove()
-    //     switch (event.which) { 
-    //         case 1: 
-    //             $(event.target).remove(); 
-                
-    //         case 2: 
-    //             $(event.target).remove(); 
-    //         case 3: 
-    //         default: 
-    //         return; 
-    //     } 
-    // });
-    $('.skill_item').click(function(e){
-        $(e.target).remove();
-    });
 </script>
 
-<script>
-   
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
 
-    slider.oninput = function() {
-        output.innerHTML = this.value;
-    }
-</script>
-<script>
-    var slider = document.getElementById('test-slider');
-    noUiSlider.create(slider, {
-        start: [20, 80],
-        connect: true,
-        step: 1,
-        orientation: 'horizontal', // 'horizontal' or 'vertical'
-        range: {
-            'min': 0,
-            'max': 100
-        },
-        format: wNumb({
-            decimals: 0
-        })
-    });
-</script>
+
+
+
+
 {% endblock %}
