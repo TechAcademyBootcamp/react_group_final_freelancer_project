@@ -13,6 +13,7 @@
                         <tag>Adobe <i class="fas fa-times tag-remove"></i></tag>
 
                     </div>
+                    {% include 'test2.html'%}
                 </div>
                 <div class="filter-sec">
                     <h4>Price</h4>
@@ -173,15 +174,16 @@
     url="http://127.0.0.1:8000/api/v1.0/search/freelancer/"
     
     
-    function setup(){
+    function setup(url){
         $.ajax({
             url: url,
             method:'GET',
             success: function(data) 
             {
+                console.log(data);
+
                 for(id in data){
                 
-                    
                     project=data[id]
                     var {title,description,id,skills} = project
                     console.log(project); 
@@ -208,12 +210,14 @@
             },
             error: function(err)
             {
+                alert(err)
+                console.log(err);
                 alert("NOOOOOOO")
             }
         });
     }
         
-    setup()
+    setup(url)
 
 
     $('#search_btn').click(function(){
@@ -226,8 +230,7 @@
             var price_max=$('#price_max').val()
             var url = `http://127.0.0.1:8000/api/v1.0/search/freelancer/?search=${title}&level=${level}&price_min=${price_min}&price_max=${price_max}`
             alert(url)
-            setup()
-            // break
+            setup(url)
 
         }
         else{
@@ -239,11 +242,17 @@
             var price_max=$('#price_max').val()
             var url = `http://127.0.0.1:8000/api/v1.0/search/freelancer/?search=${title}&level=${level}&price_min=${price_min}&price_max=${price_max}`
             alert(url)
-            setup()
-            // break
+            setup(url)
         }
         
         
+
+
+
+
+
+
+
 
         
     })
