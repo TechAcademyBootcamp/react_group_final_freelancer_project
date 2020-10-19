@@ -20,6 +20,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django_email_verification import urls as mail_urls
 
+from . import settings
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+ 
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +36,7 @@ urlpatterns = [
     path('search/freelancer/', SearchFreelancerView.as_view(), name='searchfreelancer'),
     path('search/job/', SearchJobView.as_view(), name='searchjob'),
     path('dashboard/',DashboardView.as_view(),name='dashboard'), 
-
 ]
+ 
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

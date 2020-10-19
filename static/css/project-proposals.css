@@ -154,8 +154,12 @@ textarea{
 .image{
     width: 60px;
     height: 60px;
-    background-color: var(--border-color);
+    background-color: white;
     border-radius: 50px;
     margin-right: 20px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* PEGINATION */

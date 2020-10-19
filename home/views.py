@@ -397,7 +397,11 @@ class MyProfileView(FormView):
         overview=form.cleaned_data['overview']
         title=form.cleaned_data['title']
         hourly_price=form.cleaned_data['hourly_price']
+        image=form.cleaned_data['image']
+        skill=form.cleaned_data['skill']
 
+
+        print(self.request.POST)
         
         
         
@@ -450,13 +454,48 @@ class MyProfileView(FormView):
                 return self.form_invalid(form)
             elif hourly_price:
                 user.hourly_price=hourly_price
+                user.save()
+        elif 'img' in self.request.POST:
+            if not image:
+                form.add_error('image', "This field can't be blank")
+                if not user.active:
+                    messages.add_message(self.request, messages.INFO, 'Your account is not active')
+                if not self.request.user.email_auth:
+                    messages.add_message(self.request, messages.INFO, 'Your email is not verified')
+                return self.form_invalid(form)
+            elif image:
+                user.image=image
+                user.save()  
+        elif 'skills' in self.request.POST:
+            print('skills')
+            print(skill)
+            print(skill.count())
+
+
+            if not skill:
+                form.add_error('skill', "This field can't be blank")
+                if not user.active:
+                    messages.add_message(self.request, messages.INFO, 'Your account is not active')
+                if not self.request.user.email_auth:
+                    messages.add_message(self.request, messages.INFO, 'Your email is not verified')
+                return self.form_invalid(form)
+            elif skill.count()>5:
+                print('coxduu')
+                form.add_error('skill', "Please enter at most 5 skills")
+                if not user.active:
+                    messages.add_message(self.request, messages.INFO, 'Your account is not active')
+                if not self.request.user.email_auth:
+                    messages.add_message(self.request, messages.INFO, 'Your email is not verified')
+                return self.form_invalid(form)
+            elif skill:
+                user.skill.set(skill)
                 user.save()  
         elif 'email-auth' in self.request.POST:
             sendConfirm(user)
             messages.add_message(self.request, messages.INFO, 'Verification email is sent')
 
 
-        if user.first_name and user.last_name and user.title and user.overview and user.hourly_price and not user.active:
+        if user.first_name and user.last_name and user.title and user.overview and user.hourly_price and user.skill.count() and not user.active:
             user.active=True
             user.save()
             messages.add_message(self.request, messages.INFO, 'Your account is activated')   

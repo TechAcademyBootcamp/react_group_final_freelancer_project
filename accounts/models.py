@@ -15,7 +15,7 @@ class Skill(models.Model):
 
 
 class CustomUser(AbstractUser):
-    skill=models.ManyToManyField(Skill)
+    skill=models.ManyToManyField(Skill,null=True, blank=True)
     first_name=models.CharField('First Name', null=False, blank=False,max_length=255)    
     last_name=models.CharField('Last name', null=False, blank=False,max_length=255)    
     email=models.EmailField('Email',unique=True,max_length=255)
@@ -23,7 +23,7 @@ class CustomUser(AbstractUser):
     title=models.CharField('Title', null=True, blank=True,max_length=255)    
     overview=models.TextField('Overview', null=True, blank=True,max_length=1000)    
     hourly_price=models.IntegerField('Hourly Prize',validators=[MaxValueValidator(100)],null=True, blank=True)
-    image=models.ImageField(upload_to='user/', null=True, blank=True)    
+    image=models.ImageField(upload_to='user', null=True, blank=True)    
     active=models.BooleanField('Active', default=False)    
     email_auth=models.BooleanField('Email Authentication', default=False)    
     

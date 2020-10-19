@@ -212,8 +212,8 @@
                 <div class="top_dash_details box-container flex-column">
                     <div class="header_dash align-center">
                         <div class="flex-row align-center">
-                            <div class="image">
-                                <img src="" alt="">
+                            <div class="image" style="background-image: url('{{ reply.user.image|img }}');">
+                                
                             </div>
                             <div class="flex-column">
                                 <h5>{{ reply.user.first_name }} {{reply.user.last_name}} <i style="color:var(--main-orange);margin-left: 10px;" class="fas fa-check-circle"></i></h5>

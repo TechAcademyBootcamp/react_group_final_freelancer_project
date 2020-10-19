@@ -37,7 +37,7 @@
                 <div class="form_sec">
                     <div class="form_left">
                         <div class="form_header">
-                            <div class="image-small">
+                            <div class="image-small" style="background-image: url('{{ request.user.image|img }}');">
 
                             </div>
                         </div>
@@ -51,9 +51,9 @@
                                 </div>
                             </div>
                             {% for group in groups %}
-                                <div class="account" name='{{group.id}}' title="{{group|sender:user.id}}">
+                                <div class="account" name='{{group.id}}' title="{{group|sender:user.id}}" image='{{ reply.user.image|img }}'>
                                     <div class="align-center">
-                                        <div class="image">
+                                        <div class="image" style="background-image: url('{{ reply.user.image|img }}');">
                                         </div>
                                         <div class="flex-column">
                                             <div class="align-center">
@@ -75,7 +75,7 @@
                         <div class="flex-column" style="width: 100%;height: 100%;">
                             <div class="form_header">
                                 <div class="flex-row header-sender">
-                                    <div class="image-small">
+                                    <div class="image-small" id="sending-image">
     
                                     </div>
                                     <div class="flex-column top-padding">
@@ -223,11 +223,17 @@
             
             group_id=this.getAttribute("name");
             sender_name=this.getAttribute("title");
+            img=this.getAttribute("image");
+            console.log(img);
+
+
             $('#sender-name').text(sender_name)
             $('.send-form').css('visibility','visible')
             $('.header-sender').css('visibility','visible')
             el_message=$(`#message-not-${group_id}`)
             el_message.css('display','none')
+            $('#sending-image').css('background-image',`url(${img})`)
+
             el_message.text(0)
 
             // Messages on screen

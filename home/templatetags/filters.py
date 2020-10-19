@@ -12,6 +12,12 @@ def proposals(value): # Only one argument.
     x=Replies.objects.filter(project=value).count()
     return x
 
+@register.filter(name='img')
+def img(image): # Only one argument.
+    if image:
+        return image.url
+    else:
+        return '/static/icons/profile-user.svg'
 @register.filter(name='end_time')
 def end_time(time): # Only one argument.
     print(time.replace(tzinfo=None))

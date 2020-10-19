@@ -1,6 +1,6 @@
 :root{
     --gap:20px;
-    --bar-height:96px;
+    --bar-height:80px;
 }
 /* ICONS */
 
@@ -52,10 +52,15 @@ i.edit_i:hover{
     width: var(--bar-height);
     height: var(--bar-height);
     border-radius: 100px;
-    background-color: var(--border-color);
+    background-color: white;
     /* border: 1px solid red; */
-    margin-right: var(--gap);
+    /* margin-right: var(--gap); */
+    margin-right: 30px;
     display: table;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .grade_1_right{
@@ -135,6 +140,9 @@ h4,p,h5{
 .name-con h4{
     margin: 3px 0;
 }
+.grade_1_right_up p{
+    margin: 1px 0 !important;
+}
 
 .card_container_right{
     margin: 0;
@@ -145,3 +153,9 @@ h5{
 }
 
 
+.edit-error-row{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 7px;
+}
