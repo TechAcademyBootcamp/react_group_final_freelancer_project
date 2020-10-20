@@ -477,3 +477,8 @@ btnb:hover, .btnb:hover{
     color: var(--main-orange);
 }
 
+.card .img_container{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

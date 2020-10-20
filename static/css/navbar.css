@@ -4,24 +4,37 @@ nav {
     font-family: 'Poppins';
     font-size: 20px;
     display: flex;
-    background-color:white;
-    box-shadow: 0 15px 15px rgb(243, 243, 243);
-    backdrop-filter: blur(5px);
+    box-shadow: 0 0px 15px 1px rgba(0, 0, 0, 0);
+    /* backdrop-filter: blur(5px); */
     width: 100%;
     position: fixed;
-    transition: top 0.3s;
+    transition: top,background-color,box-shadow;
+    transition-duration: 0.3s;
     top: 0;
     height: 60px;
-    z-index: 2222;    
+    z-index: 22;    
+    background-color: white;
 }
-
-.containers{
+nav a{
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--main-color);
+}
+nav h4{
+    margin: 0 !important;
+    padding: 5px !important;
+}
+.evenAnimation{
+    background-color:white;
+    box-shadow: 0 0px 15px 1px rgba(0, 0, 0, 0.1);
+}
+nav .containers{
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     width: var(--container-width);
-
+    margin: 0 var(--navbar-margin-side);
 }
 .headers{
     color: black;
@@ -42,33 +55,39 @@ nav {
 
 
   
-
-.login ,.sign_up{
-    display: flex;
-    font-size: 20px;
+.headers{
+    margin-right: 20px;
+    align-items: center;
+}
+.login ,.sign_up, .logined-img{
     color: var(--main-color);
-    color: black;
-    font-weight: 500;
-    line-height: 1.2;
-    border: 0px;
     margin-left: 35px;
     align-items: center;
     
 }
 
+.logined-img{
+   width: 40px;
+   height: 40px;
+   background-color: var(--border-color);
+   border-radius: 100px;
+
+   margin-left: 20px;
+}
+
 .sign_up{
-    background-color: white;
+    background-color: transparent;
     color: var(--main-color);
-    padding: 7px 22px;
-    border:2px solid ;
+    padding: 1px 12px;
+    border:1px solid var(--main-color);;
     border-radius: 50px;
-    padding-top: 3px;
+    padding-bottom: 3px;
 }
 .sign_up:hover{
-    background-color: var(--main-orange);
-    color: white;
+    /* background-color: var(--main-orange); */
+    color:var(--main-orange);
     border-color: var(--main-orange);
-    box-shadow: 0 0 30px 1px  rgb(255, 192, 74);
+    /* box-shadow: 0 0 30px 1px  rgb(255, 192, 74); */
 }
 
 .login:focus {
@@ -87,4 +106,9 @@ nav {
     background-color:transparent ;
     font-family: 'Poppins';
     font-size: 20px;
+}
+.logined-img{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
