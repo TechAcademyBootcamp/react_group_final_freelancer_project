@@ -5,6 +5,7 @@
 <sections>
     <div class="custom-container">
         <div class="base"> 
+            <input type="text" class="form-control" id="tokenfield-typeahead"/>
             
             <div class="up_left">
                 <div class="filter-sec">
@@ -13,7 +14,6 @@
                         <tag>Adobe <i class="fas fa-times tag-remove"></i></tag>
 
                     </div>
-                    {% include 'test2.html'%}
                 </div>
                 <div class="filter-sec">
                     <h4>Price</h4>
@@ -245,23 +245,49 @@
             setup(url)
         }
         
-        
-
-
-
-
-
-
-
-
-        
     })
     
 </script>
 
 
 
+<script type="text/javascript">
+    $(function () {
+        var engine = new Bloodhound({
+            local: [{
+                value: 'red'
+            }, {
+                value: 'blue'
+            }, {
+                value: 'green'
+            }, {
+                value: 'yellow'
+            }, {
+                value: 'violet'
+            }, {
+                value: 'brown'
+            }, {
+                value: 'purple'
+            }, {
+                value: 'black'
+            }, {
+                value: 'white'
+            }],
+            datumTokenizer: function(d) {
+                return Bloodhound.tokenizers.whitespace(d.value);
+            },
+            queryTokenizer: Bloodhound.tokenizers.whitespace
+        });
 
+        engine.initialize();
+
+        $('#tokenfield-typeahead').tokenfield({
+            typeahead: [null, {
+                source: engine.ttAdapter()
+            }]
+        });
+    });
+</script>
 
 
 {% endblock %}

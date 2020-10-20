@@ -4,47 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./tokenize2.css">
 </head>
+<style>
+    body {
+  background-color: #090522;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat, "Open Sans", Helvetica, sans-serif;
+}
+
+.container {
+  width: 1024px;
+  margin-left: 368px !important;
+  height: 100vh;
+  background: #FFFFFF;
+  border-radius: 4px 4px 0 0;
+  margin: 48px 48px 0 48px;
+  position: relative;
+  background-image: url("https://d3vv6lp55qjaqc.cloudfront.net/items/0F3J3j0c1t1O140e351h/organic-shape-bg@2x.png");
+  background-position: -10px -16px, top right;
+  background-size: 1060px 450px;
+  background-repeat: no-repeat;
+}
+
+.container > img {
+  width: 100%;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  border-top-right-radius: 4px;
+  z-index: 0;
+}
+
+.searchbox {
+  width: 1024px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  color: #111111;
+  padding: 0 32px;
+  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.2), 0 5px 15px 0 rgba(0, 0, 0, 0.07);
+  border: none;
+  border-radius: 4px;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  margin: 32px 0 0 -32px;
+}
+.searchbox:focus {
+  outline: none;
+}
+
+.category {
+  margin: 32px 0 0 32px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+.category > h2 {
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  margin-left: 16px;
+  margin-bottom: 24px;
+}
+
+.category-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  width: 1440px;
+  margin-left: -400px;
+  height: 272px;
+  overflow: scroll;
+}
+
+.category-block.freelance {
+  margin-left: 400px;
+}
+
+.category-block.prototype {
+  margin-right: 400px;
+}
+
+.category-block {
+  background: #FFFFFF;
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.1), 0 4px 16px 0 rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
+  min-width: 360px;
+  height: 224px;
+  margin-right: 32px;
+  display: -webkit-box;
+  display: flex;
+  overflow: hidden;
+}
+.category-block img {
+  max-width: 144px;
+}
+
+.category-info {
+  margin: 32px 16px 24px 24px;
+}
+.category-info h2 {
+  font-size: 18px;
+  color: #111111;
+  font-weight: 500;
+  margin-top: 0;
+}
+.category-info p {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.4);
+}
+.category-info a {
+  color: #F76565;
+  text-decoration: none;
+  justify-item: flex-end;
+  font-size: 14px;
+}
+
+</style>
 <body>
-    <select class="demo" multiple>
-        <option value="1">Acura</option>
-        <option value="2">Audi</option>
-        <option value="3">BMW</option>
-        <option value="4">Cadillac</option>
-        <option value="5">Chevrolet</option>
-        <option value="6">Ferrari</option>
-        <option value="7">Ford</option>
-        <option value="8">Honda</option>
-        <option value="9">Lexus</option>
-        <option value="10">Mercedes-Benz</option>
-      </select>
-
-
-
-    <script src="//code.jquery.com/jquery.min.js"></script>
-    <script src="./tokenize2.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
-
-
-    <script>
-        var list=[
-                        {"text": "Afghanistan", "value": "AF"},
-                        {"text": "Åland Islands", "value": "AX"},
-                        {"text": "Albania", "value": "AL"},
-                        {"text": "Algeria", "value": "DZ"},
-                        {"text": "American Samoa", "value": "AS"},
-                        {"text": "Andorra", "value": "AD"},
-                        {"text": "Angola", "value": "AO"}
-                        ]
-        $('.demo').tokenize2({
-            // dataSource: list
-            dropdownMaxItems: 10
-
-        });
+    <div class="left">
+        <header></header>
+        <nav></nav>
+    </div>
+    
+    <div class="container">
+        <input type="search" placeholder="What are you looking for?" class="searchbox">
         
-    </script>
+        <div class="category">
+            <h2>Categories</h2>
+            <div class="category-container">
+                <div class="category-block freelance">
+                    <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/0W022B3v383p0X1k0T3V/category-freelance@2x.png">
+                    <div class="category-info">
+                        <h2>Freelance</h2>
+                        <p>Find work, get paid, and manage your freelance career like a boss</p>
+                        <a href="#">Discover</a>
+                    </div>
+                </div>
+                <div class="category-block interviews">
+                    <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/2M0v0C0v3B3w383Z3m0F/category-interview@2x.png">
+                    <div class="category-info">
+                        <h2>Interviews</h2>
+                        <p>Find work, get paid, and manage your freelance career like a boss</p>
+                        <a>Learn from them</a>
+                    </div>
+                </div>
+                <div class="category-block books">
+                    <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/082u460D2A172T0t1x2k/category-book@2x.png">
+                    <div class="category-info">
+                        <h2>Books</h2>
+                        <p>There’s just nothing like a good book. Expand your knowledge or just kick back with a great adventure.</p>
+                        <a>Read more</a>
+                    </div>
+                </div>
+                <div class="category-block podcasts">
+                    <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/2D3s0M2D2j45050D2u05/category-podcast@2x.png">
+                    <div class="category-info">
+                        <h2>Podcasts</h2>
+                        <p>A sampling of powerful conversations, interviews, and insights from the most interesting people</p>
+                        <a>Listen more</a>
+                    </div>
+                </div>
+                <div class="category-block sketch">
+                    <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/2D3s0M2D2j45050D2u05/category-podcast@2x.png">
+                    <div class="category-info">
+                        <h2>Sketch</h2>
+                        <p>Design is more than just pretty pixels</p>
+                        <a>Discover</a>
+                    </div>
+                </div>
+                <div class="category-block prototype">
+                    <img src="https://d3vv6lp55qjaqc.cloudfront.net/items/2D3s0M2D2j45050D2u05/category-podcast@2x.png">
+                    <div class="category-info">
+                        <h2>Prototype</h2>
+                        <p>Bring your idea to life super fast with quick and dirty wireframes, mockups, and functional prototypes.</p>
+                        <a>Discover</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
