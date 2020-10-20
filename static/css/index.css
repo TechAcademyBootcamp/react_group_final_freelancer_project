@@ -20,9 +20,8 @@ body{
     position: absolute;
     right: 0;
     bottom: 0;
-    min-width: 100%;
+    min-width: 100vh;
     width: 100%;
-    min-height: 100%;
     z-index: 0;
 }
 
@@ -57,9 +56,13 @@ body{
     animation-duration: 1.5s;
     animation-timing-function:linear;
     animation-iteration-count: infinite;
+    z-index: 99;
+
 }
 .smoothly{
     color: white;
+    z-index: 99;
+
 }
 
 
