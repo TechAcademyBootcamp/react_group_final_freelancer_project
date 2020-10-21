@@ -2,7 +2,7 @@
 {% load filters %}
 
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-<nav class="nav">
+<nav class="nav" style="z-index: 9999;">
     <div class="containers">
         {% if not request.user %}
             <div class="left_side_nav">           
