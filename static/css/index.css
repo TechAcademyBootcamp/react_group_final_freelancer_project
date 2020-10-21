@@ -107,7 +107,7 @@ a{
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: #E37600;
+    /* background-color: #E37600; */
     padding-bottom: 8px;
   }
   .container_info{
