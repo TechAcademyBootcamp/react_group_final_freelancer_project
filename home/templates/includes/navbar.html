@@ -1,4 +1,6 @@
 {% load static %}
+{% load filters %}
+
 <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <nav class="nav">
     <div class="containers">
@@ -20,7 +22,7 @@
             </div>
             <div class="left_side_nav">
                 <a href="{% url 'my-profile' %}" class="login">My Profile</a>
-                <a href="{% url 'my-profile' %}" class="logined-img"></a>
+                <a href="{% url 'my-profile' %}" style="background-image: url('{{request.user.image|img}}');" class="logined-img"></a>
                         
             </div>
         {% endif %}

@@ -18,7 +18,7 @@
         </button>
     </div> -->
 
-    <form class="edit-bar" method="POST" action="#">
+    <form class="edit-bar" method="POST" action="#" enctype="multipart/form-data">
         
         <div id="edit-bar-1" class="edit-bar {% if form.first_name.errors or form.last_name.errors %} open-edit-bar{% endif %}">
             
@@ -42,19 +42,14 @@
                 </div>
                 {{form.last_name}}
                 <!-- <input name="last_name" type="text" id="input-1" placeholder="Surname" value="{{user.last_name}}"> -->
-                <div class="input_details">
-                    <div class="flex-column">
-                        {% for error in form.last_name.errors %}
-                        <small name='error-first_name'>{{error}}</small>
-                        {% endfor %}
-                    </div>
-                    <span for=""></span>
-                </div>
-                <div class="space-between">
-                    <div class="flex-column">
-                        {% for error in form.non_field_errors %}
+                <div class="space-between edit-error-row">
+                    <div class="input_details">
+                        <div class="flex-column">
+                            {% for error in form.last_name.errors %}
                             <small name='error-first_name'>{{error}}</small>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
+                        <span for=""></span>
                     </div>
                     <!-- <button type="submit" class="btnb" onclick="save(1)">Save</btnb> -->
                     <button type="submit"  name='fullname' class="btnb">Save</button>
@@ -74,19 +69,15 @@
                 <p>Enter a single sentence description of your professional skills/experience (e.g. Expert Web Designer with Ajax experience)</p>
                 <!-- <input name="title" id="input-2" type="text" placeholder="Title" value="{{user.title}}"> -->
                 {{form.title}}
-                <div class="input_details">
-                    <div class="flex-column">
-                        {% for error in form.title.errors %}
-                        <small name='error-first_name'>{{error}}</small>
-                        {% endfor %}
-                    </div>
-                    <span for=""></span>
-                </div>
-                <div class="space-between">
-                    <div class="flex-column">
-                        {% for error in form.non_field_errors %}
-                        <small>{{error}}</small>
-                        {% endfor %}
+                
+                <div class="space-between edit-error-row">
+                    <div class="input_details">
+                        <div class="flex-column">
+                            {% for error in form.title.errors %}
+                            <small name='error-first_name'>{{error}}</small>
+                            {% endfor %}
+                        </div>
+                        <span for=""></span>
                     </div>
                     <button type="submit" name="Title" class="btnb">Save</button>
                     <!-- <btnb onclick="save(2)" id="btnb-2">Save</btnb> -->
@@ -109,19 +100,15 @@
                     
                 <!-- <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea> -->
                 {{form.overview}}
-                <div class="input_details">
-                    <div class="flex-column">
-                        {% for error in form.overview.errors %}
-                        <small>{{error}}</small>
-                        {% endfor %}
-                    </div>
-                    <span for=""></span>
-                </div>
-                <div class="space-between">
-                    <div class="flex-column">
-                        {% for error in form.non_field_errors %}
-                            <small name='error-first_name'>{{error}}</small>
-                        {% endfor %}
+                
+                <div class="space-between edit-error-row">
+                    <div class="input_details">
+                        <div class="flex-column">
+                            {% for error in form.overview.errors %}
+                            <small>{{error}}</small>
+                            {% endfor %}
+                        </div>
+                        <span for=""></span>
                     </div>
                     <!-- <btnb onclick="save(3)">Save</btnb> -->
                     <!-- <button type="submit" class="btnb" name="overview">Save</button> -->
@@ -142,24 +129,77 @@
                     
                 <!-- <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea> -->
                 {{form.hourly_price}}
-                <div class="input_details">
-                    <div class="flex-column">
-                        {% for error in form.hourly_price.errors %}
-                        <small>{{error}}</small>
-                        {% endfor %}
-                    </div>
-                    <span for=""></span>
-                </div>
-                <div class="space-between">
-                    <div class="flex-column">
-                        {% for error in form.non_field_errors %}
-                            <small name='error-first_name'>{{error}}</small>
-                        {% endfor %}
+                
+                <div class="space-between edit-error-row">
+                    <div class="input_details">
+                        <div class="flex-column">
+                            {% for error in form.hourly_price.errors %}
+                            <small>{{error}}</small>
+                            {% endfor %}
+                        </div>
+                        <span for=""></span>
                     </div>
                     <!-- <btnb onclick="save(3)">Save</btnb> -->
                     <!-- <button type="submit" class="btnb" name="overview">Save</button> -->
                     <button type="submit" name='Hourly_price' class="btnb">Save</button>
 
+                </div>
+            </div>
+        
+        </div>
+        <div id="edit-bar-5" class="edit-bar {% if form.image.errors %} open-edit-bar{% endif %}">
+            <div class="top space-between padding">
+                <h4>Change your profile image</h4>
+                <i class="fas fa-times" onclick="close_bar(5)"></i>
+            </div>
+            <div class="padding">
+                <!-- <h5>Hourly Rate</h5> -->
+                <!-- <p>Total amount the client will see </p> -->
+                    
+                <!-- <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea> -->
+                {{form.image}}
+               
+                <div class="space-between edit-error-row">
+                    <div class="input_details">
+                        <div class="flex-column">
+                            {% for error in form.image.errors %}
+                            <small>{{error}}</small>
+                            {% endfor %}
+                        </div>
+                        <span for=""></span>
+                    </div>
+                    <!-- <btnb onclick="save(3)">Save</btnb> -->
+                    <!-- <button type="submit" class="btnb" name="overview">Save</button> -->
+                    <button type="submit" name='img' class="btnb">Save</button>
+
+                </div>
+            </div>
+        
+        </div>
+        <div id="edit-bar-6" class="edit-bar {% if form.skill.errors %} open-edit-bar{% endif %}">
+            <div class="top space-between padding">
+                <h4>Change your skills</h4>
+                <i class="fas fa-times" onclick="close_bar(6)"></i>
+            </div>
+            <div class="padding">
+                <!-- <h5>Hourly Rate</h5> -->
+                <!-- <p>Total amount the client will see </p> -->
+                    
+                <!-- <textarea name="overview" id='input-3' placeholder="Overview" value="{{user.first_name}} {{user.last_name}}"></textarea> -->
+                {{form.skill}}
+               
+                <div class="space-between edit-error-row">
+                    <div class="input_details">
+                        <div class="flex-column">
+                            {% for error in form.skill.errors %}
+                            <small>{{error}}</small>
+                            {% endfor %}
+                        </div>
+                        <span for=""></span>
+                    </div>
+                    <!-- <btnb onclick="save(3)">Save</btnb> -->
+                    <!-- <button type="submit" class="btnb" name="overview">Save</button> -->
+                    <button type="submit" name='skills' class="btnb">Save</button>
                 </div>
             </div>
         
@@ -170,8 +210,8 @@
 
             <!-- NEW -->
             <div class="grade_1 grades box-con">
-                <div class="grade_1_left">
-    
+                <div class="grade_1_left"  style="background-image: url('{{ user.image|img }}');">
+                    <i style="position: absolute; margin-left: 65px;" onclick="close_bar(5)" class="fas fa-pen edit-icon"></i>
                 </div>
                 <div class="grade_1_right">
                     <div class="grade_1_right_up">
@@ -236,15 +276,27 @@
                         
                         
                     </div>
-                    <!-- <div class="grades con box-con">
-                        <div class="space-between">
-                            <h4>Front-End Developer </h4>
-                            <div>
-                                
+                </div>
+
+            </div>
+            <div class="grade_2 ">
+                <div class="grade_2_left grade_part">
+                    <div class="grades box-container">
+                        <div class="right_main_details box-padding">
+                            <div class="flex-row">
+                                <h4 name='C-title' class="align-center">Skills</h4>
+                                <i onclick="close_bar(6)" class="fas fa-pen edit-icon"></i>
                             </div>
+                            
+                            
                         </div>
-                        <p>asdasdasd</p>
-                    </div> -->
+                        <div class="last_piece__end endbox flex-row" style="flex-wrap: wrap;">
+                            {% for skill in user.skill.all %}
+                            <tag>{{skill.title}}</tag>
+                            {% endfor %}
+                        </div>
+ 
+                    </div>
                 </div>
 
             </div>

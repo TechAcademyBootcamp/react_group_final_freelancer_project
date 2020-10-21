@@ -1,4 +1,4 @@
-{% extends 'includes/base3.html' %}
+{% extends 'includes/base4.html' %}
 {% load static %}
 {% load filters %}
 
@@ -7,20 +7,51 @@
 <link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/project-proposals.css' %}" type="text/css">
 <link rel="stylesheet" href="{% static 'css/project-detail.css' %}" type="text/css">
-
-
-    <div class="top_blue">
-        <button style="padding-top:80px">
-            Details
-        </button>
-        <button style="padding-top:80px">
-            Proposal
-        </button>
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+<nav  class="flex-column" style="left: 0;height: auto;">
+    <div class="nav" style="height: 60px; justify-content: center;">
+        <div class="containers">
+            {% if not request.user %}
+                <div class="left_side_nav">           
+                    <a href="{% url 'searchjob' %}" class="headers">Search</a>
+                </div>
+                <div class="left_side_nav">
+                    <a href="{% url 'login' %}" class="login">Login</a>
+                    <a href="{% url 'register' %}" class="sign_up">Sign up</a>
+                            
+                </div>
+            {% else %}
+                <div class="left_side_nav">           
+                    <a href="{% url 'dashboard' %}" class="headers">Dashboard</a>
+                    <a href="{% url 'searchjob' %}" class="headers">Search</a>
+                    <a href="{% url 'my-projects-freelancer' %}" class="headers">My projects</a>
+    
+                </div>
+                <div class="left_side_nav">
+                    <a href="{% url 'my-profile' %}" class="login">My Profile</a>
+                    <a href="{% url 'my-profile' %}" class="logined-img"></a>
+                            
+                </div>
+            {% endif %}
+        </div>
     </div>
+    <div class="nav" style="background-color: rgb(236, 236, 236); justify-content: center;">
+        <div class="containers">
+            <div class="left_side_nav">           
+                <a style="padding-bottom: 10px; padding-top: 7px; " href="/project-detail/{{ detail.id }}" class="headers">Details</a>
+                <a style="padding-bottom: 10px; padding-top: 7px; border-bottom: 2px solid var(--main-orange);color: var(--main-orange);" href="/project-proposals/{{ detail.id }}" class="headers">Proposals</a>
+            
 
+            </div>
+            <div class="left_side_nav">
+                 
+            </div>
+        </div>
+    </div>
+</nav>
 
     {% csrf_token %}
-    <div style="display: flex;flex-direction: row;margin-top:100px;width: 100%;">
+    <div style="display: flex;flex-direction: row;width: 100%;">
 
         <div  class="card_container_left">
             {% if form.non_field_errors %}
@@ -30,7 +61,6 @@
                         {% for error in form.non_field_errors %}
                             <small>{{error}}</small>
                         {% endfor %}
-
                     </div>
                     <!-- <i class="fas fa-times" onclick="close_message()"></i> -->
                 </div>
@@ -58,8 +88,8 @@
                 <div class="top_dash_details box-container flex-column">
                     <div class="header_dash align-center">
                         <div class="flex-row align-center">
-                            <div class="image">
-                                <img src="" alt="">
+                            <div class="image" style="background-image: url('{{ reply.user.image|img }}');">
+                               
                             </div>
                             <div class="flex-column">
                                 <h5>{{ reply1.user.first_name }} {{reply1.user.last_name}} <i style="color:var(--main-orange);margin-left: 10px;" class="fas fa-check-circle"></i></h5>
@@ -83,8 +113,8 @@
                     <div class="top_dash_details box-container flex-column">
                         <div class="header_dash align-center">
                             <div class="flex-row align-center">
-                                <div class="image">
-                                    <img src="" alt="">
+                                <div class="image" style="background-image: url('{{ reply.user.image|img }}');">
+                                    
                                 </div>
                                 <div class="flex-column">
                                     <h5>{{reply.user.first_name}} {{reply.user.last_name}}</h5>

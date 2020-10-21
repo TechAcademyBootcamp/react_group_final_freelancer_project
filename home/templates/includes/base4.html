@@ -1,0 +1,140 @@
+{% block container %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+    
+    
+    <link rel="stylesheet" href="{% static 'css/buttons.css' %}" type="text/css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/my-profile.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my-projects.css' %}">
+
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    
+    
+</head>
+
+<body>
+
+
+    
+
+    <!-- BACKGROUND -->
+        
+    <!-- BACKGROUND -->
+
+    <sections style="margin-top:150px">
+        <div class="custom-container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="box-con message-con message-open">
+                        <div class="message-text-con space-between">
+                            <div class="flex-column">
+                                <h5>{{message}}</h5>     
+                            </div>  
+                            <!-- <i class="fas fa-times" onclick="close_message()"></i> -->
+                        </div>
+                    </div>
+                {% endfor %}    
+            {% endif %}
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </sections>
+    
+    <script src="{% static 'js/navbar.js' %}"></script>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="jquery.counterup.min.js"></script>
+
+    <script src="./jquery.counterup.min.js"></script>
+    <script>
+        $('.counter').counterUp({
+            delay: 10,
+            time: 1000,
+            offset: 70,
+            beginAt: 100,
+            formatter: function (n) {
+            return n.replace(/,/g, '.');
+            }
+        });
+        video.removeAttribute('controls');
+        
+        
+    </script>
+
+<script>   
+    AOS.init(); 
+</script>
+<!-- <script src="https://use.fontawesome.com/dec111573d.js"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+
+<script>
+    var index=0;
+    var current=true
+    
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+
+        if (prevScrollpos > currentScrollPos) {
+            document.querySelector("nav").style.top = "0";
+        } else {
+            document.querySelector("nav").style.top = "-60px";
+        }
+        prevScrollpos = currentScrollPos;
+
+        console.log('asagidadi');
+        // ADDED
+        var currentScrollPos = window.pageYOffset;
+        var element=document.querySelector('nav');
+        var clicked=true
+        if (currentScrollPos > 0) {
+            console.log('asagidadi');
+            if(current){
+                // $('nav').show();
+                $('nav').removeClass('oddAnimation').addClass('evenAnimation');
+            }
+            current=false
+        }
+        else{
+            console.log('yuxaridadi');
+
+            if(!current){
+                $('nav').addClass('oddAnimation');
+            }
+            current=true
+        }
+    }
+    
+ 
+    function close_message(){
+        $('.message-con').toggleClass('message-open')
+    }
+
+
+</script>
+
+{% endblock %}
+

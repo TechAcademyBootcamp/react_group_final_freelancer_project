@@ -43,7 +43,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta():
         model=CustomUser
-        fields=['first_name','last_name','hourly_price','title','overview']
+        fields=['first_name','last_name','hourly_price','title','overview','image','skill']
 
         widgets={
             'title':forms.TextInput(attrs={

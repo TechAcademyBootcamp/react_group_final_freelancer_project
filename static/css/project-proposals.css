@@ -102,13 +102,13 @@ proposal{
     margin-right: 0;
     
 }
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
     
     .card_container_left{
         flex-basis: 100%;
         margin-right: 0px;
     }
-  }
+  } */
 
 .middle_details{
     display: flex;
@@ -154,8 +154,12 @@ textarea{
 .image{
     width: 60px;
     height: 60px;
-    background-color: var(--border-color);
+    background-color: white;
     border-radius: 50px;
     margin-right: 20px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* PEGINATION */
