@@ -59,6 +59,11 @@ nav .containers{
     margin-right: 20px;
     align-items: center;
 }
+
+.headers:hover, .login:hover{
+    text-decoration: none;
+    color: var(--main-orange);
+}
 .login ,.sign_up, .logined-img{
     color: var(--main-color);
     margin-left: 35px;
@@ -78,15 +83,17 @@ nav .containers{
 .sign_up{
     background-color: transparent;
     color: var(--main-color);
-    padding: 1px 12px;
+    padding: 1px 12px 3px;
     border:1px solid var(--main-color);;
     border-radius: 50px;
     padding-bottom: 3px;
+    text-decoration: none;
 }
 .sign_up:hover{
     /* background-color: var(--main-orange); */
     color:var(--main-orange);
     border-color: var(--main-orange);
+    text-decoration: none;
     /* box-shadow: 0 0 30px 1px  rgb(255, 192, 74); */
 }
 

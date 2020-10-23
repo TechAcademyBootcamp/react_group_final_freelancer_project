@@ -39,8 +39,6 @@
         
     <!-- BACKGROUND -->
 
-    <sections style="margin-top:100px">
-        <div class="custom-container">
             {% if messages %}
                 {% for message in messages %}
                     <div class="box-con message-con message-open">
@@ -56,8 +54,7 @@
             {% block content %}
 
             {% endblock %}
-        </div>
-    </sections>
+
     
     <script src="{% static 'js/navbar.js' %}"></script>
 </body>
@@ -108,13 +105,14 @@
         }
         prevScrollpos = currentScrollPos;
 
-        console.log('asagidadi');
+
         // ADDED
-        var currentScrollPos = window.pageYOffset;
+        // var currentScrollPos = window.pageYOffset;
         var element=document.querySelector('nav');
         var clicked=true
+        console.log(currentScrollPos);
         if (currentScrollPos > 0) {
-            // console.log('asagidadi');
+            console.log('asagidadi');
             if(current){
                 // $('nav').show();
                 $('nav').removeClass('oddAnimation').addClass('evenAnimation');
@@ -122,22 +120,16 @@
             current=false
         }
         else{
-            // console.log('yuxaridadi');
+            console.log('yuxaridadi');
 
             if(!current){
-                $('nav').addClass('oddAnimation');
+                $('nav').addClass('oddAnimation').removeClass('evenAnimation');
             }
             current=true
         }
     }
     
- 
-    function close_message(){
-        $('.message-con').toggleClass('message-open')
-    }
-
 
 </script>
-
 {% endblock %}
 

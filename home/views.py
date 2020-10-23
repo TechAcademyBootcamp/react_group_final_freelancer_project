@@ -21,8 +21,11 @@ from accounts.forms import *
 from accounts.models import CustomUser
 # Create your views here.
 
-class HomeView(TemplateView):
+class IndexView(TemplateView):
     template_name='index.html'
+
+class HomeView(TemplateView):
+    template_name='home.html'
 
 
 
@@ -41,7 +44,7 @@ class ProjectProposalsView(ListView,FormMixin):
         # do something extra here ...
         id=self.kwargs['id']
         print(id)
-        print(Proposals.project_time(self,id))
+        print(Proposals.project_time(id))
         # if not Proposals.project_time(id):
         #     project=Project.objects.get(id=id)
         #     project.status=3
@@ -366,7 +369,7 @@ class ProjectView(CreateView):
     success_url='/'
 
     def form_valid(self, form):
-        messages.success(self.request, 'Mesajiniz Ugurla gonderildi!')
+        # messages.success(self.request, 'Mesajiniz Ugurla gonderildi!')
         project = form.save(commit=False)
         project.author = self.request.user
         project.save()

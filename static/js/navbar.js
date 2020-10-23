@@ -7,7 +7,7 @@ window.onscroll = function() {
     
     // 20 is an arbitrary number here, just to make you think if you need the prevScrollpos variable:
     if (currentScrollPos > 0) {
-        console.log('asagidadi');
+        // console.log('asagidadi');
         if(current){
             // $('nav').show();
             $('nav').removeClass('oddAnimation').addClass('evenAnimation');
@@ -15,7 +15,7 @@ window.onscroll = function() {
         current=false
     }
     else{
-        console.log('yuxaridadi');
+        // console.log('yuxaridadi');
 
         if(!current){
             $('nav').addClass('oddAnimation');

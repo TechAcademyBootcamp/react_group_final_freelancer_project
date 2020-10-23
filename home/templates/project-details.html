@@ -15,7 +15,7 @@
 <nav  class="flex-column" style="left: 0;height: auto;">
     <div class="nav" style="height: 60px; justify-content: center;">
         <div class="containers">
-            {% if not request.user %}
+            {% if not request.user.is_authenticated %}
                 <div class="left_side_nav">           
                     <a href="{% url 'searchjob' %}" class="headers">Search</a>
                 </div>
@@ -29,11 +29,13 @@
                     <a href="{% url 'dashboard' %}" class="headers">Dashboard</a>
                     <a href="{% url 'searchjob' %}" class="headers">Search</a>
                     <a href="{% url 'my-projects-freelancer' %}" class="headers">My projects</a>
-    
+                    <a href="{% url 'my-profile' %}" class="headers">My Profile</a>
+
+
                 </div>
                 <div class="left_side_nav">
-                    <a href="{% url 'my-profile' %}" class="login">My Profile</a>
-                    <a href="{% url 'my-profile' %}" class="logined-img"></a>
+                    <a href="{% url 'logout' %}" class="login">Logout</a>
+                    <a href="{% url 'my-profile' %}" style="background-image: url('{{request.user.image|img}}');" class="logined-img"></a>
                             
                 </div>
             {% endif %}
