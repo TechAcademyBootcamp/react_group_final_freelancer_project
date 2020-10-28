@@ -5,10 +5,14 @@ from home.views import *
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('home/', HomeView.as_view(), name='home'),
+    # path('dashboard/', login_required(ProjectProposalsView.as_view()), name='dashboard'),
+    
+    
     path('post-project/', login_required(ProjectView.as_view()), name='post-project'),
-    path('project-detail/<int:id>', login_required(ProjectDetailView.as_view()), name='project-detail'),
+    path('project-detail/<int:id>', login_required(ProjectDetailView.as_view()), name='project-details'),
     path('project-proposals/<int:id>', login_required(ProjectProposalsView.as_view()), name='project-proposals'),
 
+    
     path('get-started/', GetStartedView.as_view(), name='get-started'),
     path('my-profile/', login_required(MyProfileView.as_view()), name='my-profile'),
     path('my-profile-edit/', login_required(MyProfileEditView.as_view()), name='my-profile-edit'),

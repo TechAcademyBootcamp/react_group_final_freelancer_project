@@ -133,6 +133,7 @@ wbutton{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: fit-content;
 }
 wbutton svg{
     width: 25px;
@@ -167,6 +168,8 @@ done, .done{
     text-align: center;
     border: 0;
     color: white;
+    width: fit-content;
+
 }
 done:hover,.done:hover{
     background-color: var(--main-orange);
@@ -397,7 +400,7 @@ input::-webkit-file-upload-button:hover {
     align-items: center;
 }
 
-button, btna,btnb, .btnb, .btna{
+button, .button ,btna,btnb, .btnb, .btna{
     font-size: 14px;
     color: var(--main-color);
     font-weight: bold;
@@ -413,11 +416,13 @@ button, btna,btnb, .btnb, .btna{
     background-color: transparent; 
     
     outline:none !important;
+    width: fit-content;
+
 }
 input{
     outline:none !important;
 }
-button:hover{
+button:hover, .button:hover{
     border-color: var(--main-orange);
     color: var(--main-orange);
 }
@@ -481,4 +486,17 @@ btnb:hover, .btnb:hover{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.a{
+    color: var(--main-orange);
+    transition: color var(--transition-time);
+    cursor: pointer;
+}
+.a:hover{
+    color: var(--black-orange);
+}
+
+.icon-a{
+    margin-right: 5px;
 }

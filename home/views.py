@@ -5,7 +5,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.views.generic import TemplateView,DetailView,CreateView,FormView, ListView, UpdateView, View
 from home.forms import ProjectForm,RepliesForm
 from django.contrib import messages
-from home.models import Project, Replies,Proposals
+from home.models import Project, Replies,Proposals, New
 from django.db.models import Q
 from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
 from home.forms import ProjectForm,RepliesForm,FilterForm
@@ -24,6 +24,19 @@ from accounts.models import CustomUser
 class IndexView(TemplateView):
     template_name='index.html'
 
+    # def dispatch(self, request, *args, **kwargs):
+    #     if self.request.user.is_authenticated:
+    #         self.template_name='dashboard.html'
+    #     return super(IndexView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.user.is_authenticated:
+            self.template_name='dashboard.html'
+            context['news'] = New.objects.filter(user=self.request.user, seen=True).order_by('-created_at')
+            context['new_news'] = New.objects.filter(user=self.request.user, seen=False).order_by('-created_at')
+        return context
 class HomeView(TemplateView):
     template_name='home.html'
 
@@ -153,9 +166,15 @@ class ProjectProposalsView(ListView,FormMixin):
             
             obj=Proposals(user=self.user2,project=self.project)
             obj.save()
-            
+
             self.project.status=2
             self.project.save()
+        
+            new=New(user=self.user1,project=self.project,title='Chat with this user is created.')
+            # new=New(user=self.request.user,project=project,title='Your project is created successfully: ')
+            
+            new.save()
+
         else: 
             self.form.add_error(None,"Method is not allowed")
             return self.form_invalid(self.form)
@@ -208,7 +227,7 @@ class ProjectDetailView(CreateView):
         return context
 
     def form_valid(self, form):
-        obj = form.save(commit=False)
+        self.obj = form.save(commit=False)
         print(self.request.user.active)
         if Project.objects.filter(id=self.kwargs['id']).count():
             if self.request.user:
@@ -220,8 +239,10 @@ class ProjectDetailView(CreateView):
                         if(count<3):
                             if not Replies.objects.filter(user=self.request.user, project=Project.objects.get(id=self.kwargs['id'])).count():
                                 if Project.objects.get(id=self.kwargs['id']).status==1:
-                                    obj.user = self.request.user
-                                    obj.project =  Project.objects.get(id=self.kwargs['id'])
+                                    self.obj.user = self.request.user
+                                    self.obj.project =  Project.objects.get(id=self.kwargs['id'])
+
+                                   
                                 else:
                                     form.add_error(None, "This project has already been closed")
                                     return self.form_invalid(form)    
@@ -248,6 +269,24 @@ class ProjectDetailView(CreateView):
     
     def get_success_url(self, **kwargs):    
             url= f'/project-proposals/{self.kwargs["id"]}'     
+
+            print(self.obj)                        
+            new=New(user=self.request.user,project=self.obj.project,title='You applied on this project: ')
+            new.save()
+            print(new, ' Apply eden ucun')                        
+
+            if New.objects.filter(user=self.obj.project.author,project=self.obj.project,seen=False).count():
+                print(new, 'Belesi yoxdu')                        
+                
+                new=New.objects.get(user=self.obj.project.author,project=self.obj.project,seen=False) 
+                new.proposals.add(self.obj)                            
+
+            else:
+                print(new, 'Belesi yoxdu')                        
+
+                new=New(user=self.obj.project.author,project=self.obj.project,title='Someone applied on this project: ')
+                new.save()
+                new.proposals.add(self.obj)
             return url
 
 
@@ -360,7 +399,7 @@ class InboxView(TemplateView):
 
 
 class DashboardView(TemplateView):
-    template_name='dashboard.html'
+    template_name='dashboard2.html'
 
 class ProjectView(CreateView):
     form_class=ProjectForm
@@ -373,6 +412,9 @@ class ProjectView(CreateView):
         project = form.save(commit=False)
         project.author = self.request.user
         project.save()
+        new=New(user=self.request.user,project=project,title='Your project is created successfully: ')
+        new.save()
+        
         return super().form_valid(form)
     
 

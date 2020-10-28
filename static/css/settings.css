@@ -18,6 +18,11 @@
     flex-direction: column;
 }
 
+.justify-start{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .justify-end{
     display: flex;
     justify-content: flex-end;
@@ -34,4 +39,9 @@
 .flex-end{
     display: flex;
     justify-content: flex-end;
+}
+
+.flex-start{
+    display: flex;
+    justify-content: flex-start;
 }

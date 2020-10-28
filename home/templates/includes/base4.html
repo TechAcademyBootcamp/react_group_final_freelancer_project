@@ -56,7 +56,7 @@
         </div>
     </sections>
     
-    <script src="{% static 'js/navbar.js' %}"></script>
+
 </body>
 </html>
 
@@ -105,13 +105,12 @@
         }
         prevScrollpos = currentScrollPos;
 
-        console.log('asagidadi');
         // ADDED
         var currentScrollPos = window.pageYOffset;
         var element=document.querySelector('nav');
         var clicked=true
         if (currentScrollPos > 0) {
-            console.log('asagidadi');
+            // console.log('asagidadi');
             if(current){
                 // $('nav').show();
                 $('nav').removeClass('oddAnimation').addClass('evenAnimation');
@@ -119,7 +118,7 @@
             current=false
         }
         else{
-            console.log('yuxaridadi');
+            // console.log('yuxaridadi');
 
             if(!current){
                 $('nav').addClass('oddAnimation');

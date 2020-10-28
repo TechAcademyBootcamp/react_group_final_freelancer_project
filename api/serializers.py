@@ -2,7 +2,7 @@ from rest_framework import serializers
 from accounts.models import CustomUser,Skill
 from home.models import Project
 from inbox.models import Group,Message
-from home.models import Project,Level
+from home.models import Project,Level,New
 
 
 
@@ -70,6 +70,11 @@ class SearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = '__all__'
+
+class NewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = New
+        fields = ('seen',)
 
 
 

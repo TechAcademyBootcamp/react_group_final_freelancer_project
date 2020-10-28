@@ -1,214 +1,382 @@
-{% extends 'base.html' %}
+{% extends 'includes/base3.html' %}
 {% load static %}
+{% load filters %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/csa.css' %}" type="text/css">
-    <sections>
-        <div class="custom-container">
-            <div style="display: flex;flex-direction: row;margin-top:100px;width: 100%;">
-                <div  class="card_container_left">
-                    <div class="top_dash">
-                        <div class="header_dash">
-                            <h4 style="margin:25px; font-weight: 700;">Recent Projects</h4>
-                            <div class="view">
-                                <a href="#" style="text-decoration: none;margin-right: 5px;">View all</a>
-                                <i class="fas fa-long-arrow-alt-right svg_box"></i>
+<link rel="stylesheet" href="{% static 'css/style2.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/project-detail.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/side-bar.css' %}">
+<link rel="stylesheet" href="{% static 'css/my-profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+
+
+    <!-- <div class="top_blue">
+        <button style="padding-top:80px">
+            Details
+        </button>
+        <button style="padding-top:80px">
+            Proposal
+        </button>
+    </div> -->
+
+    
+    
+    <div style="display: flex;flex-direction: row;width: 100%;"> 
+        <div  class="card_container_left">
+
+            <!-- NEW -->
+            
+            <div class="grade_2 ">
+                <div class="grade_2_left grade_part">
+                    <div class="grades box-container">
+                        <div class="right_main_details box-padding">
+                            <div class="flex-row">
+                                <h4 name='C-title' class="align-center">Recent Projects</h4>
+                            </div>
+                            <div class="flex-row">
+                                <h5 name='C-hourly_price' class="align-center">View all</h4>
+                            </div>
+                        </div>
+                        <div class="last_piece__end endbox flex-row">
+                            <p  name='C-overview' class="flex-row">asd</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grade_2 ">
+                <div class="grade_2_left grade_part">
+                    <div class="grades feeds_con  box-container">
+                        <div class="right_main_details box-padding">
+                            <div class="flex-row">
+                                <h4 name='C-title' class="align-center">News Feed</h4>
+                            </div>
+                        </div>
+                        <!-- <div class="endbox feed">
+                            <div class="flex-start">
+                                <img class="feed_img" src="/static/icons/profile-user.svg" alt="">
+                            </div>
+                            <div style="width: 100%;" class="info_con">
+                                <p>To help you get started, we would like to offer you a free upgrade to our Plus Membership for 30 days (valued at $9.95 USD). You'll receive these great benefits:</p>
+                                <span>17 days ago</span>
+                                <div class="middle_box info">
+                                    <div class="mid_container">
+                                        <i class="fas fa-info-circle svg_box_2"></i>
+                                        <h5 class="box_insert_title">Project reworked</h5>
+                                    </div>
+                                    <p class="paragraph">Kindly provide a better and personalized project description to help potential bidders. For assistance, please contact Freelancer.com Support.</p>
+                                </div>
+                            </div>
+                        </div> -->
+                        {% for new in new_news %}
+                        <div class="endbox feed new-feed" pk={{new.id}}>
+                            <div class="flex-start">
+                                <img class="feed_img" src="/static/icons/profile-user.svg" alt="">
+                            </div>
+                            <div style="width: 100%;" class="info_con">
+                                <div class="space-between">
+                                    <p>{{new.title}}  <a style="color:var(--main-orange) ;" href="">{{new.project.title}}</a></p>
+                                    <i style="color:var(--main-orange) ;" class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <span>{{new.created_at}}</span>
+
+                                <div class="bottom flex-column">
+                                    <div>
+                                        {% if new.proposals.count %}
+
+                                            <div class="middle_box info">
+                                                {% for proposal in new.proposals.all  %}
+                                                    <div class="info_part">
+                                                        <img class="feed_img info_img" src="{{ proposal.user.image|img }}" alt="">
+                                                        <div class="flex-column">
+                                                            <div class="align-center">
+                                                            <h5>{{proposal.user.first_name}} {{proposal.user.last_name}}</h5>
+                                                            <p>&nbsp;bid {{proposal.price}} AZN to complete in {{proposal.duration}} days</p> 
+                                                            </div>
+                                                            <span>@{{proposal.user.username}}</span>
+                                                            <div class="bottom">
+                                                                <p>{{proposal.user.title}}</p>
+                                                                <div class="align-center info-actions">
+                                                                    <p class="a"><i class="fas fa-award icon-a" ></i>Award Project</p>
+                                                                    <p class="a"><i class="fas fa-share icon-a" ></i>Send Message</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+
+
+                                            
+                                        {% endif %}
+                                    </div>
+                                    
+                                   <div class="flex-end">
+                                        {% if new.project %}
+                                            <a class="button view-project" href="{% url 'project-details' id=new.project.id %}">View Project</a>
+                                        {% endif %}
+                                    </div>
+                                    
+                                </div>
+
+                                <!-- <div class="middle_box info">
+                                    <div class="mid_container">
+                                        <i class="fas fa-info-circle svg_box_2"></i>
+                                        <h5 class="box_insert_title">Project reworked</h5>
+                                    </div>
+                                    <p class="paragraph">Kindly provide a better and personalized project description to help potential bidders. For assistance, please contact Freelancer.com Support.</p>
+                                </div> -->
+                            </div>
+                        </div>
+                        {% endfor %}
+ 
+                    </div>
+                </div>
+
+            </div>
+            {% if news.count %}
+            <div class="grade_2 ">
+                <div class="grade_2_left grade_part">
+                    <div class="grades feeds_con  box-container">
+                        <div class="right_main_details box-padding">
+                            <div class="flex-row">
+                                <h4 name='C-title' class="align-center">History</h4>
                             </div>
                             
+                            
                         </div>
-                        <div class="first_lab">
-                            <div class="project">
-                                <div>
-                                    <h4 class="project_title">Project/Contest Title</h4>
-                                </div>
-                                <div class="row">
-                                    <h5 class="project_title">Employer</h5>
-                                    <h5 class="project_title">Bid Amount</h5>
-                                    <h5 class="project_title">Deadline</h5>
-                                    <h5 class="project_title_ex">Milestone</h5>
-                                </div>
-                            </div>
-                            <div class="project_content_container">
-                                <div>
-                                    <h4 class="project_content">Project</h4>
-                                </div>
-                                <div class="grid-container">
-                                    <h5 class="project_content">User</h5>
-                                    <h5 class="project_content">$524 USD</h5>
-                                    <h5 class="project_content">over 1 year</h5>
-                                    <h5 class="project_content_ex">2</h5>
-                                </div>
-                            </div>
-                            <div class="end_content">
-                                <div class="view">
-                                    <a href="#" style="text-decoration: none;margin-right: 5px;">View all</a>
-                                    <i class="fas fa-long-arrow-alt-right svg_box"></i>
-                                </div>
-                            </div>                            
-                        </div>
-                        <div class="lab" >
-                            <div class="button-wrapper">
-                                <div class="iconbox">
-                                    <i class="fas fa-cloud-upload-alt"></i> 
-                               </div>
-                               <p class="paragraph">Start bidding now on projects that meet your skills.</p>
-                               <div style="display:flex;">
-                                    <span class="label">
-                                        Upload File
-                                        <input type="file" name="upload" id="upload" class="upload-box" placeholder="Upload File">
-                                    </span>
-                                                                      
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="middle_dash">
-                        <div class="header_dash"><h4 style="margin:25px;font-weight: 700;">News Feed</h4></div>
-                        <div class="middlee" data-aos="fade-up">
-                            <div>
-                                <img  class="imagebox" src="./css/fluid-style-wallpaper-with-memphis-elements_23-2148498121.jpg" alt="">
-                            </div>
-                            <div style="width: 100%;">
-                                <p class="p_tag">To help you get started, we would like to offer you a free upgrade to our Plus Membership for 30 days (valued at $9.95 USD). You'll receive these great benefits:</p>
-                                <span style="margin-left:20px;">17 days ago</span>
-                                <div class="middle_box">
-                                    <div class="mid_container">
-                                        <i class="fas fa-info-circle svg_box_2"></i>
-                                        <h5 class="box_insert_title">Project reworked</h5>
-                                    </div>
-                                    <p class="paragraph">Kindly provide a better and personalized project description to help potential bidders. For assistance, please contact Freelancer.com Support.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="middlee" data-aos="fade-up">
-                            <div>
-                                <img  class="imagebox" src="./css/fluid-style-wallpaper-with-memphis-elements_23-2148498121.jpg" alt="">
-                            </div>
-                            <div style="width: 100%;">
-                                <p class="p_tag">To help you get started, we would like to offer you a free upgrade to our Plus Membership for 30 days (valued at $9.95 USD). You'll receive these great benefits:</p>
-                                <span style="margin-left:20px;">17 days ago</span>
-                                <div class="middle_box">
-                                    <div class="mid_container">
-                                        <i class="fas fa-info-circle svg_box_2"></i>
-                                        <h5 class="box_insert_title">Project reworked</h5>
-                                    </div>
-                                    
-                                    <p class="paragraph">Kindly provide a better and personalized project description to help potential bidders. For assistance, please contact Freelancer.com Support.</p>
-                                    <div>
-                                        <h5 class="last_btn_container">Request to release</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="middlee" data-aos="fade-up">
-                            <div>
-                                <img  class="imagebox" src="./css/fluid-style-wallpaper-with-memphis-elements_23-2148498121.jpg" alt="">
-                            </div>
-                            <div style="width: 100%;">
-                                <p class="p_tag">To help you get started, we would like to offer you a free upgrade to our Plus Membership for 30 days (valued at $9.95 USD). You'll receive these great benefits:</p>
-                                <span style="margin-left:20px;">17 days ago</span>
-                                <div class="middle_box">
-                                    <div class="mid_container">
-                                        <i class="fas fa-info-circle svg_box_2"></i>
-                                        <h5 class="box_insert_title">Project reworked</h5>
-                                    </div>
-                                    
-                                    <p class="paragraph">Kindly provide a better and personalized project description to help potential bidders. For assistance, please contact Freelancer.com Support.</p>
-                                    <div>
-                                        <h5 class="last_btn_container">Request to release</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                        
-                    </div>                
-                </div>
-                <div class="card_container_right">
-                    <div class="info_box">
-                        <div class="right_main">
-                            <h4 class="paragraph">Welcome back, <br><b>Atilla</b></h4>
-                            <div class="right_bottom">
-                                <h4 class="email_tag">@atilla_abdullazade</h4>
-                                <h4 class="paragraph" style="padding-top: 3px;">Free member</h4>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="second_piece">
-                                <div class="right_bottom">
-                                    <h4 class="paragraph">Set up your account</h4>
-                                    <h4 class="paragraph">90%</h4>
-                                </div>
-                                <div class="progressBarContainer">
-                                    <div class="progressBarValue value-90"></div>
-                                </div>
-                            </div>
-                            <div class="endbox">
-                                <div class="last_piece">
-                                    <i class="far fa-id-card svg_box"></i>
-                                    <h4 class="paragraph">Add your address</h4>
-                                    <h4 class="paragraph">+%5</h4>
-                                </div>
-                                <div class="last_piece__end">
-                                    <div class="top_right">
-                                        <h4 class="paragraph">Account balance</h4>
-                                        <div class="view" style="margin: 0px;">
-                                            <a href="#" style="font-size: 15px; text-decoration: none;margin-right: 5px;">Deposit funds</a>
-                                            <i class="fas fa-long-arrow-alt-right svg_box"></i>
-                                        </div>
-                                    </div>
-                                    <h4 class="h5_tag">
-                                        $2500.00 USD
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bids" data-aos="fade-left">
-                        <div class="top_right">
-                            <h4 class="paragraph">Bid Summary</h4>
-                            <div class="view" style="margin: 0px;">
-                                <a href="#" style="font-size: 15px; text-decoration: none;margin-right: 5px;">View insights</a>                                
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="middle_bids">
-                                <h5 class="h5_tag">Remaining</h5>
-                                <span>8/8</span>
-                            </div>
-                            <div class="underline"></div>
-                            <div class="middle_bids">
-                                <h5 class="h5_tag">Until next bid</h5>
-                                <span>-</span>
-                            </div>
-                            <div class="underline"></div>
-                            <div class="middle_bids">
-                                <h5 class="h5_tag">Rplenishment rate</h5>
-                                <span>1x</span>
-                            </div>
-                            <div class="underline"></div>
-                        </div>
-                    </div> 
-                    <div class="bids" data-aos="fade-left">
-                        <div class="top_right">
-                            <h4 class="paragraph">Pols</h4>
-                            <div class="view" style="margin: 0px;">
-                                <a href="#" style="font-size: 15px; text-decoration: none;margin-right: 5px;">View insights</a>                                
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="middle_bids">
-                                <h5 class="h5_tag">What is your gender</h5>                                
-                            </div>
-                            <div>
-                                <h5 class="last_btn_container">Submit answer</h5>
-                            </div>
-                        </div>
-                    </div>                 
-                </div>
-                  
-            </div>
-        </div>
-    </sections>
 
+                        {% for new in news %}
+                        <div class="endbox feed" pk={{new.id}}>
+                            <div class="flex-start">
+                                <img class="feed_img" src="/static/icons/profile-user.svg" alt="">
+                            </div>
+                            <div style="width: 100%;" class="info_con">
+                                <div class="space-between">
+                                    <p>{{new.title}}  <a style="color:var(--main-orange) ;" href="">{{new.project.title}}</a></p>
+                                    <!-- <i style="color:var(--main-orange) ;" class="fas fa-exclamation-circle"></i> -->
+                                </div>
+                                <span>{{new.created_at}}</span>
+
+                                <div class="bottom flex-column">
+                                    <div class="flex-column">
+                                        {% if new.proposals.count %}
+                                            <div class="info-color"></div>
+                                            <div class="middle_box info">
+                                                {% for proposal in new.proposals.all  %}
+                                                    <div class="info_part">
+                                                        <img class="feed_img info_img" src="{{ proposal.user.image|img }}" alt="">
+                                                        <div class="flex-column">
+                                                            <div class="align-center">
+                                                            <h5>{{proposal.user.first_name}} {{proposal.user.last_name}}</h5>
+                                                            <p>&nbsp;bid {{proposal.price}} AZN to complete in {{proposal.duration}} days</p> 
+                                                            </div>
+                                                            <span>@{{proposal.user.username}}</span>
+                                                            <div class="bottom">
+                                                                <p>{{proposal.user.title}}</p>
+                                                                <div class="align-center info-actions">
+                                                                    <p class="a"><i class="fas fa-award icon-a" ></i>Award Project</p>
+                                                                    <p class="a"><i class="fas fa-share icon-a" ></i>Send Message</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+
+                                            </div>
+
+
+                                            
+                                        {% endif %}
+                                    </div>
+                                    
+                                   <div class="flex-start">
+                                        {% if new.project %}
+                                            <a class="button view-project" href="{% url 'project-details' id=new.project.id %}">View Project</a>
+                                        {% endif %}
+                                    </div>
+                                    
+                                </div>
+
+                                <!-- <div class="middle_box info">
+                                    <div class="mid_container">
+                                        <i class="fas fa-info-circle svg_box_2"></i>
+                                        <h5 class="box_insert_title">Project reworked</h5>
+                                    </div>
+                                    <p class="paragraph">Kindly provide a better and personalized project description to help potential bidders. For assistance, please contact Freelancer.com Support.</p>
+                                </div> -->
+                            </div>
+                        </div>
+                        {% endfor %}
+ 
+                    </div>
+                </div>
+
+            </div>
+            {% endif %}
+            <!-- NEW --><!-- NEW -->
+        </div>
+        
+
+        <!-- RIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHTRIGHT -->
+
+
+
+
+
+
+
+
+
+
+
+        <div class="card_container_right">
+            <div class="info_box top_dash_details box-container">
+                <div class="right_main_details box-padding">
+                    <h4 >About</h4>                     
+                </div>
+                <div style="width: 100%;">
+                    
+                    
+                    <div class="last_piece__end endbox">
+                        <h5>{{user.first_name}} {{user.last_name}} &nbsp;</h5> 
+                        <p></p>
+                        <div class="top_right_details">
+                            <i class="fas fa-user icon_detail"></i>
+                            <p>Username: {{user.username}}</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-envelope icon_detail"></i>
+                            <p>Email: {{user.email}}</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-desktop icon_detail"></i>
+                            {% if user|projects <= 1  %}
+                            <p>{{user|projects}}</p><p>&nbsp;posted project</p>  
+                            {% else %}
+                            <p>{{user|projects}}</p><p>&nbsp;posted projects</p>  
+                            {% endif %}                                       
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-clock icon_detail"></i>
+                            <p>Member since {{user.date_joined|date:'j M, Y'}}</p>                                        
+                        </div>
+                        
+                    </div>
+                    <div class="med_main_details endbox">
+                        <h4 >Verification</h4>                           
+                    </div>
+                    <div class="verification-con endbox">
+                        
+                        <div class="top_right_details">                                        
+                            <i class="fas fa-address-card icon-panel "></i>
+                            <p>Identity not verified</p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            {% if user.email_auth %}
+                                <i style="color: var(--main-orange);" class="fas fa-envelope icon-panel"></i>
+                                <p >Email Verified</p>
+                                {% else %}
+                                <div style="width: 100%;" class="space-between align-center">
+                                    <div class="align-center">
+                                        <i class="fas fa-envelope icon-panel"></i>
+                                        <p>Email not Verified</p>  
+                                    </div>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" name="email-auth">Resend</button>
+                                    </form>
+                                </div>
+                            {% endif %}                                        
+                        </div>
+                        <div class="top_right_details">
+                            {% if user.active %}
+                                <i style="color: var(--main-orange);" class="fas fa-user-circle icon-panel"></i>
+                                <p style="color: var(--main-orange);">Profile completed</p>
+                                {% else %}
+                                <div style="width: 100%;" class="space-between align-center">
+                                    <div class="align-center">
+                                        <i class="fas fa-user-circle icon-panel"></i>
+                                        <p>Profile not completed</p>  
+                                    </div>
+                                </div>
+                            {% endif %}   
+                            
+                            <p ></p>                                        
+                        </div>
+                        <div class="top_right_details">
+                            <i class="fas fa-phone-alt icon-panel"></i>
+                            <p >Phone number not verified</p>                                        
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+
+                
+            </div>
+                            
+        </div>
+        
+            
+    </div>
+
+    <script src="{% static 'js/side-bar.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
+
+    <script>
+        elements=$('.new-feed')
+        var box
+        csrftoken=document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+// //////////////////////////////////////////////////////////////////////////
+        function isInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+
+        function check(){
+            for(var i in elements){
+                box = elements[i];
+                // console.log(i);
+                if (isInViewport(box)){
+                    pk=box.getAttribute('pk')
+                    data={
+                        seen:true
+                    }
+                    console.log(pk);
+                    $.ajax({
+                        url:`http://127.0.0.1:8000/api/v1.0/feed/${pk}/`,
+                        method:'PATCH',
+                        headers: {'X-CSRFToken': csrftoken},
+                        data:data,
+                        success:function(e){
+                            console.log(e);
+                        },
+                        error:function(e){
+                            console.log(e);
+                        }
+                    })
+                    elements.splice(i,1) 
+                    check()
+                }
+            }
+        }
+        check()
+
+        document.addEventListener('scroll', function () {
+            check()
+
+        }, {
+            passive: true
+        });
+    </script>
 
 {% endblock %}
