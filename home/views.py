@@ -21,9 +21,9 @@ from accounts.forms import *
 from accounts.models import CustomUser
 # Create your views here.
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name='index.html'
-
+    queryset=[]
     # def dispatch(self, request, *args, **kwargs):
     #     if self.request.user.is_authenticated:
     #         self.template_name='dashboard.html'
@@ -33,6 +33,7 @@ class IndexView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         if self.request.user.is_authenticated:
+            print(self.request.user.skill)
             self.template_name='dashboard.html'
             context['news'] = New.objects.filter(user=self.request.user, seen=True).order_by('-created_at')
             context['new_news'] = New.objects.filter(user=self.request.user, seen=False).order_by('-created_at')

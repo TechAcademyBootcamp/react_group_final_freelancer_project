@@ -49,6 +49,41 @@
                     <div class="grades feeds_con  box-container">
                         <div class="right_main_details box-padding">
                             <div class="flex-row">
+                                <h4 name='C-title' class="align-center">Recommended</h4>
+                            </div>
+                        </div>
+                        <!-- <div class="endbox feed">
+                            <div class="flex-start">
+                                <img class="feed_img" src="/static/icons/profile-user.svg" alt="">
+                            </div>
+                            <div style="width: 100%;" class="info_con">
+                                <p>To help you get started, we would like to offer you a free upgrade to our Plus Membership for 30 days (valued at $9.95 USD). You'll receive these great benefits:</p>
+                                <span>17 days ago</span>
+                                <div class="middle_box info">
+                                    <div class="mid_container">
+                                        <i class="fas fa-info-circle svg_box_2"></i>
+                                        <h5 class="box_insert_title">Project reworked</h5>
+                                    </div>
+                                    <p class="paragraph">Kindly provide a better and personalized project description to help potential bidders. For assistance, please contact Freelancer.com Support.</p>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="endbox feed " pk={{new.id}}>
+                            <p>asd</p>
+                        </div>
+
+ 
+                    </div>
+                </div>
+
+            </div>
+            {% if new_news.count %}
+            <div class="grade_2 ">
+                <div class="grade_2_left grade_part">
+                    <div class="grades feeds_con  box-container">
+                        <div class="right_main_details box-padding">
+                            <div class="flex-row">
                                 <h4 name='C-title' class="align-center">News Feed</h4>
                             </div>
                         </div>
@@ -135,6 +170,7 @@
                 </div>
 
             </div>
+            {% endif %}
             {% if news.count %}
             <div class="grade_2 ">
                 <div class="grade_2_left grade_part">
