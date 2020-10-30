@@ -40,7 +40,8 @@ class SearchAPIView(generics.ListCreateAPIView):
             queryset=queryset.filter(level__id=level)
         if price_type:
             queryset=queryset.filter(price_type__id=price_type)
-  
+        if skills:
+            queryset=queryset.filter(skills__tag=skills)
 
         return queryset
 

@@ -85,7 +85,7 @@ class New(models.Model):
     title=models.TextField()
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     project=models.ForeignKey(Project,on_delete=models.CASCADE,related_name='news',null=True,blank=True)
-    proposals=models.ManyToManyField(Replies,related_name='news',null=True,blank=True)
+    proposals=models.ManyToManyField(Replies,related_name='news')
     seen=models.BooleanField(default=False)
 
     created_at=models.DateTimeField(auto_now_add=True)
