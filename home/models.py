@@ -27,10 +27,15 @@ class Level(models.Model):
     def __str__(self):
         return self.level_type
 
+class PriceType(models.Model):
+    price_type=models.CharField('Price Type',max_length=50)
+    def __str__(self):
+        return self.price_type
+
+
 class Project(models.Model):
     title= models.CharField(max_length=50, verbose_name='title')
     description=models.TextField()  
-    price_type=models.IntegerField('price_type',choices=PRICE_TYPES, default=1)  
     price_min= models.PositiveIntegerField(verbose_name='Minimum Price')  
     price_max = models.PositiveIntegerField(verbose_name='Maximum Price')  
  
@@ -47,6 +52,7 @@ class Project(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
     level= models.ForeignKey(Level,on_delete=models.CASCADE)
+    price_type=models.ForeignKey(PriceType,on_delete=models.CASCADE)  
 
 
 

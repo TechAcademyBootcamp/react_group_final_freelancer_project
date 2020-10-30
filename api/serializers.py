@@ -2,7 +2,7 @@ from rest_framework import serializers
 from accounts.models import CustomUser,Skill
 from home.models import Project
 from inbox.models import Group,Message
-from home.models import Project,Level
+from home.models import Project,Level,PriceType
 
 
 
@@ -56,9 +56,15 @@ class SkillSearializer(serializers.ModelSerializer):
         model=Skill
         fields=(
             'id',
-            'title'
+            'tag'
         )
-
+class PriceTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=PriceType
+        fields=(
+            'id',
+            'price_type'
+        )
 class LevelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Level
