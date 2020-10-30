@@ -134,6 +134,9 @@ proposal{
     border: 0;
     background-color: white;
     border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
     
 }
 

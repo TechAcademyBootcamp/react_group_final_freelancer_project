@@ -1,9 +1,16 @@
 from rest_framework.viewsets import ModelViewSet
 from accounts.models import CustomUser
+<<<<<<< HEAD
 from home.models import Project,Skill
 
 from inbox.models import Group,Message
 from api.serializers import ProfileSerializer,GroupSerializer, ProjectSerializer, MessagesSerializer,SkillSearializer
+=======
+from home.models import Project, New
+
+from inbox.models import Group,Message
+from api.serializers import ProfileSerializer,GroupSerializer, ProjectSerializer, MessagesSerializer, NewSerializer
+>>>>>>> a39afd5534333ecaae8015813c22f608b77c94f3
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
 from rest_framework import status
@@ -73,6 +80,35 @@ class MessagesViewSet(ModelViewSet):
         # print(queryset)
         # queryset=queryset.filter()
         return queryset 
+
+
+class NewViewSet(ModelViewSet):
+    permission_classes=[IsAuthenticated,]
+    serializer_class=NewSerializer
+    queryset=New.objects.all()
+    # http_method_names = ['patch']
+
+    def get_queryset(self, **kwargs):
+        queryset = super(NewViewSet, self).get_queryset()
+        user=self.request.user
+        queryset=queryset.filter(user=user)
+
+        # queryset=queryset.filter()
+        return queryset 
+
+    def update(self, request, *args, **kwargs):
+        id=kwargs['pk']
+        self.request.data._mutable = True
+        self.request.data['seen'] = True
+
+        user=self.request.user
+        feed=New.objects.get(id=id)
+
+        if feed.user != user:
+            error_msg = 'It is not your feed'
+            return Response({'error': error_msg}, status=status.HTTP_400_BAD_REQUEST)
+
+        return super(NewViewSet,self).update(request, *args, **kwargs)
     
 class EditProjectViewSet(ModelViewSet):
     permission_classes=[IsAuthenticated,]
@@ -88,6 +124,8 @@ class EditProjectViewSet(ModelViewSet):
         queryset=queryset.filter(author=user)
         # queryset=queryset.filter()
         return queryset
+    
+    
     
     # def patch(self, request, pk):
     #     testmodel_object = self.get_object(pk)
