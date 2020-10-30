@@ -1,16 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 from accounts.models import CustomUser
-<<<<<<< HEAD
-from home.models import Project,Skill
-
 from inbox.models import Group,Message
-from api.serializers import ProfileSerializer,GroupSerializer, ProjectSerializer, MessagesSerializer,SkillSearializer
-=======
-from home.models import Project, New
-
-from inbox.models import Group,Message
-from api.serializers import ProfileSerializer,GroupSerializer, ProjectSerializer, MessagesSerializer, NewSerializer
->>>>>>> a39afd5534333ecaae8015813c22f608b77c94f3
+from home.models import Project, New,Skill
+from api.serializers import ProfileSerializer,GroupSerializer, ProjectSerializer, MessagesSerializer, NewSerializer,SkillSearializer
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
 from rest_framework import status
