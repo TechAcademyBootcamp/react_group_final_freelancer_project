@@ -1,9 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 from accounts.models import CustomUser
-from home.models import Project, New
-
 from inbox.models import Group,Message
-from api.serializers import ProfileSerializer,GroupSerializer, ProjectSerializer, MessagesSerializer, NewSerializer
+from home.models import Project, New,Skill
+from api.serializers import ProfileSerializer,GroupSerializer, ProjectSerializer, MessagesSerializer, NewSerializer,SkillSearializer
 from rest_framework.response import Response
 from rest_framework.status import HTTP_201_CREATED
 from rest_framework import status
@@ -169,6 +168,4 @@ class EditProjectViewSet(ModelViewSet):
 
 
     
-
-
 

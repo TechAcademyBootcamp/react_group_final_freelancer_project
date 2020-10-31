@@ -346,6 +346,18 @@ class SearchFreelancerView(ListView):
         return context
 
 
+    # def form_valid(self, form):
+    #     print('DDDDDDDDD', self.request.POST)
+    #     form.instance.user = self.request.user
+    #     form.instance.save()
+    #     tags = self.request.POST.get('tag').split(',')
+    #     print('CCCCCCCCC', tags)
+    #     for tag in tags:
+    #         tag_obj, created = Tag.objects.get_or_create(name=tag.upper())
+    #         form.instance.tag.add(tag_obj.id)
+    #     return super(StoryCreateView, self).form_valid(form)
+
+
 
 class SearchJobView(TemplateView):
     template_name='search-job.html'

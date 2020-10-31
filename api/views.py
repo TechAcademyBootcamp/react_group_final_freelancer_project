@@ -1,5 +1,6 @@
 from django.shortcuts import render 
 from home.models import Project
+from accounts.models import Skill
 from rest_framework import filters
 from rest_framework import generics
 from api.serializers import *
@@ -20,8 +21,10 @@ class SearchAPIView(generics.ListCreateAPIView):
         price_min=self.request.query_params.get('price_min',None)  
         price_max=self.request.query_params.get('price_max',None)    
         price_type=self.request.query_params.get('price_type',None)
-        skills=self.request.query_params.get('price_type',None)
+        skills=self.request.query_params.get('skills',None)
         level=self.request.query_params.get('level',None)
+        price_type=self.request.query_params.get('price_type',None)
+        print(price_type)
         print(level)
         search=self.request.query_params.get('search',None)
         # title = self.request.query_params.get('title', None)
@@ -35,6 +38,21 @@ class SearchAPIView(generics.ListCreateAPIView):
             queryset=queryset.filter(price_max__lte=price_max)
         if level:
             queryset=queryset.filter(level__id=level)
+        if price_type:
+            queryset=queryset.filter(price_type__id=price_type)
+        if skills:
+            queryset=queryset.filter(skills__tag=skills)
+
         return queryset
 
+class TagsInputView(generics.ListCreateAPIView):
+    serializer_class = SkillSearializer
+    queryset = Skill.objects.all()
+    # def get_queryset(self):
         
+    #     tag=self.request.query_params.get('tag',None)  
+
+    #     if tag:
+    #         queryset = Skill.objects.all()
+    #         return queryset
+

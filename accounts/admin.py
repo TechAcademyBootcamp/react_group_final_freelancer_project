@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from accounts.models import *
 from django.utils.translation import gettext, gettext_lazy as _
 # Register your models here.
-
+from home.models import PriceType 
 class SkillAdmin(admin.ModelAdmin):
     list_display=('title',)
 
@@ -39,3 +39,5 @@ class UserAdmin(UserAdmin):
 # admin.site.unregister(User)
 admin.site.register(CustomUser,UserAdmin)
 admin.site.register(Skill)
+admin.site.register(PriceType)
+
