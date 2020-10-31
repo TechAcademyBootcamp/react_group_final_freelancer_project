@@ -71,10 +71,8 @@
     justify-content: flex-start;
   
 }
-
-.search_input{
-    margin-right: 30px ;
-    height: 30px;
+.top select{
+    height: 100%;
 }
 
 .middle_2{
@@ -107,6 +105,9 @@
     transform: rotate(-90deg);
     /* margin-right:10px ; */
     color: var(--main-orange);
+}
+.tag-input{
+    width: 100%;
 }
 
 .mid_title{
@@ -407,6 +408,14 @@ option:checked:hover, select:focus option:checked:hover {
 }
 .filter-sec h4{
     font-size: 16px;
+    margin-bottom:10px !important;
+}
+.filter-sec input{
+    margin-left: 0 !important;
+} 
+#search_input{
+    margin: 0 !important;
+    border-right: 0;
 }
 
 .skills-con{
@@ -415,6 +424,10 @@ option:checked:hover, select:focus option:checked:hover {
     height: auto;
     flex-wrap: wrap;
     border: 1px solid var(--border-color);
+    margin-top: 12px;
+}
+.price-sec input{
+    margin-top: 0;
 }
 
 .tag-remove{

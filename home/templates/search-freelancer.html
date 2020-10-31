@@ -12,12 +12,12 @@
                 <div class="filter-sec">
                     <h4>Skills</h4>
                     <div class="skills-con">
-                        <tag>Adobe <i class="fas fa-times tag-remove"></i></tag>
+                        <!-- <tag>Adobe <i class="fas fa-times tag-remove"></i></tag> -->
                         <input  id="tag_input" placeholder="skills" autocomplete="off">
                         
                     </div>
                 </div>
-                <div class="filter-sec">
+                <div class="filter-sec price-sec">
                     <h4>Price</h4>
                     <div class="flex-column">
                         <p>Min Price:</p>
@@ -212,7 +212,7 @@
                 for(id in data){
                 
                     project=data[id]
-                    var {title,description,id,skills} = project
+                    var {title,description,id,skills,price_max,price_min} = project
                     console.log(project); 
                     // var element=$("#card_cont").append(`<div class="middle border-bottom">
                     //     <div class="mid_title">
@@ -232,39 +232,39 @@
                     //         </div>
                     //     </div>                            
                     // </div>`)
-                    var element=$("#card_cont").append(`<div style='box-shadow:none !important;border-right:0;border-left:0;border-top:0;padding:0 !important;margin:0 !important;' class="top_dash_details box-container flex-column">
-                        <div class="header_dash">
-                            <h4>${title}</h4>
-                            <div class="align-items">
-                                <div class="align-center">
-                                    
-                                    <h5>123</h5>
-                                    <h5>&nbsp;AZN</h5>
-                                    <h5>&nbsp;-&nbsp;</h5>
-                                    <h5>650</h5>
-                                    <h5>&nbsp;AZN</h5>
-                                    
-                                </div>
-                                
-                                <span style="color: var(--main-orange);">bidding ended <i style="margin-left: 4px;" class="fas fa-hourglass-end"></i></span>
-                                
-                            </div>
+                    var element=$("#card_cont").append(`<a href='/project-detail/${id}' style='box-shadow:none !important;border-right:0;border-left:0;border-top:0;padding:0 !important;margin:0 !important;' class="top_dash_details box-container flex-column">
+                <div class="header_dash">
+                    <h4>${title}</h4>
+                    <div class="align-items">
+                        <div class="align-center">
+                            
+                            <h5>${price_min}</h5>
+                            <h5>&nbsp;AZN</h5>
+                            <h5>&nbsp;-&nbsp;</h5>
+                            <h5>${price_max}</h5>
+                            <h5>&nbsp;AZN</h5>
                             
                         </div>
-                        <div class="p_con p-con2 flex-row">
-                            <p id="project-description">${description.slice(0,250)}</p>                    
+                        
+                        <span style="color: var(--main-orange);">bidding ended <i style="margin-left: 4px;" class="fas fa-hourglass-end"></i></span>
+                        
+                    </div>
+                    
+                </div>
+                <div class="p_con p-con2 flex-row">
+                    <p id="project-description">${description.slice(0,250)}</p>                    
+                </div>
+                <div class="p_con flex-column">
+                    <div class="space-between">
+                        <div class="flex-row" style="flex-wrap: wrap;">
+                            
+                            <tag>${skills}</tag>
+                            
                         </div>
-                        <div class="p_con flex-column">
-                            <div class="space-between">
-                                <div class="flex-row" style="flex-wrap: wrap;">
-                                    
-                                    <tag>${skills}</tag>
-                                    
-                                </div>
-                                <span>Project ID: 1</span>
-                            </div>
-                        </div>
-                    </div>`)
+                        <span>Project ID: ${id}</span>
+                    </div>
+                </div>
+            </a>`)
 
                 }
 

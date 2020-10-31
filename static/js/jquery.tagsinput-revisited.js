@@ -31,13 +31,22 @@
 				$('#' + id + '_tag').addClass('error');
 				return false;
 			}
-			
-			$('<span>', {class: 'tag'}).append(
-				$('<span>', {class: 'tag-text'}).text(value),
-				$('<button>', {class: 'tag-remove'}).click(function() {
+
+			// <i class="fas fa-times tag-remove"></i>
+
+
+			$('<tag>', {class: 'tag tag-text'}).append(`${value}`,
+				$('<i>', {class: 'fas fa-times tag-remove'}).click(function(){
 					return $('#' + id).removeTag(encodeURI(value));
 				})
 			).insertBefore('#' + id + '_addTag');
+
+			// $('<tag>', {class: 'tag tag-text'}).append(`${value}`,
+			
+			// 	$('<i>', {class: 'fas fa-times tag-remove '}).click(function() {
+			// 		return $('#' + id).removeTag(encodeURI(value));
+			// 	})
+			// ).insertBefore('#' + id + '_addTag');
 
 			tagslist.push(value);
 
@@ -107,12 +116,12 @@
 	$.fn.tagsInput = function(options) {
 		var settings = jQuery.extend({
 			interactive: true,
-			placeholder: 'Add a tag',
+			placeholder: 'Add skills',
 			minChars: 0,
 			maxChars: null,
 			limit: null,
 			validationPattern: null,
-			width: 'auto',
+			width: '100%',
 			height: 'auto',
 			autocomplete: null,
 			hide: true,
@@ -160,7 +169,11 @@
 				callbacks[id]['onRemoveTag'] = settings.onRemoveTag;
 				callbacks[id]['onChange'] = settings.onChange;
 			}
-
+			
+			
+			// $('.skills-con').append($('<div>', {id: id + '_addTag'}).append(
+			// 	settings.interactive ? $('<input>', {id: id + '_tag', class: 'tag-input', value: '', placeholder: settings.placeholder}) : null
+			// ));
 			var markup = $('<div>', {id: id + '_tagsinput', class: 'tagsinput'}).append(
 				$('<div>', {id: id + '_addTag'}).append(
 					settings.interactive ? $('<input>', {id: id + '_tag', class: 'tag-input', value: '', placeholder: settings.placeholder}) : null
