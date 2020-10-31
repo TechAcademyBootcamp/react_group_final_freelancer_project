@@ -52,6 +52,7 @@ class RegisterView(CreateView):
 class LoginView(LoginView):
     template_name='login.html'
     authentication_form=LoginForm
+    success_url=reverse_lazy('home')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -12,6 +12,11 @@ def proposals(value): # Only one argument.
     x=Replies.objects.filter(project=value).count()
     return x
 
+@register.filter(name='surname')
+def surname(surname): # Only one argument.
+    x=surname[0:1]
+    return f'{x}.'
+
 @register.filter(name='img')
 def img(image): # Only one argument.
     if image:

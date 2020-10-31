@@ -38,3 +38,19 @@
 .long_line{
     margin: 12px 0;
 }
+
+wbutton{
+    width: 100%;
+    box-sizing: border-box;
+}
+.done{
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 10px 20px !important;
+    font-weight: bold;
+    font-size: 14px !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

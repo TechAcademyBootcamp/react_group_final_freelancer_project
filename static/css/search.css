@@ -451,6 +451,7 @@ option:checked:hover, select:focus option:checked:hover {
     border: 0 !important;
     padding: 20px 30px !important;
     padding-bottom: 0 !important;
+    background-color: transparent !important;
 
 }
 .p_con{
@@ -461,4 +462,15 @@ option:checked:hover, select:focus option:checked:hover {
 .p-con2{
     padding-bottom: 10px !important;
 
+}
+.top_dash_details{
+    cursor: pointer !important;
+    transition: background-color,border-color !important;
+    transition-duration: var(--transition-time) !important;
+    text-decoration: none !important;
+    /* border-left: 3px solid transparent !important; */
+}
+.top_dash_details:hover{
+    background-color: rgb(245, 245, 245);
+    border-left-color: var(--main-orange) !important;
 }

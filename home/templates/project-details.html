@@ -455,7 +455,7 @@
             var description=document.querySelector('#input-3').value
             alert(description)
             $.ajax({
-                url:'http://127.0.0.1:8000/api/v1.0/edit-project/1/',
+                url:`http://127.0.0.1:8000/api/v1.0/edit-project/{{detail.id}}/`,
                 method:'PATCH',
                 headers:{
                     'X-CSRFToken': csrf,
@@ -472,7 +472,7 @@
                 error:function(e){
                     // alert("NO")
                     error=e['responseJSON']['error']
-                    // console.log(e);
+                    console.log(e);
                     // console.log(error);
                     if (error){
                         document.querySelector('#error-overview').innerHTML=error

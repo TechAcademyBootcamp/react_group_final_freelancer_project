@@ -19,28 +19,57 @@ from django.contrib import messages
 from .models import Project
 from accounts.forms import *
 from accounts.models import CustomUser
+
+from operator import attrgetter
+from itertools import chain
 # Create your views here.
+
 
 class IndexView(ListView):
     template_name='index.html'
     queryset=[]
-    # def dispatch(self, request, *args, **kwargs):
-    #     if self.request.user.is_authenticated:
-    #         self.template_name='dashboard.html'
-    #     return super(IndexView, self).dispatch(request, *args, **kwargs)
+    object_list=Project.objects.all()
 
+    def dispatch(self, request, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            self.paginate_by = 5     
+        return super(IndexView, self).dispatch(request, *args, **kwargs)
+
+    def uniq(self,iterable):
+        seen = set()
+        for x in iterable:
+            if x in seen:
+                continue
+            seen.add(x)
+            yield x
+            
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-
+        print("yEAH")
         if self.request.user.is_authenticated:
-            print(self.request.user.skill)
+            # print("VEUWssssssssssssssssssssssss")
+            self.paginate_by = 5
             self.template_name='dashboard.html'
-            context['news'] = New.objects.filter(user=self.request.user, seen=True).order_by('-created_at')
-            context['new_news'] = New.objects.filter(user=self.request.user, seen=False).order_by('-created_at')
+            context['news'] = New.objects.filter(user=self.request.user, seen=True).order_by('-created_at')[0:5]
+            context['new_news'] = context['news']
+            # context['new_news'] = New.objects.filter(user=self.request.user, seen=False).order_by('-created_at')
         return context
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            query=self.request.user.skill.all()
+            result_list=[]
+            for skill in query:
+                q=Project.objects.filter(skills=skill, status=1).filter(~Q(author=self.request.user))
+                result_list = sorted(chain(q,result_list), key=attrgetter('created_at'))
+            result_list=sorted(list(self.uniq(result_list)),key=attrgetter('created_at'),reverse=True)
+            self.queryset=result_list
+        
+            return result_list 
+
+            
 class HomeView(TemplateView):
     template_name='home.html'
-
 
 
 class GetStartedView(TemplateView):
@@ -165,6 +194,8 @@ class ProjectProposalsView(ListView,FormMixin):
                 self.new_object.users.add(self.user1)
                 self.new_object.save()
             
+
+            
             obj=Proposals(user=self.user2,project=self.project)
             obj.save()
 
@@ -172,8 +203,8 @@ class ProjectProposalsView(ListView,FormMixin):
             self.project.save()
         
             new=New(user=self.user1,project=self.project,title='Chat with this user is created.')
-            # new=New(user=self.request.user,project=project,title='Your project is created successfully: ')
-            
+            new.save()
+            new=New(user=self.user2,project=self.project,title='Project is awarded to you: ')      
             new.save()
 
         else: 
@@ -193,11 +224,6 @@ class ProjectProposalsView(ListView,FormMixin):
     #     return queryset
     
    
-    
-
-
-
-
 class ProjectDetailView(CreateView):
     template_name='project-details.html'
     form_class=RepliesForm
@@ -243,7 +269,7 @@ class ProjectDetailView(CreateView):
                                     self.obj.user = self.request.user
                                     self.obj.project =  Project.objects.get(id=self.kwargs['id'])
 
-                                   
+                                    
                                 else:
                                     form.add_error(None, "This project has already been closed")
                                     return self.form_invalid(form)    
@@ -269,25 +295,24 @@ class ProjectDetailView(CreateView):
         return super(ProjectDetailView, self).form_valid(form)
     
     def get_success_url(self, **kwargs):    
-            url= f'/project-proposals/{self.kwargs["id"]}'     
-
-            print(self.obj)                        
-            new=New(user=self.request.user,project=self.obj.project,title='You applied on this project: ')
-            new.save()
-            print(new, ' Apply eden ucun')                        
+            url= f'/project-proposals/{self.kwargs["id"]}'        
 
             if New.objects.filter(user=self.obj.project.author,project=self.obj.project,seen=False).count():
-                print(new, 'Belesi yoxdu')                        
+                # print(new, 'Belesi yoxdu')                        
                 
                 new=New.objects.get(user=self.obj.project.author,project=self.obj.project,seen=False) 
                 new.proposals.add(self.obj)                            
 
             else:
-                print(new, 'Belesi yoxdu')                        
+                # print(new, 'Belesi yoxdu')                        
 
                 new=New(user=self.obj.project.author,project=self.obj.project,title='Someone applied on this project: ')
                 new.save()
                 new.proposals.add(self.obj)
+            print('USERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRUSERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR')
+            print(self.obj.user)
+            new=New(user=self.obj.user,project=self.obj.project,title='You applied on this project: ')
+            new.save()
             return url
 
 
