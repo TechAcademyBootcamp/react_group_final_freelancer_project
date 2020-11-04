@@ -21,11 +21,11 @@
                     <h4>Price</h4>
                     <div class="flex-column">
                         <p>Min Price:</p>
-                        <input id="price_min" type="number" placeholder="Min Price">
+                        <input id="price_min" type="number" min="5" placeholder="Min Price">
                     </div>
                     <div class="flex-column">
                         <p>Max Price:</p>
-                        <input type="number" id="price_max" placeholder="Max Price">
+                        <input type="number" id="price_max" max="100000"placeholder="Max Price">
                     </div>
                 </div>
                 <div class="filter-sec">
@@ -52,6 +52,7 @@
                         <div class="align-center">
                             <input style="width: auto;margin: 0 5px;" type="radio" name="price" value="1" >
                             <p>Single Project</p>
+                            <small>a</small>
                         </div>
                         <div class="align-center">
                             <input style="width: auto;margin: 0 5px;" type="radio"  name="price" value="2">
@@ -201,6 +202,7 @@
 
 
     function setup(url){
+        
         $.ajax({
             url: url,
             method:'GET',
@@ -283,7 +285,8 @@
 
     $('#search_btn').click(function(){
         var price_type=$('input[name="price"]:checked').val()            
-        var level = $('input[name="difficulty"]:checked').val();        
+        var level = $('input[name="difficulty"]:checked').val();
+               
         if ($('input[name="difficulty"]:checked').length > 0) {
             // alert('1')
             if ($('input[name="price"]:checked').length > 0){
@@ -348,92 +351,8 @@
     
 </script>
 
-
-
-<!-- <script>
-    $('#tag_input').tagsInput({
-        'unique': true,
-        'minChars': 2,
-        'maxChars': 20,
-        'limit': 20,
-        'delimiter': [',', ';'],
-        // 'autocomplete': {
-        //     source: all_topics.split(","),
-        // },
-        // whitelist: all_topics.split(","),
-        });
-</script> -->
-
-<!-- <script>
-    var dataSource = [
-    {id: 1, firstName: 'Tim', lastName: 'Cook'},
-    {id: 2, firstName: 'Eric', lastName: 'Baker'},
-    {id: 3, firstName: 'Victor', lastName: 'Brown'},
-    {id: 4, firstName: 'Lisa', lastName: 'White'},
-    {id: 5, firstName: 'Oliver', lastName: 'Bull'},
-    {id: 6, firstName: 'Zade', lastName: 'Stock'},
-    {id: 7, firstName: 'David', lastName: 'Reed'},
-    {id: 8, firstName: 'George', lastName: 'Hand'},
-    {id: 9, firstName: 'Tony', lastName: 'Well'},
-    {id: 10, firstName: 'Bruce', lastName: 'Wayne'},
-    ];
-    $('#basic').magicsearch({
-        dataSource: "http://127.0.0.1:8000/api/v1.0/tags/?tag=",
-        fields: ['tag'],
-        id: 'id',
-        format: '%tag%'
-    });
-</script> -->
-
-
-
-
-
-
-
-
-
-<!-- <script>
-    $(document).ready(function (){
-        let auto_input=$('#textInput').autofill();
-        $("#testInput").keydown(function(){
-            $("#testInput").css("background-color", "yellow");
-        });
-        $("#testInput").keyup(function(){
-            $("#testInput").css("background-color", "pink");
-
-            tag = this.value;
-            id_tag_val=$('#testInput').val()
-
-            $.ajax({
-                
-                url: "http://127.0.0.1:8000/api/v1.0/tags/?tag=" + tag,
-                method: 'GET',
-                success: function (results) {
-                    console.log(results);
-                    var availableTags = [];
-                    for(let tag of results){
-                        availableTags.push(tag['tag'].toUpperCase());
-                    };
-                    console.log([availableTags, availableTags]);
-                    
-                    console.log(results);
-                    $("#testInput").tags({
-                        reqiureData:true,
-                        unique:true,
-                    }).autofill({
-                        data:availableTags
-                    });
-                },
-                error: function (error) {
-                    console.log(error);
-                    console.log('error')
-                },
-            });
-
-            
-        });
-    });
-</script> -->
+<script>
+    
+</script>
 
 {% endblock %}

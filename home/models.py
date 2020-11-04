@@ -39,7 +39,7 @@ class Project(models.Model):
     price_min= models.PositiveIntegerField(verbose_name='Minimum Price')  
     price_max = models.PositiveIntegerField(verbose_name='Maximum Price')  
  
-    admit_time = models.DateTimeField(default=datetime.now)  
+    admit_time = models.DateField(default=datetime.now)  
     status = models.IntegerField('status',choices=STATUS_TYPES,default=1) 
     skills=models.ManyToManyField(Skill,related_name='projects')
     upload_files = models.FileField(upload_to='media/',blank=True, null=True)

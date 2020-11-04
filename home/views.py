@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -10,7 +10,6 @@ from django.db.models import Q
 from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
 from home.forms import ProjectForm,RepliesForm,FilterForm
 from datetime import datetime, timedelta
-
 from django_email_verification import sendConfirm
 from django.views.generic import TemplateView,DetailView,CreateView,FormView,ListView
 from home.forms import *
@@ -18,6 +17,8 @@ from django.views.generic.edit import FormMixin
 from django.contrib import messages
 from .models import Project
 from accounts.forms import *
+from django.contrib import messages
+
 from accounts.models import CustomUser
 # Create your views here.
 
@@ -295,6 +296,7 @@ class ProjectDetailView(CreateView):
 class SearchFreelancerView(ListView):
     template_name='search-freelancer.html'
     model=Project
+
     # def get_queryset(self):
     #     query = self.request.GET.get('q')
     #     return Project.objects.filter(name__icontains=query)
@@ -417,9 +419,8 @@ class DashboardView(TemplateView):
 class ProjectView(CreateView):
     form_class=ProjectForm
     template_name='post-project.html'
-    context_object_name='projects'
+    # context_object_name='project'
     success_url='/'
-
     def form_valid(self, form):
         # messages.success(self.request, 'Mesajiniz Ugurla gonderildi!')
         project = form.save(commit=False)
@@ -428,9 +429,9 @@ class ProjectView(CreateView):
         new=New(user=self.request.user,project=project,title='Your project is created successfully: ')
         new.save()
         
-        return super().form_valid(form)
+        return super().form_valid(form).HttpResponseRedirect('/')
     
-
+        
 
 
 # EDIT PROFILE

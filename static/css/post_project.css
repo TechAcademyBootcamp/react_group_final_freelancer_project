@@ -152,3 +152,12 @@ small{
 input{
     margin-bottom: 5px;
 }
+.skills_design ul{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 150px;
+    flex-wrap: wrap;
+}

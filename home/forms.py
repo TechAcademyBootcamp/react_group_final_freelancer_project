@@ -4,18 +4,19 @@ from django.forms import Form, ChoiceField
 from inbox.models import Group
 from django.contrib.admin import widgets                                       
 from django.contrib.admin.widgets import AdminDateWidget
-
-LEVEL_TYPES=((1, 'Entry Level'), (2, 'Intermediate'), (3, 'Expert'))
-
+from accounts.models import Skill
+from django.forms.widgets import SelectDateWidget
 
 class ProjectForm(forms.ModelForm):
-    title=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'e.g. Build me a website'}))
-    # description=forms.(widget=forms.TextInput(attrs={'placeholder': 'Long description'}))
+    title=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'e.g. Build me a website','class':'form-control','title':"Add your project title"}),min_length=10)
+    description=forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Long description'}),min_length=20)
     price_min=forms.DecimalField(widget=forms.NumberInput(attrs={'placeholder': 'Minimum price'}))
     price_max=forms.DecimalField(widget=forms.NumberInput(attrs={'placeholder': 'Maximum price'}))
-    # skills=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Skills'}))
+    skills = forms.ModelMultipleChoiceField(queryset=Skill.objects.all(),widget = forms.CheckboxSelectMultiple,)
+
     upload_files=forms.FileField(widget=forms.FileInput())
-    admit_time=forms.DateTimeField(input_formats=['%d/%m/%Y %H:%M:%S'], widget=forms.DateTimeInput(format='%d/%m/%Y %H:%M:%S'))
+    admit_time=forms.DateField(widget=forms.SelectDateWidget())
+
     # admit_time=forms.DateField(widget = forms.SelectDateWidget())
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
@@ -24,11 +25,7 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model=Project
         fields=['title','description','price_min','price_max','level','skills','upload_files','currency','price_type','admit_time']
-        widgets = {
-            'description':forms.Textarea(attrs={
-                
-                'placeholder': 'Describe your project here...'
-            }),
+        widgets = {            
             'level':forms.RadioSelect(),
             'currency':forms.Select(attrs={
                 'placeholder':'select'
