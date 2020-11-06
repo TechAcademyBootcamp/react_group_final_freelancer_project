@@ -422,18 +422,22 @@ class ProjectView(CreateView):
     # context_object_name='project'
     success_url='/'
     def form_valid(self, form):
-        # messages.success(self.request, 'Mesajiniz Ugurla gonderildi!')
         project = form.save(commit=False)
+        now = datetime.now()
+        time=now-timedelta(days=1)
+        limitx=Project.objects.filter(author=self.request.user , created_at__gt=time).count()
+        limit=limitx+1
+        print(limit)
+        if(limit>3):
+            form.add_error(None, "You can only apply 3 times in a day")
+            return self.form_invalid(form) 
         project.author = self.request.user
         project.save()
         new=New(user=self.request.user,project=project,title='Your project is created successfully: ')
         new.save()
-        
-        return super().form_valid(form).HttpResponseRedirect('/')
+        return super().form_valid(form)
     
-        
-
-
+  
 # EDIT PROFILE
 
 

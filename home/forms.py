@@ -8,20 +8,44 @@ from accounts.models import Skill
 from django.forms.widgets import SelectDateWidget
 
 class ProjectForm(forms.ModelForm):
-    title=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'e.g. Build me a website','class':'form-control','title':"Add your project title"}),min_length=10)
+    title=forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Write your project title','class':'form-control','title':"Add your project title"}),min_length=3)
     description=forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Long description'}),min_length=20)
     price_min=forms.DecimalField(widget=forms.NumberInput(attrs={'placeholder': 'Minimum price'}))
     price_max=forms.DecimalField(widget=forms.NumberInput(attrs={'placeholder': 'Maximum price'}))
-    skills = forms.ModelMultipleChoiceField(queryset=Skill.objects.all(),widget = forms.CheckboxSelectMultiple,)
+    skills = forms.ModelMultipleChoiceField(queryset=Skill.objects.all(),widget = forms.CheckboxSelectMultiple,error_messages={'required':"Bacarıq əlavə edin"})
 
     upload_files=forms.FileField(widget=forms.FileInput())
     admit_time=forms.DateField(widget=forms.SelectDateWidget())
 
-    # admit_time=forms.DateField(widget = forms.SelectDateWidget())
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
         self.fields['price_min'].widget.attrs['min'] = 10   
- 
+   
+
+    def clean(self):
+        cleaned_data = super(ProjectForm, self).clean()
+        existing = Project.objects.filter(title__iexact=self.cleaned_data['title'])
+        price_min=cleaned_data['price_min']
+        price_max=cleaned_data['price_max']
+        difference=price_max-price_min
+        if difference < 0:
+              raise forms.ValidationError('Minimum price should not be greater than maximum price')
+        if difference == 0:
+              raise forms.ValidationError('Minimum price should not be equal to maximum price')
+        if existing.exists():
+            raise forms.ValidationError('A project with that title already exists.')
+
+        if cleaned_data['skills'].count() < 3:
+            raise forms.ValidationError('You should add minimum 3 skills.')
+
+        
+        return self.cleaned_data
+
+
+
+
+
+
     class Meta:
         model=Project
         fields=['title','description','price_min','price_max','level','skills','upload_files','currency','price_type','admit_time']

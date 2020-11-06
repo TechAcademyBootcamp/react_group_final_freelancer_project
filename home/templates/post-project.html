@@ -61,35 +61,29 @@
                             <h3>Post a project</h3>
                             <i onclick="location.href = `{% url 'home' %}`;" class="fas fa-times undo_icon"></i>
                         </div>
-                        {% for error in form.non_field_errors %}
-                            <div class="alert alert-danger">
-                                <strong>{{ error|escape }}</strong>
-                            </div>
-                        {% endfor %}
+                        
                         <form class="sec_2" action="#" method="POST" enctype="multipart/form-data"> 
-                            {% csrf_token %}                           
+                            {% csrf_token %}     
                             <div class="form-control">
                                 <h4 style="margin:0px;">Choose a name for your project</h4>
                                 {{form.title}}
-                                <span>{{form.title.errors}}</span>
+                                <small>{{form.title.errors}}</small>  
                                 <!-- <input type="text" placeholder="e.g. Build me a website"> -->
-                                <div class="input_details">
-                                    <small>Please enter at least 10 characters!:</small>
-                                </div>
+                                
                             </div>
                             <div class="form-control">
                                 <h4>Tell us more about your project</h4>
                                 <p>Start with a bit about yourself or your business, and include an overview of what you need done.</p>
                                 {{form.description}}
-                                <span>{{form.description.errors}}</span>
+                               
                                 <!-- <textarea placeholder="Describe your contest here..." name="" id="" cols="30" rows="10"></textarea> -->
                                 <div class="input_details">
-                                    <small>Please enter at least 20 characters!</small>
+                                    <small>{{form.description.errors}}</small>
                                 </div>
                                 <h4>Add file</h4>
                                 <p>Drag & drop any images or documents that might be helpful in explaining your brief here (Max file size: 25 MB).</p>
                                 {{form.upload_files}}
-                                <span>{{form.title.upload_files}}</span>
+                                <small>{{form.title.upload_files}}</small>
                                 
                             </div>
                             <div class="form-control">
@@ -101,10 +95,11 @@
                                 <h4>What skills are required?</h4>
                                 <p>Enter up to 3 skills that best describe your contest. Freelancers will use these skills to find contests they are most interested and experienced in.</p>
                                 <div class="skills_design">{{form.skills}}</div>
-                                <span for=""> 3skills remaining</span>
+                                <div class="input_details">
+                                    <small>{{form.errors.skills}}</small>
+                                </div>
                                 
-                                
-                                <span>{{form.skills.errors}}</span>
+                                <!-- <small>{{form.skills.errors}}</small> -->
                                 <!-- <input type="text" placeholder="e.g. Build me a website"> -->
                                 
                             </div>
@@ -117,14 +112,14 @@
                                 <!-- </select> -->
                                 <p>Minimum budget</p>
                                 {{form.price_min}}
-                                <span>{{form.price_min.errors}}</span>
+                                <small>{{form.price_min.errors}}</small>
                                 <!-- <input type="password" placeholder="Enter a budget here">     -->
                                 <!-- <div class="input_details">
                                     <small>Please enter at least 10 characters!</small>
                                 </div> -->
                                 <p>Maximum budget</p>
                                 {{form.price_max}}
-                                <span>{{form.price_max.errors}}</span>
+                                <small>{{form.price_max.errors}}</small>
                                 <!-- <input type="password" placeholder="Enter a budget here">     -->
                                 <!-- <div class="input_details">
                                     <small>Please enter at least 10 characters!</small>
@@ -133,10 +128,15 @@
                             <div class="form-control">
                                 <h4>Admit Time</h4>
                                 {{form.admit_time}}
-                                <span>{{form.admit_time.errors}}</span>
+                                <small>{{form.admit_time.errors}}</small>
                                 <!-- <input type="text" placeholder="e.g. Build me a website"> -->
                             
                             </div>
+                            {% for error in form.non_field_errors %}
+                                <div class="alert alert-danger">
+                                    <strong style="color: red;">{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
                             <div class="form-next">
                                 
                                 <!-- <button>Next</button> -->
