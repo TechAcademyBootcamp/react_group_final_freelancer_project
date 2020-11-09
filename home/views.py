@@ -304,8 +304,10 @@ class SearchFreelancerView(ListView):
         query = self.request.GET.get('search')
         print(query)
         queryset=super().get_queryset()
+        
+
         if query:
-            
+            skills = Project.objects.filter(skills__tag=skills).values_list('id', flat=True).order_by('id')
             queryset= queryset.filter(
                 Q(title__icontains=query)                               
             )

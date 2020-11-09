@@ -114,6 +114,8 @@
 }
 .tags{
     display: flex;
+    width: 100%;
+    flex-direction: row;
     /* flex-direction: row; */
     /* width: 400px; */
     /* padding: 40px 0  0 15px; */
