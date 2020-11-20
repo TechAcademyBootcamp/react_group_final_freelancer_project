@@ -500,3 +500,7 @@ btnb:hover, .btnb:hover{
 .icon-a{
     margin-right: 5px;
 }
+
+.tag-remove{
+    margin-left: 8px !important;
+}

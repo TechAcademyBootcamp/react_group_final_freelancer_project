@@ -4,7 +4,7 @@
     
     {% if page_obj.has_previous %}
         <a class="fas fa-angle-double-left peg-icon" href="?page=1&paginate_by={{paginate_by}}"></a>
-        <a class="fas fa-angle-left peg-icon" href="?page={{ page_obj.previous_page_number }}&paginate_by={{paginate_by}}"></a>
+        <!-- <a class="fas fa-angle-left peg-icon" href="?page={{ page_obj.previous_page_number }}&paginate_by={{paginate_by}}"></a> -->
         <a  class="peg-numbers" href="?page={{page_obj.previous_page_number }}&paginate_by={{paginate_by}}">{{page_obj.previous_page_number}}</a>
     {% endif %}     
                       
@@ -12,7 +12,7 @@
 
     {% if page_obj.has_next %}
         <a  class="peg-numbers" href="?page={{page_obj.next_page_number }}&paginate_by={{paginate_by}}">{{page_obj.next_page_number}}</a>
-        <a class="fas fa-angle-right peg-icon" href="?page={{ page_obj.next_page_number }}&paginate_by={{paginate_by}}"></a>
+        <!-- <a class="fas fa-angle-right peg-icon" href="?page={{ page_obj.next_page_number }}&paginate_by={{paginate_by}}"></a> -->
         <a class="fas fa-angle-double-right peg-icon" href="?page={{  page_obj.paginator.num_pages }}&paginate_by={{paginate_by}}"></a>   
     {% endif %}
 </div>

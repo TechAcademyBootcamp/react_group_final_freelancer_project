@@ -187,5 +187,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 LOGOUT_REDIRECT_URL='/'
+<<<<<<< HEAD
 LOGIN_REDIRECT_URL='/dashboard/'
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
+=======
+LOGIN_REDIRECT_URL='/'
+>>>>>>> develop

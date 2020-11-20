@@ -133,6 +133,12 @@ class EditProjectViewSet(ModelViewSet):
         id=kwargs['pk']
         user=self.request.user
         project=Project.objects.get(id=id)
+        print(id)
+        print(project)
+        print(project.title)
+
+        print(project.author)
+        print(user)
 
         if project.author != user:
             error_msg = 'It is not your project'
