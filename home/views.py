@@ -438,8 +438,9 @@ class ProjectView(CreateView):
         new=New(user=self.request.user,project=project,title='Your project is created successfully: ')
         new.save()
         return super().form_valid(form)
-    
+
   
+
 # EDIT PROFILE
 
 
